@@ -156,6 +156,43 @@
             <h2 class="font-bold text-lg text-gray-800 border-b pb-2 flex items-center gap-2">
                 <i class="fa-solid fa-box-open text-amber-500"></i> ပစ္စည်းသွားယူရမည့် လိပ်စာ (ပေးပို့သူ)
             </h2>
+       <!-- ၁။ ပေးချေမည့် ပုံစံ ခလုတ် (၂) ခု -->
+<div>
+    <label class="block text-sm font-bold text-gray-700 mb-2">ပေးချေမည့် ပုံစံ ရွေးချယ်ပါ</label>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <label class="border-2 rounded-xl p-3 flex items-center justify-between cursor-pointer transition hover:border-amber-400 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50">
+            <span class="font-bold text-sm text-gray-800">💵 ကုန်ဖိုး/ဒလီ ငွေသားဖြင့် ပေးချေမည်</span>
+            <input type="radio" name="parcelPaymentMethod" value="cash" checked class="accent-amber-500">
+        </label>
+        <label class="border-2 rounded-xl p-3 flex items-center justify-between cursor-pointer transition hover:border-amber-400 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50">
+            <span class="font-bold text-sm text-gray-800">📱 ကုန်ဖိုး/ဒလီခအား Kpay/Wave ဖြင့် ပေးချေမည်</span>
+            <input type="radio" name="parcelPaymentMethod" value="kpay_wave" class="accent-amber-500">
+        </label>
+    </div>
+</div>
+
+<!-- ၂။ ကောက်ခံရမည့် ပုံစံ ခလုတ် (၄) ခု -->
+<div>
+    <label class="block text-sm font-bold text-gray-700 mb-2">ကောက်ခံရမည့် ပုံစံ ရွေးချယ်ပါ</label>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <label class="border-2 rounded-xl p-3 flex items-center justify-between cursor-pointer transition hover:border-amber-400 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50">
+            <span class="font-bold text-sm text-gray-800">📦 (၁) ကုန်ဖိုးနှင့် ဒလီခအား ကုန်ပစ္စည်းလက်ခံသူထံတွင် ကောက်ခံရမည်</span>
+            <input type="radio" name="parcelCollectMethod" value="collect_both" checked class="accent-amber-500">
+        </label>
+        <label class="border-2 rounded-xl p-3 flex items-center justify-between cursor-pointer transition hover:border-amber-400 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50">
+            <span class="font-bold text-sm text-gray-800">🚚 (၂) ကုန်ဖိုးကောက်ရန်မလိုပါ။ ဒလီခအား ကုန်ပစ္စည်းလက်ခံသူထံတွင် ကောက်ခံရမည်</span>
+            <input type="radio" name="parcelCollectMethod" value="collect_delivery_only" class="accent-amber-500">
+        </label>
+        <label class="border-2 rounded-xl p-3 flex items-center justify-between cursor-pointer transition hover:border-amber-400 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50">
+            <span class="font-bold text-sm text-gray-800">🎁 (၃) ကုန်ဖိုးနှင့် ဒလီခအား ကုန်ပစ္စည်းလက်ခံသူထံတွင် ကောက်ရန်မလိုပါ။ ဒလီခအား ပေးပိုသူမှ ပေးချေမည်</span>
+            <input type="radio" name="parcelCollectMethod" value="sender_pays_all" class="accent-amber-500">
+        </label>
+        <label class="border-2 rounded-xl p-3 flex items-center justify-between cursor-pointer transition hover:border-amber-400 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50">
+            <span class="font-bold text-sm text-gray-800">🏷 (၄) ကုန်ဖိုးသာ ကောက်ရမည်။ ဒလီခအား ပေးပိုသူမှ ပေးချေမည်</span>
+            <input type="radio" name="parcelCollectMethod" value="collect_item_sender_pays_del" class="accent-amber-500">
+        </label>
+    </div>
+</div>         
 
             <!-- ပေးပို့သူ အမည် နှင့် ဖုန်းနံပါတ် -->
             <div class="grid grid-cols-2 gap-3">
@@ -946,16 +983,44 @@
         alert('ကျေးဇူးပြု၍ လက်ခံသူ အချက်အလက်များ နှင့် ပို့ဆောင်မည့် ရပ်ကွက် ရွေးချယ်ပေးပါ။');
         return;
     }
-     // --- 💳 Payment Method ရယူခြင်း ---
+
+    // --- ၁။ ပေးချေမည့် ပုံစံ စစ်ဆေးခြင်း ---
     let paymentMethodText = "ငွေသားဖြင့် ပေးချေမည်";
     if (currentMode === 'food') {
         const foodPayEl = document.querySelector('input[name="foodPaymentMethod"]:checked');
         if (foodPayEl && foodPayEl.value === 'kpay_wave') {
             paymentMethodText = "Kpay/Wave ဖြင့် ပေးချေမည်";
-        } else {
-            paymentMethodText = "ငွေသားဖြင့် ပေးချေမည်";
         }
-    }       
+    } else if (currentMode === 'parcel') {
+        const parcelPayEl = document.querySelector('input[name="parcelPaymentMethod"]:checked');
+        if (parcelPayEl && parcelPayEl.value === 'kpay_wave') {
+            paymentMethodText = "Kpay/Wave ဖြင့် ပေးချေမည်";
+        }
+    }
+
+    // --- ၂။ ကောက်ခံရမည့် ပုံစံ (၄) မျိုး စစ်ဆေးခြင်း ---
+    let collectMethodText = "";
+    if (currentMode === 'parcel') {
+        const collectEl = document.querySelector('input[name="parcelCollectMethod"]:checked');
+        const collectValue = collectEl ? collectEl.value : 'collect_both';
+
+        switch (collectValue) {
+            case 'collect_both':
+                collectMethodText = "ကုန်ဖိုးနှင့် ဒလီခအား ကုန်ပစ္စည်းလက်ခံသူထံတွင် ကောက်ခံရမည်";
+                break;
+            case 'collect_delivery_only':
+                collectMethodText = "ကုန်ဖိုးကောက်ရန်မလိုပါ။ ဒလီခအား ကုန်ပစ္စည်းလက်ခံသူထံတွင် ကောက်ခံရမည်";
+                break;
+            case 'sender_pays_all':
+                collectMethodText = "ကုန်ဖိုးနှင့် ဒလီခအား ကုန်ပစ္စည်းလက်ခံသူထံတွင် ကောက်ရန်မလိုပါ။ ဒလီခအား ပေးပို့သူမှ ပေးချေမည်";
+                break;
+            case 'collect_item_sender_pays_del':
+                collectMethodText = "ကုန်ဖိုးသာ ကောက်ရမည်။ ဒလီခအား ပေးပို့သူမှ ပေးချေမည်";
+                break;
+            default:
+                collectMethodText = "ကုန်ဖိုးနှင့် ဒလီခအား ကုန်ပစ္စည်းလက်ခံသူထံတွင် ကောက်ခံရမည်";
+        }
+    }
 
     let senderName = "", senderPhone = "", pickupWard = "", senderAddress = "", parcelSizeText = "";
 
@@ -1133,13 +1198,17 @@
     }
     
     if (currentMode === 'parcel') {
-        orderMsg += `\n--- 📤 ပေးပို့သူ အချက်အလက် ---\n`;
-        orderMsg += `👤 *အမည်:* ${senderName} (${senderPhone})\n`;
-        orderMsg += `📍 *ကောက်ယူမည့် ရပ်ကွက်:* ${pickupWard.split('|')[0]}\n`;
-        if(senderAddress) orderMsg += `🏠 *အသေးစိတ်လိပ်စာ:* ${senderAddress}\n`;
-        orderMsg += `🕒 *ပစ္စည်းကောက်ချိန်:* ${pickupTimeInfo}\n`;
-        if(parcelSizeText) orderMsg += `📏 *ပစ္စည်းအရွယ်အစား:* ${parcelSizeText}\n`;
-    }
+    // ဤနေရာတွင် ပေးချေမည့်ပုံစံ နှင့် ကောက်ခံရမည့်ပုံစံ စာကြောင်း ၂ ကြောင်း ထည့်ပေးပါ
+    orderMsg += 💳 *ပေးချေမည့် ပုံစံ:* ${paymentMethodText}\n;
+    orderMsg += 📌 *ကောက်ခံရမည့် ပုံစံ:* ${collectMethodText}\n;
+    
+    orderMsg += \n--- 📤 ပေးပိုသူ အချက်အလက် ---\n;
+    orderMsg += 👤 *အမည်:* ${senderName} (${senderPhone})\n;
+    orderMsg += 📍 *ကောက်ယူမည့် ရပ်ကွက်:* ${pickupWard.split('|')[0]}\n;
+    if(senderAddress) orderMsg += 🏠 *အသေးစိတ်လိပ်စာ:* ${senderAddress}\n;
+    orderMsg += 🕒 *ပစ္စည်းကောက်ချိန်:* ${pickupTimeInfo}\n;
+    if(parcelSizeText) orderMsg += 📏 *ပစ္စည်းအရွယ်အစား:* ${parcelSizeText}\n;
+}
 
     orderMsg += `\n--- 📥 လက်ခံသူ အချက်အလက် ---\n`;
     orderMsg += `👤 *အမည်:* ${rName} (${rPhone})\n`;
