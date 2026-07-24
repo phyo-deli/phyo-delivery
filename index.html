@@ -894,7 +894,9 @@
             document.getElementById('deliveryFee').innerText = `${deliveryFeeFinal.toLocaleString()} ကျပ်`;
 
             let grandTotal = 0;
+            const waitingFeeRow = document.getElementById('waitingFeeRow');
 
+            // ၁။ အစားအသောက် မှာယူသည့် မုဒ်ဖြစ်လျှင် တွက်ချက်မည်
             if (currentMode === 'food') {
                 let foodSubtotal = 0;
                 for (const data of Object.values(cart)) {
@@ -903,7 +905,6 @@
 
                 const storeKey = document.getElementById('storeSelect').value;
                 const isWaitingStore = storesData[storeKey] && storesData[storeKey].hasWaitingFee;
-                const waitingFeeRow = document.getElementById('waitingFeeRow');
                 let waitingFee = 0;
 
                 if (isWaitingStore) {
@@ -915,7 +916,10 @@
 
                 grandTotal = foodSubtotal + deliveryFeeFinal + waitingFee;
 
+            // ၂။ ကုန်ပစ္စည်း ပို့ဆောင်မည့် မုဒ်ဖြစ်လျှင် ဆိုင်စောင့်ခ လုံးဝ မတွက်ဘဲ ပြန်ဖျောက်မည်
             } else if (currentMode === 'parcel') {
+                if (waitingFeeRow) waitingFeeRow.classList.add('hidden');
+
                 const parcelValInput = parseFloat(document.getElementById('parcelValue').value) || 0;
                 const weightOpt = document.getElementById('parcelWeight').value;
 
@@ -929,6 +933,7 @@
 
                 grandTotal = parcelValInput + deliveryFeeFinal + weightSurcharge;
             } else {
+                if (waitingFeeRow) waitingFeeRow.classList.add('hidden');
                 grandTotal = deliveryFeeFinal;
             }
 
