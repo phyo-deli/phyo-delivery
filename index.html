@@ -153,43 +153,6 @@
             <h2 class="font-bold text-lg text-gray-800 border-b pb-2 flex items-center gap-2">
                 <i class="fa-solid fa-box-open text-amber-500"></i> ပစ္စည်းသွားယူရမည့် လိပ်စာ (ပေးပို့သူ)
             </h2>
-<!-- ၁။ ပေးချေမည့် ပုံစံ ခလုတ် (၂) ခု -->
-<div>
-    <label class="block text-sm font-bold text-gray-700 mb-2">ပေးချေမည့် ပုံစံ ရွေးချယ်ပါ</label>
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-        <label class="border-2 rounded-xl p-3 flex items-center justify-between cursor-pointer transition hover:border-amber-400 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50">
-            <span class="font-bold text-sm text-gray-800">💵 ကုန်ဖိုး/ဒလီ ငွေသားဖြင့် ပေးချေမည်</span>
-            <input type="radio" name="parcelPaymentMethod" value="cash" checked class="accent-amber-500">
-        </label>
-        <label class="border-2 rounded-xl p-3 flex items-center justify-between cursor-pointer transition hover:border-amber-400 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50">
-            <span class="font-bold text-sm text-gray-800">📱 ကုန်ဖိုး/ဒလီခအား Kpay/Wave ဖြင့် ပေးချေမည်</span>
-            <input type="radio" name="parcelPaymentMethod" value="kpay_wave" class="accent-amber-500">
-        </label>
-    </div>
-</div>
-
-<!-- ၂။ ကောက်ခံရမည့် ပုံစံ ခလုတ် (၄) ခု -->
-<div>
-    <label class="block text-sm font-bold text-gray-700 mb-2">ကောက်ခံရမည့် ပုံစံ ရွေးချယ်ပါ</label>
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-        <label class="border-2 rounded-xl p-3 flex items-center justify-between cursor-pointer transition hover:border-amber-400 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50">
-            <span class="font-bold text-sm text-gray-800">📦 (၁) ကုန်ဖိုးနှင့် ဒလီခအား ကုန်ပစ္စည်းလက်ခံသူထံတွင် ကောက်ခံရမည်</span>
-            <input type="radio" name="parcelCollectMethod" value="collect_both" checked class="accent-amber-500">
-        </label>
-        <label class="border-2 rounded-xl p-3 flex items-center justify-between cursor-pointer transition hover:border-amber-400 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50">
-            <span class="font-bold text-sm text-gray-800">🚚 (၂) ကုန်ဖိုးကောက်ရန်မလိုပါ။ ဒလီခအား ကုန်ပစ္စည်းလက်ခံသူထံတွင် ကောက်ခံရမည်</span>
-            <input type="radio" name="parcelCollectMethod" value="collect_delivery_only" class="accent-amber-500">
-        </label>
-        <label class="border-2 rounded-xl p-3 flex items-center justify-between cursor-pointer transition hover:border-amber-400 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50">
-            <span class="font-bold text-sm text-gray-800">🎁 (၃) ကုန်ဖိုးနှင့် ဒလီခအား ကုန်ပစ္စည်းလက်ခံသူထံတွင် ကောက်ရန်မလိုပါ။ ဒလီခအား ပေးပို့သူမှ ပေးချေမည်</span>
-            <input type="radio" name="parcelCollectMethod" value="sender_pays_all" class="accent-amber-500">
-        </label>
-        <label class="border-2 rounded-xl p-3 flex items-center justify-between cursor-pointer transition hover:border-amber-400 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50">
-            <span class="font-bold text-sm text-gray-800">🏷️ (၄) ကုန်ဖိုးသာ ကောက်ရမည်။ ဒလီခအား ပေးပို့သူမှ ပေးချေမည်</span>
-            <input type="radio" name="parcelCollectMethod" value="collect_item_sender_pays_del" class="accent-amber-500">
-        </label>
-    </div>
-</div>
 
             <!-- ပေးပို့သူ အမည် နှင့် ဖုန်းနံပါတ် -->
             <div class="grid grid-cols-2 gap-3">
@@ -222,6 +185,7 @@
                 <textarea id="senderAddress" placeholder="လမ်းအမည်၊ အိမ်နံပါတ် စသည်ဖြင့် အသေးစိတ် ရေးပါ" class="w-full p-2.5 border rounded-xl text-sm focus:ring-2 focus:ring-amber-400 outline-none bg-white text-gray-800" rows="2"></textarea>
             </div>
 
+            <!-- ပစ္စည်း အလေးချိန် -->
             <div>
                 <label class="block text-sm font-bold text-gray-700 mb-1">ပစ္စည်း အလေးချိန်</label>
                 <select id="parcelWeight" onchange="calculatePrice()" class="w-full p-2.5 border rounded-xl bg-white text-sm text-gray-800 focus:ring-2 focus:ring-amber-400 outline-none">
@@ -232,21 +196,61 @@
                 </select>
             </div>
 
-<!-- ပစ္စည်း အရွယ်အစား ရွေးချယ်ရန် Dropdown -->
-<div>
-    <label class="block text-sm font-bold text-gray-700 mb-1">ပစ္စည်း အရွယ်အစား</label>
-    <select id="parcelSize" onchange="calculatePrice()" class="w-full p-2.5 border rounded-xl bg-white text-sm text-gray-800 focus:ring-2 focus:ring-amber-400 outline-none">
-        <option value="normal">သေး/လတ် (ပုံးထဲဆံ့သည်) - အခမဲ့</option>
-        <option value="large">ကြီး (ဆိုင်ကယ်နောက်တွင် ကြိုးချည်တင်ရမည်)</option>
-        <option value="extra_large">အလွန်ကြီး (ဆိုင်ကယ်ဖြင့် သယ်ရန် ခက်ခဲပါသည်)</option>
-    </select>
-</div>
+            <!-- ပစ္စည်း အရွယ်အစား -->
+            <div>
+                <label class="block text-sm font-bold text-gray-700 mb-1">ပစ္စည်း အရွယ်အစား</label>
+                <select id="parcelSize" onchange="calculatePrice()" class="w-full p-2.5 border rounded-xl bg-white text-sm text-gray-800 focus:ring-2 focus:ring-amber-400 outline-none">
+                    <option value="normal">သေး/လတ် (ပုံးထဲဆံ့သည်) - အခမဲ့</option>
+                    <option value="large">ကြီး (ဆိုင်ကယ်နောက်တွင် ကြိုးချည်တင်ရမည်)</option>
+                    <option value="extra_large">အလွန်ကြီး (ဆိုင်ကယ်ဖြင့် သယ်ရန် ခက်ခဲပါသည်)</option>
+                </select>
+            </div>
 
+            <!-- ပစ္စည်းတန်ဖိုး (ကျပ်) -->
             <div>
                 <label class="block text-sm font-bold text-gray-700 mb-1">ပစ္စည်းတန်ဖိုး (ကျပ်)</label>
                 <input type="number" id="parcelValue" placeholder="0" oninput="calculatePrice()" class="w-full p-2.5 border rounded-xl text-sm focus:ring-2 focus:ring-amber-400 outline-none bg-white text-gray-800">
             </div>
 
+            <!-- ၁။ ပေးချေမည့် ပုံစံ ခလုတ် (၂) ခု (ပစ္စည်းတန်ဖိုး အောက်သို့ ရွှေ့လိုက်သည်) -->
+            <div>
+                <label class="block text-sm font-bold text-gray-700 mb-2">ပေးချေမည့် ပုံစံ ရွေးချယ်ပါ</label>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <label class="border-2 rounded-xl p-3 flex items-center justify-between cursor-pointer transition hover:border-amber-400 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50">
+                        <span class="font-bold text-sm text-gray-800">💵 ကုန်ဖိုး/ဒလီ ငွေသားဖြင့် ပေးချေမည်</span>
+                        <input type="radio" name="parcelPaymentMethod" value="cash" checked class="accent-amber-500">
+                    </label>
+                    <label class="border-2 rounded-xl p-3 flex items-center justify-between cursor-pointer transition hover:border-amber-400 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50">
+                        <span class="font-bold text-sm text-gray-800">📱 ကုန်ဖိုး/ဒလီခအား Kpay/Wave ဖြင့် ပေးချေမည်</span>
+                        <input type="radio" name="parcelPaymentMethod" value="kpay_wave" class="accent-amber-500">
+                    </label>
+                </div>
+            </div>
+
+            <!-- ၂။ ကောက်ခံရမည့် ပုံစံ ခလုတ် (၄) ခု (ပစ္စည်းတန်ဖိုး အောက်သို့ ရွှေ့လိုက်သည်) -->
+            <div>
+                <label class="block text-sm font-bold text-gray-700 mb-2">ကောက်ခံရမည့် ပုံစံ ရွေးချယ်ပါ</label>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <label class="border-2 rounded-xl p-3 flex items-center justify-between cursor-pointer transition hover:border-amber-400 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50">
+                        <span class="font-bold text-sm text-gray-800">📦 (၁) ကုန်ဖိုးနှင့် ဒလီခအား ကုန်ပစ္စည်းလက်ခံသူထံတွင် ကောက်ခံရမည်</span>
+                        <input type="radio" name="parcelCollectMethod" value="collect_both" checked class="accent-amber-500">
+                    </label>
+                    <label class="border-2 rounded-xl p-3 flex items-center justify-between cursor-pointer transition hover:border-amber-400 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50">
+                        <span class="font-bold text-sm text-gray-800">🚚 (၂) ကုန်ဖိုးကောက်ရန်မလိုပါ။ ဒလီခအား ကုန်ပစ္စည်းလက်ခံသူထံတွင် ကောက်ခံရမည်</span>
+                        <input type="radio" name="parcelCollectMethod" value="collect_delivery_only" class="accent-amber-500">
+                    </label>
+                    <label class="border-2 rounded-xl p-3 flex items-center justify-between cursor-pointer transition hover:border-amber-400 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50">
+                        <span class="font-bold text-sm text-gray-800">🎁 (၃) ကုန်ဖိုးနှင့် ဒလီခအား ကုန်ပစ္စည်းလက်ခံသူထံတွင် ကောက်ရန်မလိုပါ။ ဒလီခအား ပေးပို့သူမှ ပေးချေမည်</span>
+                        <input type="radio" name="parcelCollectMethod" value="sender_pays_all" class="accent-amber-500">
+                    </label>
+                    <label class="border-2 rounded-xl p-3 flex items-center justify-between cursor-pointer transition hover:border-amber-400 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50">
+                        <span class="font-bold text-sm text-gray-800">🏷️ (၄) ကုန်ဖိုးသာ ကောက်ရမည်။ ဒလီခအား ပေးပို့သူမှ ပေးချေမည်</span>
+                        <input type="radio" name="parcelCollectMethod" value="collect_item_sender_pays_del" class="accent-amber-500">
+                    </label>
+                </div>
+            </div>
+
+            <!-- ပစ္စည်းကောက်ယူမည့်အချိန် -->
             <div>
                 <label class="block text-sm font-bold text-gray-700 mb-1">ပစ္စည်းကောက်ယူမည့်အချိန်</label>
                 <select id="pickupTimeType" onchange="toggleFutureTimeInputs()" class="w-full p-2.5 border rounded-xl bg-white text-sm text-gray-800 focus:ring-2 focus:ring-amber-400 outline-none">
@@ -256,6 +260,7 @@
                 <input type="datetime-local" id="pickupScheduledTime" class="hidden w-full mt-2 p-2 border rounded-xl text-sm bg-white text-gray-800">
             </div>
 
+            <!-- ကုန်ပစ္စည်း သီးခြားမှတ်ချက် -->
             <div>
                 <label class="block text-sm font-bold text-gray-700 mb-1">ကုန်ပစ္စည်း သီးခြားမှတ်ချက်</label>
                 <textarea id="parcelNote" placeholder="ပစ္စည်းအမျိုးအစား သို့မဟုတ် သတိထားရမည့် အချက်များ ရေးပါ" class="w-full p-2.5 border rounded-xl text-sm focus:ring-2 focus:ring-amber-400 outline-none bg-white text-gray-800"></textarea>
