@@ -1568,18 +1568,22 @@ function onPartnerStoreChange() {
                 deliveryTypeTitle = "📦 အနှေးပို့ (Economy Delivery)";
             }
 
-            // ရက်စွဲပါသော Order ID စနစ်
-            const now = new Date();
-            const dateStr = String(now.getFullYear()).slice(-2) + 
-                            String(now.getMonth() + 1).padStart(2, '0') + 
-                            String(now.getDate()).padStart(2, '0');
-                            
-            let dailyOrderSeq = localStorage.getItem('last_order_seq_' + dateStr) || 0;
-            dailyOrderSeq = Number(dailyOrderSeq) + 1;
-            localStorage.setItem('last_order_seq_' + dateStr, dailyOrderSeq);
+            // လက်ရှိ ရက်စွဲ (YYMMDD) ကို ရယူခြင်း
+const now = new Date();
+const year = String(now.getFullYear()).slice(-2); // နောက်ဆုံး ၂ လုံး (ဥပမာ- 26)
+const month = String(now.getMonth() + 1).padStart(2, '0'); // လ (ဥပမာ- 07)
+const day = String(now.getDate()).padStart(2, '0'); // ရက် (ဥပမာ- 25)
+const dateStr = `${year}${month}${day}`; // 260725
 
-            const seqStr = String(dailyOrderSeq).padStart(3, '0');
-            const orderId = `${dateStr}-${seqStr}`; // နမူနာ - 260725-001
+// စက်ထဲတွင် အော်ဒါ တိုးသွားအောင် ထိန်းထားသည့် စနစ်
+let dailyOrderSeq = localStorage.getItem('last_order_seq_' + dateStr) || 0;
+dailyOrderSeq = Number(dailyOrderSeq) + 1;
+localStorage.setItem('last_order_seq_' + dateStr, dailyOrderSeq);
+
+const seqStr = String(dailyOrderSeq).padStart(3, '0'); // 001, 002, 003...
+
+// SYS ကို ရှေ့ကနေ ပေါင်းထည့်လိုက်သည့် အပိုင်း
+const orderId = `SYS-${dateStr}-${seqStr}`; // ထွက်လာမည့်ပုံစံ - SYS-260725-001
 
             const grandTotal = document.getElementById('grandTotal').innerText;
             const deliveryFee = document.getElementById('deliveryFee') ? document.getElementById('deliveryFee').innerText : '၀ ကျပ်';
