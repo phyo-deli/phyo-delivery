@@ -22,7 +22,7 @@
     </style>
 </head>
 
-<body class="m-0 p-0 bg-amber-50 min-h-screen text-gray-800 pt-20">
+<body class="m-0 p-0 bg-amber-50 min-h-screen text-gray-800 pt-28">
 
     <!-- Fixed Navbar -->
     <nav class="fixed top-0 left-0 right-0 w-full bg-amber-500 text-gray-900 px-4 py-3 shadow-md z-50">
@@ -90,11 +90,11 @@
                 </button>
                 <button id="tabParcel" onclick="switchServiceMode('parcel')" class="flex items-center justify-center gap-2 py-3 px-3 rounded-xl font-bold text-xs sm:text-sm bg-white text-gray-800 hover:bg-amber-50 transition-all border border-amber-200">
                     <i class="fa-solid fa-box text-amber-600"></i>
-                    <span>ကုန်ပစ္စည်း နှင့် အစားအသောက် ပို့ဆောင်မည်။</span>
+                    <span>ကုန်ပစ္စည်း ပို့ဆောင်မည်</span>
                 </button>
                 <button id="tabPartner" onclick="switchServiceMode('partner')" class="flex items-center justify-center gap-2 py-3 px-3 rounded-xl font-bold text-xs sm:text-sm bg-white text-gray-800 hover:bg-amber-50 transition-all border border-amber-200">
                     <i class="fa-solid fa-handshake text-amber-600"></i>
-                    <span>ကုန်ပစ္စည်းနှင့် အစားအသောက် ပို့ဆောင်မည် (မိတ်ဖက်များ)</span>
+                    <span>ကုန်ပစ္စည်းနှင့် အစားအသောက် (မိတ်ဖက်များ)</span>
                 </button>
             </div>
         </div>
@@ -106,16 +106,22 @@
             </h2>
             
             <div>
-                <label class="block text-sm font-bold text-gray-700 mb-1">ဆိုင်အမည်</label>
-                <select id="storeSelect" onchange="handleStoreChange()" class="w-full p-2.5 border rounded-xl bg-white font-bold text-gray-800 focus:ring-2 focus:ring-amber-400 outline-none">
-                    <option value="maydanbauk">မေဒံပေါက်</option>
-                    <option value="shwelatyar">ရွှေလက်ရာထမင်းပေါင်း</option>
-                    <option value="bangkokkitchen">Bangkok Kitchen</option>
-                    <option value="seoulhouse">Seoul House</option>
-                    <option value="tokyosushi">Tokyo Sushi</option>
-                    <option value="shweteahouse">ရွှေမြို့တော် လက်ဖက်ရည်ဆိုင်</option>
-                </select>
-            </div>
+    <label class="block text-sm font-bold text-gray-700 mb-1">ဆိုင်အမည်</label>
+    <select id="storeSelect" onchange="handleStoreChange()" class="w-full p-2.5 border rounded-xl bg-white font-bold text-gray-800 focus:ring-2 focus:ring-amber-400 outline-none">
+        <option value="maydanbauk">မေဒံပေါက် (ဖက်တန်းရပ်ကွက် Zone A)</option>
+        <option value="shwelatyar">ရွှေလက်ရာထမင်းပေါင်း (ဖက်တန်းရပ်ကွက် Zone A)</option>
+        <option value="bangkokkitchen">Bangkok Kitchen (မန္တလေးရပ်ကွက် Zone A)</option>
+        <option value="seoulhouse">Seoul House (ဈေးကြိုရပ်ကွက် Zone B)</option>
+        <option value="tokyosushi">Tokyo Sushi (ရွှေတောင်ရပ်ကွက် Zone A)</option>
+        <option value="shweteahouse">ရွှေမြို့တော် လက်ဖက်ရည်ဆိုင် (မရမ်းကုန်းရပ်ကွက် Zone A)</option>
+    </select>
+</div>
+
+<!-- ရပ်ကွက် အလိုအလျောက် ပေါ်လာမည့် Box -->
+<div id="storeWardBox" class="bg-amber-100 p-2.5 rounded-xl border border-amber-300 font-bold text-amber-900 text-sm flex items-center gap-2">
+    <i class="fa-solid fa-location-dot text-amber-600"></i>
+    <span>ပစ္စည်းကောက်ယူရမည့် ရပ်ကွက် - <strong id="storeWardDisplay">ဖက်တန်းရပ်ကွက် (Zone A)</strong></span>
+</div>
 
             <div id="storeNoticeBox" class="hidden bg-amber-50 border-l-4 border-amber-500 p-3 rounded-r-xl text-xs text-amber-800 font-bold">
                 ⚠️ ဤဆိုင်သည် စောင့်ဆိုင်းခ (၅၀၀ ကျပ်) ထပ်ဆောင်း ကောက်ခံသော ဆိုင်ဖြစ်ပါသည်။
@@ -262,14 +268,20 @@
             </h2>
 
             <div>
-                <label class="block text-sm font-bold text-gray-700 mb-1">မိမိ မိတ်ဖက်ဆိုင် ရွေးချယ်ပါ</label>
-                <select id="partnerStoreSelect" onchange="onPartnerStoreChange()" class="w-full p-2.5 border rounded-xl bg-white font-bold text-gray-800 focus:ring-2 focus:ring-amber-400 outline-none">
-                    <option value="partner1">City Mart Bakeries (Zone A)</option>
-                    <option value="partner2">Royal Flower & Gift Shop (Zone B)</option>
-                    <option value="partner3">Mawlamyine Fashion Hub (Zone C)</option>
-                    <option value="partner4">Mawlamyine Electronic Store (Zone A)</option>
-                </select>
-            </div>
+    <label class="block text-sm font-bold text-gray-700 mb-1">မိမိ မိတ်ဖက်ဆိုင် ရွေးချယ်ပါ</label>
+    <select id="partnerStoreSelect" onchange="onPartnerStoreChange()" class="w-full p-2.5 border rounded-xl bg-white font-bold text-gray-800 focus:ring-2 focus:ring-amber-400 outline-none">
+        <option value="partner1">City Mart Bakeries (Zone A)</option>
+        <option value="partner2">Royal Flower & Gift Shop (Zone B)</option>
+        <option value="partner3">Mawlamyine Fashion Hub (Zone C)</option>
+        <option value="partner4">Mawlamyine Electronic Store (Zone A)</option>
+    </select>
+</div>
+
+<!-- မိတ်ဖက်ဆိုင် ရပ်ကွက် အလိုအလျောက် ပေါ်လာမည့် Box -->
+<div id="partnerStoreWardBox" class="bg-amber-100 p-2.5 rounded-xl border border-amber-300 font-bold text-amber-900 text-sm flex items-center gap-2">
+    <i class="fa-solid fa-location-dot text-amber-600"></i>
+    <span>ပစ္စည်းကောက်ယူရမည့် ရပ်ကွက် - <strong id="partnerWardDisplay">မန္တလေးရပ်ကွက် (Zone A)</strong></span>
+</div>
 
             <!-- Dashboard -->
             <div class="bg-amber-50 p-4 rounded-2xl border border-amber-200">
@@ -497,20 +509,20 @@
         let baseDeliveryFee = 0;
 
         const partnerStoresData = {
-            partner1: { name: 'City Mart Bakeries', zone: 'A' },
-            partner2: { name: 'Royal Flower & Gift Shop', zone: 'B' },
-            partner3: { name: 'Mawlamyine Fashion Hub', zone: 'C' },
-            partner4: { name: 'Mawlamyine Electronic Store', zone: 'A' }
-        };
+    partner1: { name: 'City Mart Bakeries', zone: 'A', ward: 'မန္တလေးရပ်ကွက်' },
+    partner2: { name: 'Royal Flower & Gift Shop', zone: 'B', ward: 'ဈေးကြိုရပ်ကွက်' },
+    partner3: { name: 'Mawlamyine Fashion Hub', zone: 'C', ward: 'အောက်ကျင်းရပ်ကွက်' },
+    partner4: { name: 'Mawlamyine Electronic Store', zone: 'A', ward: 'ဖက်တန်းရပ်ကွက်' }
+};
 
         const storesData = {
-            maydanbauk: { name: 'မေဒံပေါက်', zone: 'A', hasWaitingFee: false },
-            shwelatyar: { name: 'ရွှေလက်ရာထမင်းပေါင်း', zone: 'A', hasWaitingFee: true },
-            bangkokkitchen: { name: 'Bangkok Kitchen', zone: 'A', hasWaitingFee: false },
-            seoulhouse: { name: 'Seoul House', zone: 'B', hasWaitingFee: false },
-            tokyosushi: { name: 'Tokyo Sushi', zone: 'A', hasWaitingFee: false },
-            shweteahouse: { name: 'ရွှေမြို့တော် လက်ဖက်ရည်ဆိုင်', zone: 'A', hasWaitingFee: false }
-        };
+    maydanbauk: { name: 'မေဒံပေါက်', zone: 'A', ward: 'ဖက်တန်းရပ်ကွက်', hasWaitingFee: false },
+    shwelatyar: { name: 'ရွှေလက်ရာထမင်းပေါင်း', zone: 'A', ward: 'ဖက်တန်းရပ်ကွက်', hasWaitingFee: true },
+    bangkokkitchen: { name: 'Bangkok Kitchen', zone: 'A', ward: 'မန္တလေးရပ်ကွက်', hasWaitingFee: false },
+    seoulhouse: { name: 'Seoul House', zone: 'B', ward: 'ဈေးကြိုရပ်ကွက်', hasWaitingFee: false },
+    tokyosushi: { name: 'Tokyo Sushi', zone: 'A', ward: 'ရွှေတောင်ရပ်ကွက်', hasWaitingFee: false },
+    shweteahouse: { name: 'ရွှေမြို့တော် လက်ဖက်ရည်ဆိုင်', zone: 'A', ward: 'မရမ်းကုန်းရပ်ကွက်', hasWaitingFee: false }
+};
 
         const storeMenus = {
             maydanbauk: [
@@ -753,66 +765,71 @@
         }
 
         function calculatePartnerOrders() {
-            const partnerKey = document.getElementById('partnerStoreSelect').value;
-            const pZone = partnerStoresData[partnerKey] ? partnerStoresData[partnerKey].zone : 'A';
+    const partnerKey = document.getElementById('partnerStoreSelect').value;
+    
+    // မိတ်ဖက်ဆိုင်၏ Zone ရော Ward ကိုပါ ရယူမည်
+    const pZone = partnerStoresData[partnerKey] ? partnerStoresData[partnerKey].zone : 'A';
+    const pWard = partnerStoresData[partnerKey] ? partnerStoresData[partnerKey].ward : '';
 
-            let activeOrdersCount = 0;
-            let grandValueTotal = 0;
-            let grandDeliveryTotal = 0;
-            let grandFinalTotal = 0;
+    let activeOrdersCount = 0;
+    let grandValueTotal = 0;
+    let grandDeliveryTotal = 0;
+    let grandFinalTotal = 0;
 
-            for (let i = 1; i <= 10; i++) {
-                const nameEl = document.getElementById(`pName_${i}`);
-                if (!nameEl) continue;
+    for (let i = 1; i <= 10; i++) {
+        const nameEl = document.getElementById(`pName_${i}`);
+        if (!nameEl) continue;
 
-                const name = nameEl.value.trim();
-                const wardVal = document.getElementById(`pWard_${i}`).value;
-                const itemVal = parseFloat(document.getElementById(`pValue_${i}`).value) || 0;
-                const weightOpt = document.getElementById(`pWeight_${i}`).value;
-                const speedVal = document.getElementById(`pSpeed_${i}`).value;
+        const name = nameEl.value.trim();
+        const wardVal = document.getElementById(`pWard_${i}`).value;
+        const itemVal = parseFloat(document.getElementById(`pValue_${i}`).value) || 0;
+        const weightOpt = document.getElementById(`pWeight_${i}`).value;
+        const speedVal = document.getElementById(`pSpeed_${i}`).value;
 
-                let deliveryFee = 0;
-                let weightSurcharge = 0;
+        let deliveryFee = 0;
+        let weightSurcharge = 0;
 
-                let calcSpeed = 'express';
-                if (speedVal === 'normal_food' || speedVal === 'normal_item') {
-                    calcSpeed = 'normal';
-                } else if (speedVal === 'slow') {
-                    calcSpeed = 'slow';
-                }
-
-                if (wardVal) {
-                    const [dWard, dZone] = wardVal.split('|');
-                    const priceTable = getPriceByZone(pZone, dZone, false, '', dWard);
-                    deliveryFee = priceTable[calcSpeed] || 0;
-
-                    // (B-2) ပုံမှန်ပို့ နေ့ချင်းရောက် ကုန်ပစ္စည်း လျှော့ဈေး -၅၀၀ ကျပ်
-                    if (speedVal === 'normal_item') {
-                        deliveryFee = Math.max(0, deliveryFee - 500);
-                    }
-                }
-
-                if (weightOpt === '3to8') weightSurcharge = 500;
-                else if (weightOpt === '8to13') weightSurcharge = 1000;
-                else if (weightOpt === 'above13') weightSurcharge = 1500;
-
-                const itemTotal = itemVal + deliveryFee + weightSurcharge;
-
-                document.getElementById(`pDelFeeDisplay_${i}`).innerText = deliveryFee.toLocaleString();
-                document.getElementById(`pWeightDisplay_${i}`).innerText = weightSurcharge.toLocaleString();
-                document.getElementById(`pTotalDisplay_${i}`).innerText = itemTotal.toLocaleString();
-
-                if (name || wardVal || itemVal > 0) {
-                    activeOrdersCount++;
-                    grandValueTotal += itemVal;
-                    grandDeliveryTotal += deliveryFee + weightSurcharge;
-                    grandFinalTotal += itemTotal;
-                }
-            }
-
-            document.getElementById('pSummaryTotalOrders').innerText = `${activeOrdersCount} ခု`;
-            document.getElementById('pSummaryTotalValue').innerText = `${grandValueTotal.toLocaleString()} ကျပ်`;
+        let calcSpeed = 'express';
+        if (speedVal === 'normal_food' || speedVal === 'normal_item') {
+            calcSpeed = 'normal';
+        } else if (speedVal === 'slow') {
+            calcSpeed = 'slow';
         }
+
+        if (wardVal && pWard) {
+            const [dWard, dZone] = wardVal.split('|');
+            const sameWard = (pWard === dWard);
+            
+            // pWard (ဆိုင်၏ရပ်ကွက်) နှင့် dWard (ပို့ဆောင်မည့်ရပ်ကွက်) တို့ကို တိကျစွာ ဖြည့်သွင်းပေးလိုက်ခြင်း
+            const priceTable = getPriceByZone(pZone, dZone, sameWard, pWard, dWard);
+            deliveryFee = priceTable[calcSpeed] || 0;
+
+            if (speedVal === 'normal_item') {
+                deliveryFee = Math.max(0, deliveryFee - 500);
+            }
+        }
+
+        if (weightOpt === '3to8') weightSurcharge = 500;
+        else if (weightOpt === '8to13') weightSurcharge = 1000;
+        else if (weightOpt === 'above13') weightSurcharge = 1500;
+
+        const itemTotal = itemVal + deliveryFee + weightSurcharge;
+
+        document.getElementById(`pDelFeeDisplay_${i}`).innerText = deliveryFee.toLocaleString();
+        document.getElementById(`pWeightDisplay_${i}`).innerText = weightSurcharge.toLocaleString();
+        document.getElementById(`pTotalDisplay_${i}`).innerText = itemTotal.toLocaleString();
+
+        if (name || wardVal || itemVal > 0) {
+            activeOrdersCount++;
+            grandValueTotal += itemVal;
+            grandDeliveryTotal += deliveryFee + weightSurcharge;
+            grandFinalTotal += itemTotal;
+        }
+    }
+
+    document.getElementById('pSummaryTotalOrders').innerText = `${activeOrdersCount} ခု`;
+    document.getElementById('pSummaryTotalValue').innerText = `${grandValueTotal.toLocaleString()} ကျပ်`;
+}
 
         function getPartnerMonthlyCount(partnerKey) {
             const now = new Date();
@@ -981,25 +998,53 @@
         }
 
         function handleStoreChange() {
-            const selectEl = document.getElementById('storeSelect');
-            const selectedStore = selectEl.value;
+    const selectEl = document.getElementById('storeSelect');
+    const selectedStore = selectEl.value;
 
-            if (Object.keys(cart).length > 0 && selectedStore !== currentActiveStore) {
-                const confirmClear = confirm("အခြားဆိုင်မှ မီနူးများ ရွေးချယ်ရန် ယခင်ဆိုင်မှ မှာယူထားသော မီနူးများကို ရှင်းလင်းရပါမည်။ ဆက်လက်လုပ်ဆောင်မလား?");
-                if (confirmClear) {
-                    cart = {};
-                    currentActiveStore = selectedStore;
-                    updateCartSummary();
-                    renderMenu();
-                } else {
-                    selectEl.value = currentActiveStore;
-                }
-            } else {
-                currentActiveStore = selectedStore;
-                renderMenu();
-                calculatePrice();
+    if (Object.keys(cart).length > 0 && selectedStore !== currentActiveStore) {
+        const confirmClear = confirm("အခြားဆိုင်မှ မီနူးများ ရွေးချယ်ရန် ယခင်ဆိုင်မှ မှာယူထားသော မီနူးများကို ရှင်းလင်းရပါမည်။ ဆက်လက်လုပ်ဆောင်မလား?");
+        if (confirmClear) {
+            cart = {};
+            currentActiveStore = selectedStore;
+            updateCartSummary();
+            renderMenu();
+        } else {
+            selectEl.value = currentActiveStore;
+            return;
+        }
+    } else {
+        currentActiveStore = selectedStore;
+        renderMenu();
+    }
+
+    // ရပ်ကွက်စာသား ပြောင်းပေးရန်
+    if (storesData[selectedStore]) {
+        const store = storesData[selectedStore];
+        const wardDisp = document.getElementById('storeWardDisplay');
+        if (wardDisp) {
+            wardDisp.innerText = `${store.ward} (Zone ${store.zone})`;
+        }
+    }
+
+    calculatePrice();
+}
+
+function onPartnerStoreChange() {
+    const partnerSelect = document.getElementById('partnerStoreSelect');
+    if (partnerSelect) {
+        const partnerKey = partnerSelect.value;
+        if (partnerStoresData[partnerKey]) {
+            const pData = partnerStoresData[partnerKey];
+            const pWardDisp = document.getElementById('partnerWardDisplay');
+            if (pWardDisp) {
+                pWardDisp.innerText = `${pData.ward} (Zone ${pData.zone})`;
             }
         }
+    }
+
+    updatePartnerMonthlyDisplay();
+    calculatePartnerOrders();
+}
 
         function renderMenu() {
             const storeKey = document.getElementById('storeSelect').value;
@@ -1179,37 +1224,43 @@
         }
 
         function calculatePrice() {
-            if (currentMode === 'partner') return;
+    if (currentMode === 'partner') return;
 
-            const dVal = document.getElementById('dropWard') ? document.getElementById('dropWard').value : "";
-            const speedEl = document.querySelector('input[name="speed"]:checked');
-            const speed = speedEl ? speedEl.value : 'express';
+    const dVal = document.getElementById('dropWard') ? document.getElementById('dropWard').value : "";
+    const speedEl = document.querySelector('input[name="speed"]:checked');
+    const speed = speedEl ? speedEl.value : 'express';
 
-            let pWard = "ဖက်တန်းရပ်ကွက်";
-            let pZone = "A";
+    let pWard = "";
+    let pZone = "A";
 
-            if (currentMode === 'parcel') {
-                const pVal = document.getElementById('pickupWardParcel') ? document.getElementById('pickupWardParcel').value : "";
-                if (pVal) {
-                    const [ward, zone] = pVal.split('|');
-                    pWard = ward;
-                    pZone = zone;
-                }
-            } else if (currentMode === 'food') {
-                const storeKey = document.getElementById('storeSelect').value;
-                if (storesData[storeKey]) {
-                    pZone = storesData[storeKey].zone;
-                }
-            }
+    // ၁။ ကုန်ပစ္စည်း ပို့ဆောင်မည် Mode အတွက် ရွေးချယ်ထားသော Pickup Ward ကိုယူမည်
+    if (currentMode === 'parcel') {
+        const pVal = document.getElementById('pickupWardParcel') ? document.getElementById('pickupWardParcel').value : "";
+        if (pVal) {
+            const [ward, zone] = pVal.split('|');
+            pWard = ward;
+            pZone = zone;
+        }
+    } 
+    // ၂။ စားသောက်ဆိုင် Mode အတွက် ရွေးချယ်ထားသော ဆိုင်၏ Ward နှင့် Zone ကို တိတိကျကျ ယူမည်
+    else if (currentMode === 'food') {
+        const storeKey = document.getElementById('storeSelect').value;
+        if (storesData[storeKey]) {
+            pWard = storesData[storeKey].ward; // ဆိုင်တည်ရှိရာ ရပ်ကွက်
+            pZone = storesData[storeKey].zone; // ဆိုင်တည်ရှိရာ Zone
+        }
+    }
 
-            if (dVal) {
-                const [dWard, dZone] = dVal.split('|');
-                const sameWard = (pWard === dWard);
-                const priceTable = getPriceByZone(pZone, dZone, sameWard, pWard, dWard);
-                baseDeliveryFee = priceTable[speed];
-            } else {
-                baseDeliveryFee = 0;
-            }
+    // တည်နေရာ နှစ်ခုလုံး ရှိပါက ဈေးနှုန်း တွက်ချက်မည်
+    if (dVal && pWard) {
+        const [dWard, dZone] = dVal.split('|');
+        const sameWard = (pWard === dWard);
+        // ရပ်ကွက်တူ / ကပ်လျက်ရပ်ကွက် / Zone မတူ တွက်ချက်မှုကို ပစ္စည်းပို့ဆောင်မည် အတိုင်း တိကျစွာ တွက်ပေးမည်
+        const priceTable = getPriceByZone(pZone, dZone, sameWard, pWard, dWard);
+        baseDeliveryFee = priceTable[speed];
+    } else {
+        baseDeliveryFee = 0;
+    }
 
             let deliveryFeeFinal = baseDeliveryFee;
             const discountRow = document.getElementById('discountRow');
