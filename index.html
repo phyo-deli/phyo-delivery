@@ -1568,7 +1568,19 @@ function onPartnerStoreChange() {
                 deliveryTypeTitle = "📦 အနှေးပို့ (Economy Delivery)";
             }
 
-            const orderId = "PD-" + Math.floor(1000 + Math.random() * 9000);
+            // ရက်စွဲပါသော Order ID စနစ်
+            const now = new Date();
+            const dateStr = String(now.getFullYear()).slice(-2) + 
+                            String(now.getMonth() + 1).padStart(2, '0') + 
+                            String(now.getDate()).padStart(2, '0');
+                            
+            let dailyOrderSeq = localStorage.getItem('last_order_seq_' + dateStr) || 0;
+            dailyOrderSeq = Number(dailyOrderSeq) + 1;
+            localStorage.setItem('last_order_seq_' + dateStr, dailyOrderSeq);
+
+            const seqStr = String(dailyOrderSeq).padStart(3, '0');
+            const orderId = `${dateStr}-${seqStr}`; // နမူနာ - 260725-001
+
             const grandTotal = document.getElementById('grandTotal').innerText;
             const deliveryFee = document.getElementById('deliveryFee') ? document.getElementById('deliveryFee').innerText : '၀ ကျပ်';
 
