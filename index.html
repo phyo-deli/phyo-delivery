@@ -869,77 +869,90 @@
             calculatePartnerOrders();
         }
 
-        function switchServiceMode(mode) {
-            currentMode = mode;
-            
-            const tabFood = document.getElementById('tabFood');
-            const tabParcel = document.getElementById('tabParcel');
-            const tabPartner = document.getElementById('tabPartner');
-            
-            const foodSection = document.getElementById('foodSection');
-            const parcelSection = document.getElementById('parcelSection');
-            const partnerSection = document.getElementById('partnerSection');
-            const commonDeliverySection = document.getElementById('commonDeliverySection');
-            const summarySection = document.getElementById('summarySection');
+        // မိတ်ဖက်အပိုင်းအတွက် Password သတ်မှတ်ခြင်း
+const PARTNER_PASSWORD = "1234"; // မိမိကြိုက်နှစ်သက်ရာ Password သို့ ပြောင်းနိုင်ပါသည်
 
-            const activeStyle = "flex items-center justify-center gap-2 py-3 px-3 rounded-xl font-bold text-xs sm:text-sm bg-amber-500 text-white shadow-md transition-all";
-            const inactiveStyle = "flex items-center justify-center gap-2 py-3 px-3 rounded-xl font-bold text-xs sm:text-sm bg-white text-gray-800 hover:bg-amber-50 transition-all border border-amber-200";
-
-            tabFood.className = inactiveStyle;
-            tabParcel.className = inactiveStyle;
-            tabPartner.className = inactiveStyle;
-
-            foodSection.classList.add('hidden');
-            parcelSection.classList.add('hidden');
-            partnerSection.classList.add('hidden');
-            commonDeliverySection.classList.remove('hidden');
-            summarySection.classList.remove('hidden');
-
-            if (mode === 'food') {
-                tabFood.className = activeStyle;
-                foodSection.classList.remove('hidden');
-            } else if (mode === 'parcel') {
-                tabParcel.className = activeStyle;
-                parcelSection.classList.remove('hidden');
-            } else if (mode === 'partner') {
-                tabPartner.className = activeStyle;
-                partnerSection.classList.remove('hidden');
-                commonDeliverySection.classList.add('hidden');
-                summarySection.classList.add('hidden');
-                updatePartnerMonthlyDisplay();
-            }
-
-            const foodCostRow = document.getElementById('foodCostRow');
-            const parcelValueRow = document.getElementById('parcelValueRow');
-            const weightSurchargeRow = document.getElementById('weightSurchargeRow');
-            const cartBtn = document.getElementById('cartBtn');
-            const specialHandlingBox = document.getElementById('specialHandlingBox');
-            const slowSpeedLabel = document.getElementById('slowSpeedLabel');
-            const speedContainer = document.getElementById('speedOptionsContainer');
-
-            if (mode === 'food') {
-                foodCostRow.classList.remove('hidden');
-                parcelValueRow.classList.add('hidden');
-                weightSurchargeRow.classList.add('hidden');
-                cartBtn.classList.remove('hidden');
-                specialHandlingBox.classList.add('hidden');
-                slowSpeedLabel.classList.add('hidden');
-                speedContainer.className = "grid grid-cols-2 gap-3";
-            } else if (mode === 'parcel') {
-                foodCostRow.classList.add('hidden');
-                parcelValueRow.classList.remove('hidden');
-                weightSurchargeRow.classList.remove('hidden');
-                cartBtn.classList.add('hidden');
-                specialHandlingBox.classList.remove('hidden');
-                slowSpeedLabel.classList.remove('hidden');
-                speedContainer.className = "grid grid-cols-3 gap-3";
-            } else if (mode === 'partner') {
-                cartBtn.classList.add('hidden');
-            }
-
-            onSpeedChange();
-            calculatePrice();
+function switchServiceMode(mode) {
+    // မိတ်ဖက်အကွက်ကို နှိပ်လိုက်ပါက Password တောင်းမည်
+    if (mode === 'partner') {
+        const inputPassword = prompt("မိတ်ဖက်ဆိုင်များ ဝင်ရောက်ရန် Password ရိုက်ထည့်ပါ -");
+        
+        if (inputPassword !== PARTNER_PASSWORD) {
+            alert("❌ Password မှားယွင်းနေပါသည်။ မိတ်ဖက်အကွက်သို့ ဝင်ရောက်ခွင့်မရှိပါ။");
+            return; 
         }
+    }
+
+    currentMode = mode;
+    
+    const tabFood = document.getElementById('tabFood');
+    const tabParcel = document.getElementById('tabParcel');
+    const tabPartner = document.getElementById('tabPartner');
+    
+    const foodSection = document.getElementById('foodSection');
+    const parcelSection = document.getElementById('parcelSection');
+    const partnerSection = document.getElementById('partnerSection');
+    const commonDeliverySection = document.getElementById('commonDeliverySection');
+    const summarySection = document.getElementById('summarySection');
+
+    const activeStyle = "flex items-center justify-center gap-2 py-3 px-3 rounded-xl font-bold text-xs sm:text-sm bg-amber-500 text-white shadow-md transition-all";
+    const inactiveStyle = "flex items-center justify-center gap-2 py-3 px-3 rounded-xl font-bold text-xs sm:text-sm bg-white text-gray-800 hover:bg-amber-50 transition-all border border-amber-200";
+
+    tabFood.className = inactiveStyle;
+    tabParcel.className = inactiveStyle;
+    tabPartner.className = inactiveStyle;
+
+    foodSection.classList.add('hidden');
+    parcelSection.classList.add('hidden');
+    partnerSection.classList.add('hidden');
+    commonDeliverySection.classList.remove('hidden');
+    summarySection.classList.remove('hidden');
+
+    if (mode === 'food') {
+        tabFood.className = activeStyle;
+        foodSection.classList.remove('hidden');
+    } else if (mode === 'parcel') {
+        tabParcel.className = activeStyle;
+        parcelSection.classList.remove('hidden');
+    } else if (mode === 'partner') {
+        tabPartner.className = activeStyle;
+        partnerSection.classList.remove('hidden');
+        commonDeliverySection.classList.add('hidden');
+        summarySection.classList.add('hidden');
+        updatePartnerMonthlyDisplay();
+    }
+
+    const foodCostRow = document.getElementById('foodCostRow');
+    const parcelValueRow = document.getElementById('parcelValueRow');
+    const weightSurchargeRow = document.getElementById('weightSurchargeRow');
+    const cartBtn = document.getElementById('cartBtn');
+    const specialHandlingBox = document.getElementById('specialHandlingBox');
+    const slowSpeedLabel = document.getElementById('slowSpeedLabel');
+    const speedContainer = document.getElementById('speedOptionsContainer');
+
+    if (mode === 'food') {
+        foodCostRow.classList.remove('hidden');
+        parcelValueRow.classList.add('hidden');
+        weightSurchargeRow.classList.add('hidden');
+        cartBtn.classList.remove('hidden');
+        specialHandlingBox.classList.add('hidden');
+        slowSpeedLabel.classList.add('hidden');
+        speedContainer.className = "grid grid-cols-2 gap-3";
+    } else if (mode === 'parcel') {
+        foodCostRow.classList.add('hidden');
+        parcelValueRow.classList.remove('hidden');
+        weightSurchargeRow.classList.remove('hidden');
+        cartBtn.classList.add('hidden');
+        specialHandlingBox.classList.remove('hidden');
+        slowSpeedLabel.classList.remove('hidden');
+        speedContainer.className = "grid grid-cols-3 gap-3";
+    } else if (mode === 'partner') {
+        cartBtn.classList.add('hidden');
+    }
+
+    onSpeedChange();
+    calculatePrice();
+}
 
         function updateNormalScheduleOptions() {
             const selectEl = document.getElementById('normalScheduleSelect');
