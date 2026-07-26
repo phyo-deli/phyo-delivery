@@ -1374,124 +1374,143 @@ function onPartnerStoreChange() {
 
         function submitOrder() {
             // PARTNER MODE SUBMISSION
-            if (currentMode === 'partner') {
-                const partnerKey = document.getElementById('partnerStoreSelect').value;
-                const partnerName = partnerStoresData[partnerKey] ? partnerStoresData[partnerKey].name : partnerKey;
+if (currentMode === 'partner') {
+    const partnerKey = document.getElementById('partnerStoreSelect').value;
+    const partnerName = partnerStoresData[partnerKey] ? partnerStoresData[partnerKey].name : partnerKey;
 
-                let validOrders = [];
-                let totalValueSum = 0;
-                let totalDelFeeSum = 0;
-                let grandTotalSum = 0;
+    let validOrders = [];
+    let totalValueSum = 0;
+    let totalDelFeeSum = 0;
+    let grandTotalSum = 0;
 
-                for (let i = 1; i <= 10; i++) {
-                    const nameEl = document.getElementById(`pName_${i}`);
-                    if (!nameEl) continue;
+    // လက်ရှိ ရက်စွဲ (YYMMDD) ကို ရယူခြင်း (ဥပမာ- 260726)
+    const now = new Date();
+    const year = String(now.getFullYear()).slice(-2);
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    const dateStr = `${year}${month}${day}`;
 
-                    const rName = nameEl.value.trim();
-                    const rPhone = document.getElementById(`pPhone_${i}`).value.trim();
-                    const wardVal = document.getElementById(`pWard_${i}`).value;
-                    const rAddress = document.getElementById(`pAddress_${i}`).value.trim();
-                    const itemVal = parseFloat(document.getElementById(`pValue_${i}`).value) || 0;
-                    const weightOpt = document.getElementById(`pWeight_${i}`).value;
-                    const sizeOpt = document.getElementById(`pSize_${i}`).value;
-                    const speedVal = document.getElementById(`pSpeed_${i}`).value;
-                    const payMethod = document.getElementById(`pPayment_${i}`).value;
-                    const collectMethod = document.getElementById(`pCollect_${i}`).value;
-                    const deliveryTime = document.getElementById(`pDeliveryTime_${i}`).value.trim();
-                    const note = document.getElementById(`pNote_${i}`).value.trim();
+    // စက်ထဲတွင် ယနေ့အတွက် အော်ဒါနံပါတ် တိုးသွားအောင် ထိန်းထားသည့် စနစ်
+    let dailyOrderSeq = localStorage.getItem('last_order_seq_' + dateStr) || 0;
 
-                    if (rName || rPhone || wardVal || itemVal > 0) {
-                        if (!rName || !rPhone || !wardVal) {
-                            alert(`ကျေးဇူးပြု၍ #အော်ဒါနံပါတ် (${i}) ၏ လက်ခံမည့်သူနာမည်၊ ဖုန်းနံပါတ် နှင့် ရပ်ကွက် အပြည့်အစုံ ဖြည့်ပေးပါ။`);
-                            return;
-                        }
+    for (let i = 1; i <= 10; i++) {
+        const nameEl = document.getElementById(`pName_${i}`);
+        if (!nameEl) continue;
 
-                        let calcSpeed = 'express';
-                        let speedTitleText = '(A) အမြန်ပို့';
+        const rName = nameEl.value.trim();
+        const rPhone = document.getElementById(`pPhone_${i}`).value.trim();
+        const wardVal = document.getElementById(`pWard_${i}`).value;
+        const rAddress = document.getElementById(`pAddress_${i}`).value.trim();
+        const itemVal = parseFloat(document.getElementById(`pValue_${i}`).value) || 0;
+        const weightOpt = document.getElementById(`pWeight_${i}`).value;
+        const speedVal = document.getElementById(`pSpeed_${i}`).value;
+        const payMethod = document.getElementById(`pPayment_${i}`).value;
+        const collectMethod = document.getElementById(`pCollect_${i}`).value;
+        const deliveryTime = document.getElementById(`pDeliveryTime_${i}`).value.trim();
+        const note = document.getElementById(`pNote_${i}`).value.trim();
 
-                        if (speedVal === 'normal_food') {
-                            calcSpeed = 'normal';
-                            const schedSelect = document.getElementById(`pScheduleSelect_${i}`);
-                            const selectedOpt = schedSelect.options[schedSelect.selectedIndex];
-                            if (selectedOpt && selectedOpt.disabled) {
-                                alert(`#အော်ဒါနံပါတ် (${i}) ၏ ရွေးချယ်ထားသော ပုံမှန်ပို့ အချိန်ဇယားသည် အော်ဒါပိတ်သွားပါပြီ။ ကျေးဇူးပြု၍ အခြားအချိန်ဇယား ရွေးပေးပါ။`);
-                                return;
-                            }
-                            const scheduleText = selectedOpt ? selectedOpt.text : '';
-                            speedTitleText = `(B-1) ပုံမှန်ပို့ စားသောက်ကုန်များ [${scheduleText}]`;
-                        } else if (speedVal === 'normal_item') {
-                            calcSpeed = 'normal';
-                            speedTitleText = `(B-2) ပုံမှန်ပို့ နေ့ချင်းရောက် ကုန်ပစ္စည်းများ (-၅၀၀ကျပ် လျှော့ပြီး)`;
-                        } else if (speedVal === 'slow') {
-                            calcSpeed = 'slow';
-                            speedTitleText = `(C) အနှေးပို့`;
-                        }
-
-                        const pZone = partnerStoresData[partnerKey] ? partnerStoresData[partnerKey].zone : 'A';
-                        const [dWard, dZone] = wardVal.split('|');
-                        const priceTable = getPriceByZone(pZone, dZone, false, '', dWard);
-                        let delFee = priceTable[calcSpeed] || 0;
-
-                        if (speedVal === 'normal_item') {
-                            delFee = Math.max(0, delFee - 500);
-                        }
-
-                        let weightSurcharge = 0;
-                        if (weightOpt === '3to8') weightSurcharge = 500;
-                        else if (weightOpt === '8to13') weightSurcharge = 1000;
-                        else if (weightOpt === 'above13') weightSurcharge = 1500;
-
-                        const orderTotal = itemVal + delFee + weightSurcharge;
-
-                        totalValueSum += itemVal;
-                        totalDelFeeSum += delFee + weightSurcharge;
-                        grandTotalSum += orderTotal;
-
-                        validOrders.push({
-                            index: i,
-                            rName, rPhone, dWard, rAddress, itemVal, weightSurcharge, delFee, orderTotal,
-                            speedTitleText, payMethod, collectMethod, deliveryTime, note
-                        });
-                    }
-                }
-
-                if (validOrders.length === 0) {
-                    alert('ကျေးဇူးပြု၍ အနည်းဆုံး အော်ဒါ (၁) ခု ဖြည့်စွက်ပေးပါ။');
-                    return;
-                }
-
-                // Increment Monthly Order Count for this partner store
-                incrementPartnerMonthlyCount(partnerKey, validOrders.length);
-
-                let orderMsg = `🤝 *မိတ်ဖက်ဆိုင် အော်ဒါအသစ်တင်ပြချက်*\n`;
-                orderMsg += `🏪 *မိတ်ဖက်ဆိုင်နာမည်:* ${partnerName}\n`;
-                orderMsg += `📦 *ယခုတင်ထားသော အော်ဒါအရေအတွက်:* ${validOrders.length} ခု\n\n`;
-
-                validOrders.forEach((o) => {
-                    orderMsg += `--- #အော်ဒါနံပါတ်(${o.index}) ---\n`;
-                    orderMsg += `👤 လက်ခံသူ: ${o.rName} (${o.rPhone})\n`;
-                    orderMsg += `📍 လိပ်စာ: ${o.dWard} ${o.rAddress ? '(' + o.rAddress + ')' : ''}\n`;
-                    orderMsg += `💵 ကုန်ဖိုး: ${o.itemVal.toLocaleString()} ကျပ် | ဒလီခ: ${o.delFee.toLocaleString()} ကျပ် | အလေးချိန်ပို: ${o.weightSurcharge.toLocaleString()} ကျပ်\n`;
-                    orderMsg += `💰 အော်ဒါ စုစုပေါင်း: ${o.orderTotal.toLocaleString()} ကျပ်\n`;
-                    orderMsg += `🚀 ပို့ဆောင်မှုစနစ်: ${o.speedTitleText}\n`;
-                    orderMsg += `💳 ပေးချေ: ${o.payMethod} | 📌 ကောက်ခံ: ${o.collectMethod}\n`;
-                    if (o.deliveryTime) orderMsg += `⏰ ပို့ချိန်: ${o.deliveryTime}\n`;
-                    if (o.note) orderMsg += `📝 သတိထားရန်: ${o.note}\n`;
-                    orderMsg += `\n`;
-                });
-
-                orderMsg += `--- 📊 စုစုပေါင်း တွက်ချက်မှု ---\n`;
-                orderMsg += `📦 တင်ထားသော အော်ဒါ အရေအတွက် စုစုပေါင်း: ${validOrders.length} ခု\n`;
-                orderMsg += `💵 ကုန်ဖိုး စုစုပေါင်း: ${totalValueSum.toLocaleString()} ကျပ်\n\n`;
-                orderMsg += `ကျေးဇူးပြု၍ အော်ဒါများအား စစ်ဆေး၍ လက်ခံပေးပါရန်။`;
-
-                const officeViberNumber = "959978730790";
-                const viberUrl = `viber://chat?number=%2B${officeViberNumber}&draft=${encodeURIComponent(orderMsg)}`;
-
-                alert(`✅ မိတ်ဖက်အော်ဒါ (${validOrders.length}) ခု အောင်မြင်စွာ တင်ပြီးပါပြီ။\n\nViber သို့ စာပို့ပေးပါမည်။`);
-                window.location.href = viberUrl;
+        if (rName || rPhone || wardVal || itemVal > 0) {
+            if (!rName || !rPhone || !wardVal) {
+                alert(`ကျေးဇူးပြု၍ #အော်ဒါနံပါတ် (${i}) ၏ လက်ခံမည့်သူနာမည်၊ ဖုန်းနံပါတ် နှင့် ရပ်ကွက် အပြည့်အစုံ ဖြည့်ပေးပါ။`);
                 return;
             }
+
+            // အော်ဒါ ၁ ခုချင်းစီအတွက် အော်ဒါကုတ် (Order Code) ထုတ်ပေးခြင်း
+            dailyOrderSeq = Number(dailyOrderSeq) + 1;
+            const seqStr = String(dailyOrderSeq).padStart(3, '0');
+            const partnerOrderId = `SYS-${dateStr}-${seqStr}`;
+
+            let calcSpeed = 'express';
+            let speedTitleText = '(A) အမြန်ပို့';
+
+            if (speedVal === 'normal_food') {
+                calcSpeed = 'normal';
+                const schedSelect = document.getElementById(`pScheduleSelect_${i}`);
+                const selectedOpt = schedSelect.options[schedSelect.selectedIndex];
+                if (selectedOpt && selectedOpt.disabled) {
+                    alert(`#အော်ဒါနံပါတ် (${i}) ၏ ရွေးချယ်ထားသော ပုံမှန်ပို့ အချိန်ဇယားသည် အော်ဒါပိတ်သွားပါပြီ။ ကျေးဇူးပြု၍ အခြားအချိန်ဇယား ရွေးပေးပါ။`);
+                    return;
+                }
+                const scheduleText = selectedOpt ? selectedOpt.text : '';
+                speedTitleText = `(B-1) ပုံမှန်ပို့ စားသောက်ကုန်များ [${scheduleText}]`;
+            } else if (speedVal === 'normal_item') {
+                calcSpeed = 'normal';
+                speedTitleText = `(B-2) ပုံမှန်ပို့ နေ့ချင်းရောက် ကုန်ပစ္စည်းများ (-၅၀၀ကျပ်လျှော့ပြီး)`;
+            } else if (speedVal === 'slow') {
+                calcSpeed = 'slow';
+                speedTitleText = `(C) အနှေးပို့`;
+            }
+
+            const pZone = partnerStoresData[partnerKey] ? partnerStoresData[partnerKey].zone : 'A';
+            const [dWard, dZone] = wardVal.split('|');
+            const priceTable = getPriceByZone(pZone, dZone, false, '', dWard);
+            let delFee = priceTable[calcSpeed] || 0;
+
+            if (speedVal === 'normal_item') {
+                delFee = Math.max(0, delFee - 500);
+            }
+
+            let weightSurcharge = 0;
+            if (weightOpt === '3to8') weightSurcharge = 500;
+            else if (weightOpt === '8to13') weightSurcharge = 1000;
+            else if (weightOpt === 'above13') weightSurcharge = 1500;
+
+            const orderTotal = itemVal + delFee + weightSurcharge;
+
+            totalValueSum += itemVal;
+            totalDelFeeSum += delFee + weightSurcharge;
+            grandTotalSum += orderTotal;
+
+            validOrders.push({
+                index: i,
+                orderId: partnerOrderId, // Order ID ထည့်သွင်းပေးထားပါသည်
+                rName, rPhone, dWard, rAddress, itemVal, weightSurcharge, delFee, orderTotal,
+                speedTitleText, payMethod, collectMethod, deliveryTime, note
+            });
+        }
+    }
+
+    if (validOrders.length === 0) {
+        alert('ကျေးဇူးပြု၍ အနည်းဆုံး အော်ဒါ (၁) ခု ဖြည့်စွက်ပေးပါ။');
+        return;
+    }
+
+    // တိုးသွားသော အော်ဒါSequence နံပါတ်ကို သိမ်းဆည်းမည်
+    localStorage.setItem('last_order_seq_' + dateStr, dailyOrderSeq);
+
+    // Increment Monthly Order Count for this partner store
+    incrementPartnerMonthlyCount(partnerKey, validOrders.length);
+
+    let orderMsg = `🤝 *မိတ်ဖက်ဆိုင် အော်ဒါအသစ်တင်ပြချက်*\n`;
+    orderMsg += `🏪 *မိတ်ဖက်ဆိုင်နာမည်:* ${partnerName}\n`;
+    orderMsg += `📦 *ယခုတင်ထားသော အော်ဒါအရေအတွက်:* ${validOrders.length} ခု\n\n`;
+
+    validOrders.forEach((o) => {
+        orderMsg += `--- #အော်ဒါနံပါတ် (${o.index}) ---\n`;
+        orderMsg += `🆔 *Order Code:* #${o.orderId}\n`; // Viber Message ထဲတွင် အော်ဒါကုတ် ပါသွားမည် ဖြစ်သည်
+        orderMsg += `👤 လက်ခံသူ: ${o.rName} (${o.rPhone})\n`;
+        orderMsg += `📍 လိပ်စာ: ${o.dWard} ${o.rAddress ? '(' + o.rAddress + ')' : ''}\n`;
+        orderMsg += `💵 ကုန်ဖိုး: ${o.itemVal.toLocaleString()} ကျပ် | ဒလီခ: ${o.delFee.toLocaleString()} ကျပ် | အလေးချိန်ပို: ${o.weightSurcharge.toLocaleString()} ကျပ်\n`;
+        orderMsg += `💰 အော်ဒါ စုစုပေါင်း: ${o.orderTotal.toLocaleString()} ကျပ်\n`;
+        orderMsg += `🚀 ပို့ဆောင်မှုစနစ်: ${o.speedTitleText}\n`;
+        orderMsg += `💳 ပေးချေ: ${o.payMethod} | 📌 ကောက်ခံ: ${o.collectMethod}\n`;
+        if (o.deliveryTime) orderMsg += `⏰ ပို့ချိန်: ${o.deliveryTime}\n`;
+        if (o.note) orderMsg += `📝 သတိထားရန်: ${o.note}\n`;
+        orderMsg += `\n`;
+    });
+
+    orderMsg += `--- 📊 စုစုပေါင်း တွက်ချက်မှု ---\n`;
+    orderMsg += `📦 တင်ထားသော အော်ဒါ အရေအတွက် စုစုပေါင်း: ${validOrders.length} ခု\n`;
+    orderMsg += `💵 ကုန်ဖိုး စုစုပေါင်း: ${totalValueSum.toLocaleString()} ကျပ်\n\n`;
+    orderMsg += `ကျေးဇူးပြု၍ အော်ဒါများအား စစ်ဆေး၍ လက်ခံပေးပါရန်။`;
+
+    const officeViberNumber = "959978730790";
+    const viberUrl = `viber://chat?number=%2B${officeViberNumber}&draft=${encodeURIComponent(orderMsg)}`;
+
+    alert(`✅ မိတ်ဖက်အော်ဒါ (${validOrders.length}) ခု အောင်မြင်စွာ တင်ပြီးပါပြီ။\n\nViber သို့ စာပို့ပေးပါမည်။`);
+    window.location.href = viberUrl;
+    return;
+}
 
             // Standard Food & Parcel Order Submission
             const rName = document.getElementById('receiverName').value;
