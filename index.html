@@ -193,7 +193,7 @@
                 </div>
 
                 <div>
-                    <label class="block text-sm font-bold text-gray-700 mb-1">ဆိုင်/ဈေး ရှိရာ ရပ်ကွက်</label>
+                    <label class="block text-sm font-bold text-gray-700 mb-1">ဆိုင်/ဈေး ရှိရာ ရပ်ကွက်(မထည့်ထားပါကဒလီခအတိအကျတွက်ပေးမည်မဟုပါ)</label>
                     <select id="shoppingStoreWard" onchange="calculatePrice()" class="w-full p-2.5 border rounded-xl bg-white font-bold text-gray-800 focus:ring-2 focus:ring-amber-400 outline-none">
                         <option value="">-- ရပ်ကွက် ရွေးချယ်ပါ --</option>
                     </select>
@@ -248,7 +248,7 @@
                         <label class="border-2 rounded-xl p-2.5 flex flex-col items-center cursor-pointer transition hover:border-amber-400 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50">
                             <input type="radio" name="shoppingSpeed" value="express" checked onchange="calculatePrice()" class="accent-amber-500 mb-1">
                             <span class="font-bold text-xs text-gray-800">အမြန် (Express)</span>
-                            <span class="text-[10px] text-amber-700">+၁,၀၀၀ ကျပ်</span>
+                            <span class="text-[10px] text-amber-700"></span>
                         </label>
                         <label class="border-2 rounded-xl p-2.5 flex flex-col items-center cursor-pointer transition hover:border-amber-400 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50">
                             <input type="radio" name="shoppingSpeed" value="normal" onchange="calculatePrice()" class="accent-amber-500 mb-1">
@@ -591,7 +591,7 @@
 
             <div id="speedFeeRow" class="hidden flex justify-between text-sm text-amber-300">
                 <span>အမြန်ကြေး (Speed Fee):</span>
-                <span id="speedFeeDisplay" class="font-bold">1,000 ကျပ်</span>
+                <span id="speedFeeDisplay" class="hidden">1,000 ကျပ်</span>
             </div>
 
             <div id="waitingFeeRow" class="hidden flex justify-between text-sm text-amber-300">
@@ -1523,7 +1523,7 @@
                 // Speed Fee Logic (Express = 1,000 MMK)
                 let speedFee = 0;
                 if (speed === 'express') {
-                    speedFee = 1000;
+                    speedFee = 0;
                     if (speedFeeRow) speedFeeRow.classList.remove('hidden');
                 } else {
                     if (speedFeeRow) speedFeeRow.classList.add('hidden');
@@ -1805,8 +1805,7 @@
                 shoppingViberMsg += `💵 ကုန်ကျစရိတ် တွက်ချက်မှု-\n`;
                 shoppingViberMsg += `• ခန့်မှန်း ကုန်ဖိုး: ${estCostInput.toLocaleString()} ကျပ်\n`;
                 shoppingViberMsg += `• ပို့ဆောင်ခ: ${deliveryFeeNum.toLocaleString()} ကျပ်\n`;
-                shoppingViberMsg += `• ဝယ်ယူရေး ဝန်ဆောင်ခ: ${shoppingServiceFee.toLocaleString()} ကျပ်\n`;
-                shoppingViberMsg += `• အမြန်ကြေး: ${speedFee.toLocaleString()} ကျပ်\n`;
+                shoppingViberMsg += `• ဝယ်ယူရေး ဝန်ဆောင်ခ: ${shoppingServiceFee.toLocaleString()} ကျပ်\n`;               
                 shoppingViberMsg += `-------------------------------\n`;
                 shoppingViberMsg += `💰 စုစုပေါင်း ကျသင့်ငွေ: ${grandTotalNum.toLocaleString()} ကျပ်`;
 
