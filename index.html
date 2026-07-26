@@ -156,11 +156,34 @@
             </div>
         </section>
 
-        <!-- NEW 4. SHOPPING SECTION -->
+        <!-- 4. SHOPPING SECTION -->
         <section id="shoppingSection" class="hidden bg-white p-4 rounded-2xl shadow-sm border border-amber-100 space-y-4">
             <h2 class="font-bold text-lg text-gray-800 border-b pb-2 flex items-center gap-2">
                 <i class="fa-solid fa-cart-shopping text-amber-500"></i> ဈေး/ကုန်စုံ ဝယ်ယူရမည့် အချက်အလက်
             </h2>
+
+            <!-- ၁။ ဝယ်ယူရမည့် အမျိုးအစား (Shopping Type Option) -->
+            <div>
+                <label class="block text-sm font-bold text-gray-700 mb-2">ဝယ်ယူရမည့် အမျိုးအစား ရွေးချယ်ပါ</label>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <label class="border-2 rounded-xl p-3 flex items-center justify-between cursor-pointer transition hover:border-amber-400 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50">
+                        <div class="flex flex-col">
+                            <span class="font-bold text-sm text-gray-800">🍜 အဆင်သင့်ရ စားသောက်ဆိုင်</span>
+                            <span class="text-xs text-emerald-600 font-bold">ဝယ်ယူရေး ဝန်ဆောင်ခ = ၀ ကျပ်</span>
+                        </div>
+                        <input type="radio" name="shoppingType" value="ready_food" checked onchange="calculatePrice()" class="accent-amber-500">
+                    </label>
+                    <label class="border-2 rounded-xl p-3 flex items-center justify-between cursor-pointer transition hover:border-amber-400 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50">
+                        <div class="flex flex-col">
+                            <span class="font-bold text-sm text-gray-800">🛒 ဈေး / ကုန်စုံ / လိုက်ပတ်ဝယ်ရမည့်ပစ္စည်း</span>
+                            <span class="text-xs text-amber-700 font-bold">ဝယ်ယူရေး ဝန်ဆောင်ခ = ၁,၀၀၀ ကျပ် (၃ သောင်းကျော်ပါက ၂,၀၀၀ ကျပ်)</span>
+                        </div>
+                        <input type="radio" name="shoppingType" value="grocery" onchange="calculatePrice()" class="accent-amber-500">
+                    </label>
+                </div>
+            </div>
+
+            <hr class="border-amber-100">
 
             <!-- ဆိုင်/ဈေး အချက်အလက် -->
             <div class="space-y-3">
@@ -243,6 +266,23 @@
                 <div>
                     <label class="block text-sm font-bold text-gray-700 mb-1">နောက်ဆုံးထား ရောက်ရှိရမည့်အချိန် (Deadline Time)</label>
                     <input type="time" id="shoppingDeadlineTime" class="w-full p-2.5 border rounded-xl text-sm focus:ring-2 focus:ring-amber-400 outline-none bg-white text-gray-800">
+                </div>
+            </div>
+
+            <hr class="border-amber-100">
+
+            <!-- ငွေပေးချေမှု စနစ် -->
+            <div>
+                <label class="block text-sm font-bold text-gray-700 mb-2">ငွေပေးချေမှု ပုံစံ ရွေးချယ်ပါ</label>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <label class="border-2 rounded-xl p-3 flex items-center justify-between cursor-pointer transition hover:border-amber-400 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50">
+                        <span class="font-bold text-sm text-gray-800">💵 ငွေသားဖြင့် ပေးချေမည် (Cash on Delivery)</span>
+                        <input type="radio" name="shoppingPaymentMethod" value="cash" checked class="accent-amber-500">
+                    </label>
+                    <label class="border-2 rounded-xl p-3 flex items-center justify-between cursor-pointer transition hover:border-amber-400 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50">
+                        <span class="font-bold text-sm text-gray-800">📱 KPay / Wave Money ဖြင့် ပေးချေမည်</span>
+                        <input type="radio" name="shoppingPaymentMethod" value="kpay_wave" class="accent-amber-500">
+                    </label>
                 </div>
             </div>
         </section>
@@ -546,7 +586,7 @@
 
             <div id="shoppingServiceFeeRow" class="hidden flex justify-between text-sm text-amber-300">
                 <span>ဝယ်ယူရေး ဝန်ဆောင်ခ (Shopping Service Fee):</span>
-                <span id="shoppingServiceFeeDisplay" class="font-bold">1,000 ကျပ်</span>
+                <span id="shoppingServiceFeeDisplay" class="font-bold">0 ကျပ် (အခမဲ့)</span>
             </div>
 
             <div id="speedFeeRow" class="hidden flex justify-between text-sm text-amber-300">
@@ -1465,24 +1505,36 @@
 
                 const estCostInput = parseFloat(document.getElementById('shoppingEstimatedValue').value) || 0;
                 
-                // Shopping Service Fee Logic
-                let shoppingServiceFee = 1000;
-                if (estCostInput > 30000) {
-                    shoppingServiceFee = 2000;
+                // Shopping Type & Service Fee Logic
+                const shoppingTypeEl = document.querySelector('input[name="shoppingType"]:checked');
+                const shoppingType = shoppingTypeEl ? shoppingTypeEl.value : 'ready_food';
+                
+                let shoppingServiceFee = 0;
+                const feeDisplayEl = document.getElementById('shoppingServiceFeeDisplay');
+
+                if (shoppingType === 'ready_food') {
+                    shoppingServiceFee = 0;
+                    if (feeDisplayEl) feeDisplayEl.innerText = `0 ကျပ် (အခမဲ့)`;
+                } else {
+                    shoppingServiceFee = (estCostInput > 30000) ? 2000 : 1000;
+                    if (feeDisplayEl) feeDisplayEl.innerText = `${shoppingServiceFee.toLocaleString()} ကျပ်`;
                 }
 
                 // Speed Fee Logic (Express = 1,000 MMK)
                 let speedFee = 0;
                 if (speed === 'express') {
                     speedFee = 1000;
-                    speedFeeRow.classList.remove('hidden');
+                    if (speedFeeRow) speedFeeRow.classList.remove('hidden');
                 } else {
-                    speedFeeRow.classList.add('hidden');
+                    if (speedFeeRow) speedFeeRow.classList.add('hidden');
                 }
 
-                document.getElementById('shoppingEstCostDisplay').innerText = `${estCostInput.toLocaleString()} ကျပ်`;
-                document.getElementById('shoppingServiceFeeDisplay').innerText = `${shoppingServiceFee.toLocaleString()} ကျပ်`;
-                document.getElementById('speedFeeDisplay').innerText = `${speedFee.toLocaleString()} ကျပ်`;
+                if (document.getElementById('shoppingEstCostDisplay')) {
+                    document.getElementById('shoppingEstCostDisplay').innerText = `${estCostInput.toLocaleString()} ကျပ်`;
+                }
+                if (document.getElementById('speedFeeDisplay')) {
+                    document.getElementById('speedFeeDisplay').innerText = `${speedFee.toLocaleString()} ကျပ်`;
+                }
 
                 grandTotal = estCostInput + deliveryFeeFinal + shoppingServiceFee + speedFee;
 
@@ -1686,6 +1738,12 @@
                 const shoppingSpeed = shopSpeedEl ? shopSpeedEl.value : 'express';
                 const deadlineTime = document.getElementById('shoppingDeadlineTime').value;
 
+                const shoppingTypeEl = document.querySelector('input[name="shoppingType"]:checked');
+                const shoppingType = shoppingTypeEl ? shoppingTypeEl.value : 'ready_food';
+
+                const shoppingPaymentEl = document.querySelector('input[name="shoppingPaymentMethod"]:checked');
+                const shoppingPaymentMethod = shoppingPaymentEl ? shoppingPaymentEl.value : 'cash';
+
                 const rName = document.getElementById('receiverName').value.trim();
                 const rPhone = document.getElementById('receiverPhone').value.trim();
                 const dropWardVal = document.getElementById('dropWard').value;
@@ -1714,7 +1772,18 @@
                     speedFee = 0;
                 }
 
-                let shoppingServiceFee = estCostInput > 30000 ? 2000 : 1000;
+                let shoppingTypeLabel = "";
+                let shoppingServiceFee = 0;
+
+                if (shoppingType === 'ready_food') {
+                    shoppingTypeLabel = "စားသောက်ဆိုင်";
+                    shoppingServiceFee = 0;
+                } else {
+                    shoppingTypeLabel = "ဈေးကုန်စုံ";
+                    shoppingServiceFee = estCostInput > 30000 ? 2000 : 1000;
+                }
+
+                const paymentLabel = (shoppingPaymentMethod === 'cash') ? "ငွေသား" : "KPay / Wave Money";
 
                 const deliveryFeeStr = document.getElementById('deliveryFee') ? document.getElementById('deliveryFee').innerText.replace(' ကျပ်', '') : '0';
                 const deliveryFeeNum = parseFloat(deliveryFeeStr.replace(/,/g, '')) || 0;
@@ -1723,14 +1792,16 @@
 
                 let shoppingViberMsg = `🛒 [ ဈေး/ကုန်စုံ ဝယ်ခိုင်းမည့် အော်ဒါ ]\n`;
                 shoppingViberMsg += `-------------------------------\n`;
+                shoppingViberMsg += `📌 ဝယ်ယူမည့်အမျိုးအစား: ${shoppingTypeLabel}\n`;
                 shoppingViberMsg += `📍 ဆိုင်/ဈေး: ${shopStoreName} (${sWard})\n`;
                 shoppingViberMsg += `📝 ဝယ်ယူမည့်ပစ္စည်းများ: ${shoppingItems}\n`;
                 shoppingViberMsg += `💡 သီးခြားမှတ်ချက်: ${shoppingNote || 'မရှိပါ'}\n\n`;
                 
                 shoppingViberMsg += `🏠 ပို့ဆောင်ရမည့်နေရာ: ${rName} - ${rPhone}\n`;
                 shoppingViberMsg += `📍 လိပ်စာ: ${rAddress || '-'} (${dWard})\n`;
-                shoppingViberMsg += `⏰ ပို့ဆောင်ရမည့်အချိန်: ${speedLabel} (နောက်ဆုံးရောက်ရမည့်ချိန်: ${deadlineTime || 'မသတ်မှတ်ထားပါ'})\n\n`;
-                
+                shoppingViberMsg += `⏰ ပို့ဆောင်ရမည့်အချိန်: ${speedLabel} (နောက်ဆုံးရောက်ရမည့်ချိန်: ${deadlineTime || 'သတ်မှတ်ချက်မရှိ'})\n`;
+                shoppingViberMsg += `💳 ငွေပေးချေမှုပုံစံ: ${paymentLabel}\n\n`;
+
                 shoppingViberMsg += `💵 ကုန်ကျစရိတ် တွက်ချက်မှု-\n`;
                 shoppingViberMsg += `• ခန့်မှန်း ကုန်ဖိုး: ${estCostInput.toLocaleString()} ကျပ်\n`;
                 shoppingViberMsg += `• ပို့ဆောင်ခ: ${deliveryFeeNum.toLocaleString()} ကျပ်\n`;
@@ -1742,254 +1813,119 @@
                 const officeViberNumber = "959978730790";
                 const viberUrl = `viber://chat?number=%2B${officeViberNumber}&draft=${encodeURIComponent(shoppingViberMsg)}`;
 
-                alert(`✅ ဈေး/ကုန်စုံ ဝယ်ခိုင်းမည့် အော်ဒါ တင်ခြင်း အောင်မြင်ပါသည်။\n\nViber မှတဆင့် စာပို့ပေးပါမည်။`);
+                alert(`✅ ဈေး/ကုန်စုံ ဝယ်ခိုင်းသည့် အော်ဒါ အောင်မြင်စွာ တင်ပြီးပါပြီ။\n\nViber သို့ စာပို့ပေးပါမည်။`);
                 window.location.href = viberUrl;
                 return;
             }
 
-            // Standard Food & Parcel Order Submission
-            const rName = document.getElementById('receiverName').value;
-            const rPhone = document.getElementById('receiverPhone').value;
-            const dropWard = document.getElementById('dropWard').value;
+            // FOOD / PARCEL SUBMISSION LOGIC
+            const rName = document.getElementById('receiverName').value.trim();
+            const rPhone = document.getElementById('receiverPhone').value.trim();
+            const dropWardVal = document.getElementById('dropWard').value;
             const rAddress = document.getElementById('receiverAddress').value.trim();
 
-            if(!rName || !rPhone || !dropWard) {
-                alert('ကျေးဇူးပြု၍ လက်ခံသူ အချက်အလက်များ နှင့် ပို့ဆောင်မည့် ရပ်ကွက် ရွေးချယ်ပေးပါ။');
+            if (!rName || !rPhone || !dropWardVal) {
+                alert('ကျေးဇူးပြု၍ လက်ခံသူ အချက်အလက်များ နှင့် လက်ခံမည့် ရပ်ကွက် ရွေးချယ်ပေးပါ။');
                 return;
             }
 
-            let paymentMethodText = "ငွေသားဖြင့် ပေးချေမည်";
+            const [dWard] = dropWardVal.split('|');
+            const officeViberNumber = "959978730790";
+            let viberMsg = "";
+
             if (currentMode === 'food') {
-                const foodPayEl = document.querySelector('input[name="foodPaymentMethod"]:checked');
-                if (foodPayEl && foodPayEl.value === 'kpay_wave') paymentMethodText = "Kpay/Wave ဖြင့် ပေးချေမည်";
-            } else if (currentMode === 'parcel') {
-                const parcelPayEl = document.querySelector('input[name="parcelPaymentMethod"]:checked');
-                if (parcelPayEl && parcelPayEl.value === 'kpay_wave') paymentMethodText = "Kpay/Wave ဖြင့် ပေးချေမည်";
-            }
-
-            let collectMethodText = "";
-            if (currentMode === 'parcel') {
-                const collectEl = document.querySelector('input[name="parcelCollectMethod"]:checked');
-                const collectValue = collectEl ? collectEl.value : 'collect_both';
-
-                switch (collectValue) {
-                    case 'collect_both': collectMethodText = "ကုန်ဖိုးနှင့် ဒလီခအား ကုန်ပစ္စည်းလက်ခံသူထံတွင် ကောက်ခံရမည်"; break;
-                    case 'collect_delivery_only': collectMethodText = "ကုန်ဖိုးကောက်ရန်မလိုပါ။ ဒလီခအား ကုန်ပစ္စည်းလက်ခံသူထံတွင် ကောက်ခံရမည်"; break;
-                    case 'sender_pays_all': collectMethodText = "ကုန်ဖိုးနှင့် ဒလီခအား ကုန်ပစ္စည်းလက်ခံသူထံတွင် ကောက်ရန်မလိုပါ။ ဒလီခအား ပေးပို့သူမှ ပေးချေမည်"; break;
-                    case 'collect_item_sender_pays_del': collectMethodText = "ကုန်ဖိုးသာ ကောက်ရမည်။ ဒလီခအား ပေးပို့သူမှ ပေးချေမည်"; break;
-                }
-            }
-
-            let senderName = "", senderPhone = "", pickupWard = "", senderAddress = "", parcelSizeText = "";
-
-            if (currentMode === 'parcel') {
-                senderName = document.getElementById('senderName').value.trim();
-                senderPhone = document.getElementById('senderPhone').value.trim();
-                pickupWard = document.getElementById('pickupWardParcel').value;
-                senderAddress = document.getElementById('senderAddress').value.trim();
-
-                const sizeSelect = document.getElementById('parcelSize');
-                if (sizeSelect && sizeSelect.selectedIndex >= 0) {
-                    parcelSizeText = sizeSelect.options[sizeSelect.selectedIndex].text;
-                }
-
-                if(!senderName || !senderPhone || !pickupWard) {
-                    alert('ကျေးဇူးပြု၍ ပေးပို့သူ အမည်၊ ဖုန်းနံပါတ် နှင့် ပစ္စည်းကောက်ယူမည့် ရပ်ကွက် ဖြည့်စွက်ပေးပါ။');
+                if (Object.keys(cart).length === 0) {
+                    alert('ကျေးဇူးပြု၍ မီနူး အနည်းဆုံး ၁ ခု ရွေးချယ်ပေးပါ။');
                     return;
                 }
-            }
-
-            const speedEl = document.querySelector('input[name="speed"]:checked');
-            const speed = speedEl ? speedEl.value.toLowerCase() : 'express';
-
-            let deliveryTypeTitle = "";
-            let isScheduleDisabled = false;
-            let selectedScheduleText = "";
-
-            if (speed === 'express') {
-                deliveryTypeTitle = "⚡ အမြန်ပို့ (Express Delivery)";
-            } else if (speed === 'normal') {
-                deliveryTypeTitle = "🐢 ပုံမှန်ပို့ (Normal Delivery)";
-                const selectEl = document.getElementById('normalScheduleSelect');
-                if (selectEl && selectEl.selectedIndex >= 0) {
-                    const selectedOpt = selectEl.options[selectEl.selectedIndex];
-                    if (selectedOpt) {
-                        selectedScheduleText = selectedOpt.text;
-                        if (selectedOpt.disabled) isScheduleDisabled = true;
-                    }
-                }
-            } else if (speed === 'slow') {
-                deliveryTypeTitle = "📦 အနှေးပို့ (Economy Delivery)";
-            }
-
-            const now = new Date();
-            const year = String(now.getFullYear()).slice(-2); 
-            const month = String(now.getMonth() + 1).padStart(2, '0'); 
-            const day = String(now.getDate()).padStart(2, '0'); 
-            const dateStr = `${year}${month}${day}`; 
-
-            let dailyOrderSeq = localStorage.getItem('last_order_seq_' + dateStr) || 0;
-            dailyOrderSeq = Number(dailyOrderSeq) + 1;
-            localStorage.setItem('last_order_seq_' + dateStr, dailyOrderSeq);
-
-            const seqStr = String(dailyOrderSeq).padStart(3, '0'); 
-            const orderId = `SYS-${dateStr}-${seqStr}`; 
-
-            const grandTotal = document.getElementById('grandTotal').innerText;
-            const deliveryFee = document.getElementById('deliveryFee') ? document.getElementById('deliveryFee').innerText : '၀ ကျပ်';
-
-            let modeNote = "";
-            let parcelCategoryText = "";
-            if (currentMode === 'food') {
-                modeNote = document.getElementById('foodNote').value.trim();
-            } else if (currentMode === 'parcel') {
-                modeNote = document.getElementById('parcelNote').value.trim();
-                if (speed === 'normal') {
-                    const parcelCategoryEl = document.querySelector('input[name="parcelCategory"]:checked');
-                    if (parcelCategoryEl) {
-                        parcelCategoryText = parcelCategoryEl.value === 'food_within_hour' 
-                            ? '⏰ သတ်မှတ်ချိန်နာရီအတွင်းအရောက်ပို့ စားသောက်ကုန်များ' 
-                            : '📦 နေ့ချင်းရောက်ကုန်ပစ္စည်းများ (-၅၀၀ ကျပ် လျှော့ပြီး)';
-                    }
-                }
-            }
-
-            let pickupTimeInfo = "အမြန်ဆုံး လာယူရန် (ASAP)";
-            if (currentMode === 'parcel') {
-                const pickupType = document.getElementById('pickupTimeType') ? document.getElementById('pickupTimeType').value : "";
-                if (pickupType === 'scheduled') {
-                    const scheduledVal = document.getElementById('pickupScheduledTime').value;
-                    pickupTimeInfo = scheduledVal ? scheduledVal.replace('T', ' ') : "သတ်မှတ်ချိန် မဖော်ပြထားပါ";
-                }
-            }
-
-            let deliveryTimeInfo = "အစောဆုံး ပို့ဆောင်ပေးရန် (ASAP)";
-            if (speed === 'normal') {
-                if (isScheduleDisabled) {
-                    deliveryTimeInfo = `🌙 [နောက်နေ့အတွက် ပုံမှန်ပို့ အော်ဒါ] ${selectedScheduleText || 'မနက်ဖြန် အချိန်ဇယားအတိုင်း'}`;
-                } else {
-                    deliveryTimeInfo = selectedScheduleText ? `[အချိန်ဇယား] ${selectedScheduleText}` : "သတ်မှတ်အချိန်ဇယားအတိုင်း";
-                }
-            } else if (speed === 'slow') {
-                deliveryTimeInfo = "ညနေပိုင်း စုစည်း၍ ပို့ဆောင်ပေးမည်";
-            } else {
-                const deliveryTypeEl = document.getElementById('deliveryTimeType');
-                if (deliveryTypeEl && deliveryTypeEl.value === 'time_window') {
-                    const tStart = document.getElementById('deliveryTimeStart').value;
-                    const tEnd = document.getElementById('deliveryTimeEnd').value;
-                    if (tStart && tEnd) deliveryTimeInfo = `${tStart} မှ ${tEnd} အတွင်း ပို့ဆောင်ပေးရန်`;
-                }
-            }
-
-            let handlingNotes = [];
-            if (currentMode === 'parcel') {
-                if(document.getElementById('chkFragile') && document.getElementById('chkFragile').checked) handlingNotes.push("🥚 ပျက်ဆီးလွယ်ပါသည်");
-                if(document.getElementById('chkKeepDry') && document.getElementById('chkKeepDry').checked) handlingNotes.push("☔ ရေစို၍မရပါ");
-                if(document.getElementById('chkKeepCold') && document.getElementById('chkKeepCold').checked) handlingNotes.push("🧊 အေးခဲထားရန်");
-                if(document.getElementById('chkThisSideUp') && document.getElementById('chkThisSideUp').checked) handlingNotes.push("⬆️ မမှောက်ရပါ");
-                
-                const customNoteEl = document.getElementById('customHandlingNote');
-                if(customNoteEl && customNoteEl.value.trim()) handlingNotes.push(`📝 ${customNoteEl.value.trim()}`);
-            }
-
-            const specialHandlingString = handlingNotes.length > 0 ? handlingNotes.join(', ') : null;
-
-            let orderMsg = `📦 *အော်ဒါအသစ် ရောက်ရှိပါသည်။*\n`;
-            orderMsg += `🆔 *Order ID:* #${orderId}\n`;
-            orderMsg += `🚀 *ပို့ဆောင်မှု အမျိုးအစား:* ${deliveryTypeTitle}\n`;
-
-            if (currentMode === 'food') {
-                const storeSelect = document.getElementById('storeSelect');
-                let storeName = storeSelect ? storeSelect.options[storeSelect.selectedIndex].text : "";
-                if (storeName) orderMsg += `🏪 *မှာယူသည့်ဆိုင်:* ${storeName}\n`;
-                orderMsg += `💳 *ငွေပေးချေမှု ပုံစံ:* ${paymentMethodText}\n`;
-                orderMsg += `\n--- 🍔 မှာယူထားသော အစားအသောက်များ ---\n`;
-                
-                if (typeof cart !== 'undefined' && cart && Object.keys(cart).length > 0) {
-                    let index = 1;
-                    for (let key in cart) {
-                        const item = cart[key];
-                        let realName = item.item ? item.item.name : key;
-                        let price = item.item ? item.item.price : 0;
-                        let qty = item.qty || 1;
-
-                        if (price > 0) {
-                            orderMsg += `${index}. ${realName} - ${qty} ခု x ${price.toLocaleString()} ကျပ် = ${(price * qty).toLocaleString()} ကျပ်\n`;
-                        } else {
-                            orderMsg += `${index}. ${realName} - ${qty} ခု\n`;
-                        }
-                        index++;
-                    }
-                }
-            }
-            
-            if (currentMode === 'parcel') {
-                orderMsg += `\n--- 📤 ပေးပို့သူ အချက်အလက် ---\n`;
-                orderMsg += `👤 *အမည်:* ${senderName} (${senderPhone})\n`;
-                orderMsg += `📍 *ကောက်ယူမည့် ရပ်ကွက်:* ${pickupWard.split('|')[0]}\n`;
-                if(senderAddress) orderMsg += `🏠 *အသေးစိတ်လိပ်စာ:* ${senderAddress}\n`;
-                orderMsg += `🕒 *ပစ္စည်းကောက်ချိန်:* ${pickupTimeInfo}\n`;
-                if(parcelSizeText) orderMsg += `📏 *ပစ္စည်းအရွယ်အစား:* ${parcelSizeText}\n`;
-            }
-
-            orderMsg += `\n--- 📥 လက်ခံသူ အချက်အလက် ---\n`;
-            orderMsg += `👤 *အမည်:* ${rName} (${rPhone})\n`;
-            orderMsg += `📍 *ရောက်ရှိမည့် ရပ်ကွက်:* ${dropWard.split('|')[0]}\n`;
-            if(rAddress) orderMsg += `🏠 *အသေးစိတ်လိပ်စာ:* ${rAddress}\n`;
-            orderMsg += `⏰ *ပို့ဆောင်ပေးရမည့် အချိန်:* ${deliveryTimeInfo}\n`;
-            
-            if (parcelCategoryText) orderMsg += `\n📌 *ပစ္စည်းအမျိုးအစား:* ${parcelCategoryText}\n`;
-            if (specialHandlingString) orderMsg += `⚠️ *သတိထားရန်အချက်များ:* ${specialHandlingString}\n`;
-            if (modeNote) orderMsg += `💬 *သီးခြားမှတ်ချက်:* ${modeNote}\n`;
-
-            orderMsg += `\n--- 💵 ကျသင့်ငွေ အသေးစိတ် ---\n`;
-            if (currentMode === 'food') {
-                const foodSubtotal = document.getElementById('foodSubtotal') ? document.getElementById('foodSubtotal').innerText : '၀ ကျပ်';
-                orderMsg += `🍔 အစားအသောက်ဖိုး: ${foodSubtotal}\n`;
 
                 const storeKey = document.getElementById('storeSelect').value;
-                if (storesData[storeKey] && storesData[storeKey].hasWaitingFee) {
-                    orderMsg += `⏳ ဆိုင်စောင့်ခ: ၅၀၀ ကျပ်\n`;
+                const storeName = storesData[storeKey] ? storesData[storeKey].name : storeKey;
+                const storeWard = storesData[storeKey] ? storesData[storeKey].ward : '';
+
+                let foodItemsStr = "";
+                let foodSubtotal = 0;
+                for (const data of Object.values(cart)) {
+                    const subtotal = data.item.price * data.qty;
+                    foodSubtotal += subtotal;
+                    foodItemsStr += `• ${data.item.name} x ${data.qty} = ${subtotal.toLocaleString()} ကျပ်\n`;
                 }
+
+                const foodPayEl = document.querySelector('input[name="foodPaymentMethod"]:checked');
+                const foodPayMethod = foodPayEl ? (foodPayEl.value === 'cash' ? 'ငွေသား' : 'Kpay/Wave') : 'ငွေသား';
+                const foodNote = document.getElementById('foodNote').value.trim();
+
+                const delFeeStr = document.getElementById('deliveryFee').innerText;
+                const grandTotalStr = document.getElementById('grandTotal').innerText;
+
+                viberMsg = `🍔 [ စားသောက်ဆိုင် အော်ဒါ ]\n`;
+                viberMsg += `🏪 ဆိုင်အမည်: ${storeName} (${storeWard})\n`;
+                viberMsg += `📝 မှာယူသည့် မီနူးများ:\n${foodItemsStr}`;
+                if (foodNote) viberMsg += `💡 သီးခြားမှတ်ချက်: ${foodNote}\n`;
+                viberMsg += `\n🏠 ပို့ဆောင်ရမည့်နေရာ: ${rName} (${rPhone})\n`;
+                viberMsg += `📍 လိပ်စာ: ${dWard} ${rAddress ? '(' + rAddress + ')' : ''}\n`;
+                viberMsg += `💳 ပေးချေမှုပုံစံ: ${foodPayMethod}\n\n`;
+                viberMsg += `💵 အစားအသောက်ဖိုး: ${foodSubtotal.toLocaleString()} ကျပ်\n`;
+                viberMsg += `🚚 ပို့ဆောင်ခ: ${delFeeStr}\n`;
+                viberMsg += `💰 စုစုပေါင်း ကျသင့်ငွေ: ${grandTotalStr}`;
+
             } else if (currentMode === 'parcel') {
-                orderMsg += `💳 *ပေးချေမည့် ပုံစံ:* ${paymentMethodText}\n`;
-                orderMsg += `📌 *ကောက်ခံရမည့် ပုံစံ:* ${collectMethodText}\n`;
-                
-                const parcelValInput = parseFloat(document.getElementById('parcelValue').value) || 0;
-                const weightOpt = document.getElementById('parcelWeight').value;
+                const sName = document.getElementById('senderName').value.trim();
+                const sPhone = document.getElementById('senderPhone').value.trim();
+                const pickupWardVal = document.getElementById('pickupWardParcel').value;
+                const sAddress = document.getElementById('senderAddress').value.trim();
 
-                if (parcelValInput > 0) orderMsg += `📦 ပစ္စည်းတန်ဖိုး: ${parcelValInput.toLocaleString()} ကျပ်\n`;
-
-                let weightSurcharge = 0;
-                if (weightOpt === '3to8') weightSurcharge = 500;
-                else if (weightOpt === '8to13') weightSurcharge = 1000;
-                else if (weightOpt === 'above13') weightSurcharge = 1500;
-
-                if (weightSurcharge > 0) orderMsg += `⚖️ အလေးချိန် ထပ်ဆောင်းခ: ${weightSurcharge.toLocaleString()} ကျပ်\n`;
-
-                const parcelCategoryEl = document.querySelector('input[name="parcelCategory"]:checked');
-                if (speed === 'normal' && parcelCategoryEl && parcelCategoryEl.value === 'same_day_item') {
-                    orderMsg += `🎉 နေ့ချင်းရောက် လျှော့ဈေး: -၅၀၀ ကျပ်\n`;
+                if (!sName || !sPhone || !pickupWardVal) {
+                    alert('ကျေးဇူးပြု၍ ပေးပို့သူ အချက်အလက်များ အပြည့်အစုံ ဖြည့်စွက်ပေးပါ။');
+                    return;
                 }
+
+                const [pWard] = pickupWardVal.split('|');
+                const parcelVal = parseFloat(document.getElementById('parcelValue').value) || 0;
+                const weightOpt = document.getElementById('parcelWeight');
+                const weightText = weightOpt.options[weightOpt.selectedIndex].text;
+                
+                const parcelPayEl = document.querySelector('input[name="parcelPaymentMethod"]:checked');
+                const parcelPayMethod = parcelPayEl ? (parcelPayEl.value === 'cash' ? 'ငွေသား' : 'Kpay/Wave') : 'ငွေသား';
+
+                const collectEl = document.querySelector('input[name="parcelCollectMethod"]:checked');
+                let collectText = "ကုန်ဖိုး+ဒလီခ လက်ခံသူထံ ကောက်ရမည်";
+                if (collectEl) {
+                    if (collectEl.value === 'collect_delivery_only') collectText = "ဒလီခ သာ လက်ခံသူထံ ကောက်ရမည်";
+                    else if (collectEl.value === 'sender_pays_all') collectText = "ကုန်ဖိုး/ဒလီခ လက်ခံသူထံ ကောက်ရန်မလိုပါ (ပေးပို့သူမှပေးမည်)";
+                    else if (collectEl.value === 'collect_item_sender_pays_del') collectText = "ကုန်ဖိုးသာ ကောက်ရမည် (ဒလီခအား ပေးပို့သူမှပေးမည်)";
+                }
+
+                const parcelNote = document.getElementById('parcelNote').value.trim();
+                const delFeeStr = document.getElementById('deliveryFee').innerText;
+                const grandTotalStr = document.getElementById('grandTotal').innerText;
+
+                viberMsg = `📦 [ ပစ္စည်းပို့ဆောင်မည့် အော်ဒါ ]\n`;
+                viberMsg += `👤 ပေးပို့သူ: ${sName} (${sPhone})\n`;
+                viberMsg += `📍 ပစ္စည်းယူရမည့်လိပ်စာ: ${pWard} ${sAddress ? '(' + sAddress + ')' : ''}\n\n`;
+                viberMsg += `🏠 ပို့ဆောင်ရမည့်နေရာ: ${rName} (${rPhone})\n`;
+                viberMsg += `📍 လိပ်စာ: ${dWard} ${rAddress ? '(' + rAddress + ')' : ''}\n\n`;
+                viberMsg += `💵 ကုန်ပစ္စည်းတန်ဖိုး: ${parcelVal.toLocaleString()} ကျပ်\n`;
+                viberMsg += `⚖️ အလေးချိန်: ${weightText}\n`;
+                viberMsg += `💳 ပေးချေမှုပုံစံ: ${parcelPayMethod}\n`;
+                viberMsg += `📌 ကောက်ခံရမည့်ပုံစံ: ${collectText}\n`;
+                if (parcelNote) viberMsg += `📝 မှတ်ချက်: ${parcelNote}\n`;
+                viberMsg += `\n🚚 ပို့ဆောင်ခ: ${delFeeStr}\n`;
+                viberMsg += `💰 စုစုပေါင်း ကျသင့်ငွေ: ${grandTotalStr}`;
             }
 
-            orderMsg += `🚚 ပို့ဆောင်ခ: ${deliveryFee}\n`;
-            orderMsg += `💰 *ကျသင့်ငွေ စုစုပေါင်း:* ${grandTotal}\n\n`;
-            orderMsg += `ကျေးဇူးပြု၍ အော်ဒါအား လက်ခံ/ပယ်ဖျက် အကြောင်းကြားပေးပါရန်။`;
-
-            const officeViberNumber = "959978730790";
-            const viberUrl = `viber://chat?number=%2B${officeViberNumber}&draft=${encodeURIComponent(orderMsg)}`;
-
-            alert(`✅ အော်ဒါ တင်ခြင်း အောင်မြင်ပါသည်။\n\n🆔 Order ID: #${orderId}\n\nViber မှတဆင့် စာပို့ပေးပါမည်။`);
+            const viberUrl = `viber://chat?number=%2B${officeViberNumber}&draft=${encodeURIComponent(viberMsg)}`;
+            alert(`✅ အော်ဒါ အောင်မြင်စွာ တင်ပြီးပါပြီ။\n\nViber သို့ စာပို့ပေးပါမည်။`);
             window.location.href = viberUrl;
         }
 
+        // Initialize Page
         window.onload = function() {
             initWards();
-            renderMenu();
             renderPartnerOrdersForm();
-            switchServiceMode('food');
-            setInterval(updateNormalScheduleOptions, 60000);
+            renderMenu();
+            calculatePrice();
+            setInterval(updateNormalScheduleOptions, 30000);
         };
     </script>
 </body>
