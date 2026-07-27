@@ -224,6 +224,16 @@
                 </div>
 
                 <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-1">ပစ္စည်း အလေးချိန်</label>
+                    <select id="shoppingWeight" onchange="calculatePrice()" class="w-full p-2.5 border rounded-xl bg-white text-sm text-gray-800 focus:ring-2 focus:ring-amber-400 outline-none">
+                        <option value="under3">၃ ပိဿာ အောက် (အခမဲ့)</option>
+                        <option value="3to8">၃ ပိဿာ မှ ၈ ပိဿာ (+၅၀၀ ကျပ်)</option>
+                        <option value="8to13">၈ ပိဿာ မှ ၁၃ ပိဿာ (+၁၀၀၀ ကျပ်)</option>
+                        <option value="above13">၁၃ ပိဿာ အထက် (+၁၅၀၀ ကျပ်)</option>
+                    </select>
+                </div>
+
+                <div>
                     <label class="block text-sm font-bold text-gray-700 mb-1">အစားထိုးပစ္စည်း (သို့) သီးခြားမှတ်ချက်</label>
                     <input type="text" id="shoppingNote" placeholder="ဥပမာ- မရပါက အခြားဆိုင်မှ ဝယ်ပေးပါ၊ လတ်ဆတ်တာ ရွေးပေးပါ" class="w-full p-2.5 border rounded-xl text-sm focus:ring-2 focus:ring-amber-400 outline-none bg-white text-gray-800">
                 </div>
@@ -244,23 +254,27 @@
 
                 <div>
                     <label class="block text-sm font-bold text-gray-700 mb-2">ပို့ဆောင်မှု အမြန်နှုန်း</label>
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
                         <label class="border-2 rounded-xl p-2.5 flex flex-col items-center cursor-pointer transition hover:border-amber-400 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50">
-                            <input type="radio" name="shoppingSpeed" value="express" checked onchange="calculatePrice()" class="accent-amber-500 mb-1">
+                            <input type="radio" name="shoppingSpeed" value="express" checked onchange="toggleShoppingSpeedNotice(); calculatePrice();" class="accent-amber-500 mb-1">
                             <span class="font-bold text-xs text-gray-800">အမြန် (Express)</span>
-                            <span class="text-[10px] text-amber-700"></span>
                         </label>
                         <label class="border-2 rounded-xl p-2.5 flex flex-col items-center cursor-pointer transition hover:border-amber-400 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50">
-                            <input type="radio" name="shoppingSpeed" value="normal" onchange="calculatePrice()" class="accent-amber-500 mb-1">
+                            <input type="radio" name="shoppingSpeed" value="normal" onchange="toggleShoppingSpeedNotice(); calculatePrice();" class="accent-amber-500 mb-1">
                             <span class="font-bold text-xs text-gray-800">ပုံမှန် (Standard)</span>
                             <span class="text-[10px] text-gray-500">ပုံမှန် ပို့ဆောင်ခ</span>
                         </label>
-                        <label class="border-2 rounded-xl p-2.5 flex flex-col items-center cursor-pointer transition hover:border-amber-400 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50">
-                            <input type="radio" name="shoppingSpeed" value="scheduled" onchange="calculatePrice()" class="accent-amber-500 mb-1">
-                            <span class="font-bold text-xs text-gray-800">အေးဆေးရသည် (Scheduled)</span>
-                            <span class="text-[10px] text-gray-500">ပုံမှန် ပို့ဆောင်ခ</span>
-                        </label>
                     </div>
+                </div>
+
+                <div id="shoppingNormalScheduleBox" class="hidden bg-blue-50 border-l-4 border-blue-500 p-3 rounded-r-xl text-xs text-blue-900 space-y-2">
+                    <label class="block font-bold text-blue-900 mb-1">⏰ ပုံမှန်ပို့ အချိန်ဇယား ရွေးချယ်ပါ -</label>
+                    <select id="shoppingNormalScheduleSelect" class="w-full p-2.5 border rounded-xl bg-white font-bold text-gray-800 focus:ring-2 focus:ring-blue-400 outline-none text-xs sm:text-sm">
+                        <option value="batch1" data-cutoff="08:30">မနက် ၈:၃၀ အော်ဒါပိတ် - ၉:၀၀ စပို့ (ရောက်ရှိချိန်: ၉:၀၀ မှ ၁၁:၀၀ အတွင်း)</option>
+                        <option value="batch2" data-cutoff="10:30">မနက် ၁၀:၃၀ အော်ဒါပိတ် - ၁၁:၀၀ စပို့ (ရောက်ရှိချိန်: ၁၁:၀၀ မှ ၁:၀၀ အတွင်း)</option>
+                        <option value="batch3" data-cutoff="12:30">နေ့လယ် ၁၂:၃၀ အော်ဒါပိတ် - ၁:၀၀ စပို့ (ရောက်ရှိချိန်: ၁:၀၀ မှ ၃:၀၀ အတွင်း)</option>
+                        <option value="batch4" data-cutoff="14:30">ညနေ ၂:၃၀ အော်ဒါပိတ် - ၃:၀၀ စပို့ (ရောက်ရှိချိန်: ၃:၀၀ မှ ၅:၀၀ အတွင်း)</option>
+                    </select>
                 </div>
 
                 <div>
@@ -589,11 +603,6 @@
                 <span id="shoppingServiceFeeDisplay" class="font-bold">0 ကျပ် (အခမဲ့)</span>
             </div>
 
-            <div id="speedFeeRow" class="hidden flex justify-between text-sm text-amber-300">
-                <span>အမြန်ကြေး (Speed Fee):</span>
-                <span id="speedFeeDisplay" class="hidden">1,000 ကျပ်</span>
-            </div>
-
             <div id="waitingFeeRow" class="hidden flex justify-between text-sm text-amber-300">
                 <span>ဆိုင်စောင့်ခ:</span>
                 <span class="font-bold">500 ကျပ်</span>
@@ -735,6 +744,19 @@
                     if(pickupSelect) pickupSelect.add(new Option(optionText, optionValue));
                     if(shoppingStoreWardSelect) shoppingStoreWardSelect.add(new Option(optionText, optionValue));
                 });
+            }
+        }
+
+        function toggleShoppingSpeedNotice() {
+            const shopSpeedEl = document.querySelector('input[name="shoppingSpeed"]:checked');
+            const speed = shopSpeedEl ? shopSpeedEl.value : 'express';
+            const scheduleBox = document.getElementById('shoppingNormalScheduleBox');
+            
+            if (speed === 'normal') {
+                if (scheduleBox) scheduleBox.classList.remove('hidden');
+                updateNormalScheduleOptions();
+            } else {
+                if (scheduleBox) scheduleBox.classList.add('hidden');
             }
         }
 
@@ -1088,7 +1110,7 @@
             foodCostRow.classList.add('hidden');
             shoppingCostRow.classList.add('hidden');
             shoppingServiceFeeRow.classList.add('hidden');
-            speedFeeRow.classList.add('hidden');
+            if (speedFeeRow) speedFeeRow.classList.add('hidden');
             parcelValueRow.classList.add('hidden');
             weightSurchargeRow.classList.add('hidden');
             generalSpeedBox.classList.remove('hidden');
@@ -1103,6 +1125,7 @@
             } else if (mode === 'shopping') {
                 shoppingCostRow.classList.remove('hidden');
                 shoppingServiceFeeRow.classList.remove('hidden');
+                weightSurchargeRow.classList.remove('hidden');
                 cartBtn.classList.add('hidden');
                 specialHandlingBox.classList.add('hidden');
                 generalSpeedBox.classList.add('hidden'); 
@@ -1118,42 +1141,52 @@
                 cartBtn.classList.add('hidden');
             }
 
-            onSpeedChange();
+            if (mode === 'shopping') {
+                toggleShoppingSpeedNotice();
+            } else {
+                onSpeedChange();
+            }
             calculatePrice();
         }
 
         function updateNormalScheduleOptions() {
             const selectEl = document.getElementById('normalScheduleSelect');
-            if (!selectEl) return;
+            const shoppingSelectEl = document.getElementById('shoppingNormalScheduleSelect');
 
             const now = new Date();
             const currentMinutes = now.getHours() * 60 + now.getMinutes();
 
-            let firstAvailableSelected = false;
+            const updateSelect = (el) => {
+                if (!el) return;
+                let firstAvailableSelected = false;
 
-            Array.from(selectEl.options).forEach(option => {
-                const cutoffStr = option.getAttribute('data-cutoff');
-                if (cutoffStr) {
-                    const [hours, minutes] = cutoffStr.split(':').map(Number);
-                    const cutoffMinutes = hours * 60 + minutes;
+                Array.from(el.options).forEach(option => {
+                    const cutoffStr = option.getAttribute('data-cutoff');
+                    if (cutoffStr) {
+                        const [hours, minutes] = cutoffStr.split(':').map(Number);
+                        const cutoffMinutes = hours * 60 + minutes;
 
-                    if (!option.dataset.originalText) {
-                        option.dataset.originalText = option.text;
-                    }
+                        if (!option.dataset.originalText) {
+                            option.dataset.originalText = option.text;
+                        }
 
-                    if (currentMinutes >= cutoffMinutes) {
-                        option.disabled = true;
-                        option.text = `❌ [အော်ဒါပိတ်ပြီး] ${option.dataset.originalText}`;
-                    } else {
-                        option.disabled = false;
-                        option.text = option.dataset.originalText;
-                        if (!firstAvailableSelected) {
-                            selectEl.value = option.value;
-                            firstAvailableSelected = true;
+                        if (currentMinutes >= cutoffMinutes) {
+                            option.disabled = true;
+                            option.text = `❌ [အော်ဒါပိတ်ပြီး] ${option.dataset.originalText}`;
+                        } else {
+                            option.disabled = false;
+                            option.text = option.dataset.originalText;
+                            if (!firstAvailableSelected) {
+                                el.value = option.value;
+                                firstAvailableSelected = true;
+                            }
                         }
                     }
-                }
-            });
+                });
+            };
+
+            updateSelect(selectEl);
+            updateSelect(shoppingSelectEl);
 
             for (let i = 1; i <= 10; i++) {
                 updatePartnerScheduleOptions(i);
@@ -1480,6 +1513,7 @@
             const shoppingCostRow = document.getElementById('shoppingCostRow');
             const shoppingServiceFeeRow = document.getElementById('shoppingServiceFeeRow');
             const speedFeeRow = document.getElementById('speedFeeRow');
+            const weightSurchargeRow = document.getElementById('weightSurchargeRow');
 
             if (currentMode === 'food') {
                 let foodSubtotal = 0;
@@ -1520,23 +1554,21 @@
                     if (feeDisplayEl) feeDisplayEl.innerText = `${shoppingServiceFee.toLocaleString()} ကျပ်`;
                 }
 
-                // Speed Fee Logic (Express = 1,000 MMK)
-                let speedFee = 0;
-                if (speed === 'express') {
-                    speedFee = 0;
-                    if (speedFeeRow) speedFeeRow.classList.remove('hidden');
-                } else {
-                    if (speedFeeRow) speedFeeRow.classList.add('hidden');
-                }
+                // Weight Surcharge Logic
+                const shoppingWeightOpt = document.getElementById('shoppingWeight') ? document.getElementById('shoppingWeight').value : 'under3';
+                let shoppingWeightSurcharge = 0;
+                if (shoppingWeightOpt === '3to8') shoppingWeightSurcharge = 500;
+                else if (shoppingWeightOpt === '8to13') shoppingWeightSurcharge = 1000;
+                else if (shoppingWeightOpt === 'above13') shoppingWeightSurcharge = 1500;
 
                 if (document.getElementById('shoppingEstCostDisplay')) {
                     document.getElementById('shoppingEstCostDisplay').innerText = `${estCostInput.toLocaleString()} ကျပ်`;
                 }
-                if (document.getElementById('speedFeeDisplay')) {
-                    document.getElementById('speedFeeDisplay').innerText = `${speedFee.toLocaleString()} ကျပ်`;
+                if (document.getElementById('weightSurchargeDisplay')) {
+                    document.getElementById('weightSurchargeDisplay').innerText = `${shoppingWeightSurcharge.toLocaleString()} ကျပ်`;
                 }
 
-                grandTotal = estCostInput + deliveryFeeFinal + shoppingServiceFee + speedFee;
+                grandTotal = estCostInput + deliveryFeeFinal + shoppingServiceFee + shoppingWeightSurcharge;
 
             } else if (currentMode === 'parcel') {
                 if (waitingFeeRow) waitingFeeRow.classList.add('hidden');
@@ -1763,13 +1795,21 @@
                 const [dWard] = dropWardVal.split('|');
 
                 let speedLabel = "အမြန် (Express)";
-                let speedFee = 1000;
+                let scheduleDetail = "";
+
                 if (shoppingSpeed === 'normal') {
                     speedLabel = "ပုံမှန် (Standard)";
-                    speedFee = 0;
-                } else if (shoppingSpeed === 'scheduled') {
-                    speedLabel = "အေးဆေးရသည် (Scheduled)";
-                    speedFee = 0;
+                    const schedSelect = document.getElementById('shoppingNormalScheduleSelect');
+                    if (schedSelect) {
+                        const selectedOpt = schedSelect.options[schedSelect.selectedIndex];
+                        if (selectedOpt && selectedOpt.disabled) {
+                            alert('ရွေးချယ်ထားသော ပုံမှန်ပို့ အချိန်ဇယားသည် အော်ဒါပိတ်သွားပါပြီ။ ကျေးဇူးပြု၍ အခြားအချိန်ဇယား ရွေးပေးပါ။');
+                            return;
+                        }
+                        if (selectedOpt) {
+                            scheduleDetail = `\n⏰ အချိန်ဇယား: ${selectedOpt.text}`;
+                        }
+                    }
                 }
 
                 let shoppingTypeLabel = "";
@@ -1783,29 +1823,46 @@
                     shoppingServiceFee = estCostInput > 30000 ? 2000 : 1000;
                 }
 
+                const shoppingWeightOpt = document.getElementById('shoppingWeight') ? document.getElementById('shoppingWeight').value : 'under3';
+                let shoppingWeightSurcharge = 0;
+                let weightText = "၃ ပိဿာ အောက် (အခမဲ့)";
+                if (shoppingWeightOpt === '3to8') {
+                    shoppingWeightSurcharge = 500;
+                    weightText = "၃ ပိဿာ မှ ၈ ပိဿာ (+၅၀၀ ကျပ်)";
+                } else if (shoppingWeightOpt === '8to13') {
+                    shoppingWeightSurcharge = 1000;
+                    weightText = "၈ ပိဿာ မှ ၁၃ ပိဿာ (+၁၀၀၀ ကျပ်)";
+                } else if (shoppingWeightOpt === 'above13') {
+                    shoppingWeightSurcharge = 1500;
+                    weightText = "၁၃ ပိဿာ အထက် (+၁၅၀၀ ကျပ်)";
+                }
+
                 const paymentLabel = (shoppingPaymentMethod === 'cash') ? "ငွေသား" : "KPay / Wave Money";
 
                 const deliveryFeeStr = document.getElementById('deliveryFee') ? document.getElementById('deliveryFee').innerText.replace(' ကျပ်', '') : '0';
                 const deliveryFeeNum = parseFloat(deliveryFeeStr.replace(/,/g, '')) || 0;
 
-                const grandTotalNum = estCostInput + deliveryFeeNum + shoppingServiceFee + speedFee;
+                const grandTotalNum = estCostInput + deliveryFeeNum + shoppingServiceFee + shoppingWeightSurcharge;
 
                 let shoppingViberMsg = `🛒 [ ဈေး/ကုန်စုံ ဝယ်ခိုင်းမည့် အော်ဒါ ]\n`;
                 shoppingViberMsg += `-------------------------------\n`;
                 shoppingViberMsg += `📌 ဝယ်ယူမည့်အမျိုးအစား: ${shoppingTypeLabel}\n`;
                 shoppingViberMsg += `📍 ဆိုင်/ဈေး: ${shopStoreName} (${sWard})\n`;
                 shoppingViberMsg += `📝 ဝယ်ယူမည့်ပစ္စည်းများ: ${shoppingItems}\n`;
+                shoppingViberMsg += `⚖️ ပစ္စည်းအလေးချိန်: ${weightText}\n`;
                 shoppingViberMsg += `💡 သီးခြားမှတ်ချက်: ${shoppingNote || 'မရှိပါ'}\n\n`;
                 
                 shoppingViberMsg += `🏠 ပို့ဆောင်ရမည့်နေရာ: ${rName} - ${rPhone}\n`;
                 shoppingViberMsg += `📍 လိပ်စာ: ${rAddress || '-'} (${dWard})\n`;
-                shoppingViberMsg += `⏰ ပို့ဆောင်ရမည့်အချိန်: ${speedLabel} (နောက်ဆုံးရောက်ရမည့်ချိန်: ${deadlineTime || 'သတ်မှတ်ချက်မရှိ'})\n`;
+                shoppingViberMsg += `🚀 ပို့ဆောင်မှုအမြန်နှုန်း: ${speedLabel}${scheduleDetail}\n`;
+                if (deadlineTime) shoppingViberMsg += `⏱️ နောက်ဆုံးထားရောက်ရမည့်ချိန်: ${deadlineTime}\n`;
                 shoppingViberMsg += `💳 ငွေပေးချေမှုပုံစံ: ${paymentLabel}\n\n`;
 
                 shoppingViberMsg += `💵 ကုန်ကျစရိတ် တွက်ချက်မှု-\n`;
                 shoppingViberMsg += `• ခန့်မှန်း ကုန်ဖိုး: ${estCostInput.toLocaleString()} ကျပ်\n`;
                 shoppingViberMsg += `• ပို့ဆောင်ခ: ${deliveryFeeNum.toLocaleString()} ကျပ်\n`;
                 shoppingViberMsg += `• ဝယ်ယူရေး ဝန်ဆောင်ခ: ${shoppingServiceFee.toLocaleString()} ကျပ်\n`;               
+                shoppingViberMsg += `• အလေးချိန်ပို: ${shoppingWeightSurcharge.toLocaleString()} ကျပ်\n`;
                 shoppingViberMsg += `-------------------------------\n`;
                 shoppingViberMsg += `💰 စုစုပေါင်း ကျသင့်ငွေ: ${grandTotalNum.toLocaleString()} ကျပ်`;
 
@@ -1883,33 +1940,44 @@
                 const parcelVal = parseFloat(document.getElementById('parcelValue').value) || 0;
                 const weightOpt = document.getElementById('parcelWeight');
                 const weightText = weightOpt.options[weightOpt.selectedIndex].text;
-                
-                const parcelPayEl = document.querySelector('input[name="parcelPaymentMethod"]:checked');
-                const parcelPayMethod = parcelPayEl ? (parcelPayEl.value === 'cash' ? 'ငွေသား' : 'Kpay/Wave') : 'ငွေသား';
 
-                const collectEl = document.querySelector('input[name="parcelCollectMethod"]:checked');
-                let collectText = "ကုန်ဖိုး+ဒလီခ လက်ခံသူထံ ကောက်ရမည်";
-                if (collectEl) {
-                    if (collectEl.value === 'collect_delivery_only') collectText = "ဒလီခ သာ လက်ခံသူထံ ကောက်ရမည်";
-                    else if (collectEl.value === 'sender_pays_all') collectText = "ကုန်ဖိုး/ဒလီခ လက်ခံသူထံ ကောက်ရန်မလိုပါ (ပေးပို့သူမှပေးမည်)";
-                    else if (collectEl.value === 'collect_item_sender_pays_del') collectText = "ကုန်ဖိုးသာ ကောက်ရမည် (ဒလီခအား ပေးပို့သူမှပေးမည်)";
+                const sizeOpt = document.getElementById('parcelSize');
+                const sizeText = sizeOpt.options[sizeOpt.selectedIndex].text;
+
+                const pPayEl = document.querySelector('input[name="parcelPaymentMethod"]:checked');
+                const parcelPayMethod = pPayEl ? (pPayEl.value === 'cash' ? 'ငွေသား' : 'Kpay/Wave') : 'ငွေသား';
+
+                const pCollectEl = document.querySelector('input[name="parcelCollectMethod"]:checked');
+                let collectText = "ကုန်ဖိုးနှင့် ဒလီခ လက်ခံသူထံ ကောက်ရမည်";
+                if (pCollectEl) {
+                    if (pCollectEl.value === 'collect_delivery_only') collectText = "ဒလီခ သာ လက်ခံသူထံ ကောက်ရမည်";
+                    else if (pCollectEl.value === 'sender_pays_all') collectText = "ကုန်ဖိုး/ဒလီခ လက်ခံသူထံ ကောက်ရန်မလိုပါ";
+                    else if (pCollectEl.value === 'collect_item_sender_pays_del') collectText = "ကုန်ဖိုးသာ ကောက်ရမည် (ဒလီခ ပေးပို့သူမှ ပေးမည်)";
                 }
+
+                const speedEl = document.querySelector('input[name="speed"]:checked');
+                const speedVal = speedEl ? speedEl.value : 'express';
+                let speedText = "အမြန်ပို့ (Express)";
+                if (speedVal === 'normal') speedText = "ပုံမှန်ပို့ (Normal)";
+                else if (speedVal === 'slow') speedText = "အနှေးပို့ (Economy)";
 
                 const parcelNote = document.getElementById('parcelNote').value.trim();
                 const delFeeStr = document.getElementById('deliveryFee').innerText;
                 const grandTotalStr = document.getElementById('grandTotal').innerText;
 
-                viberMsg = `📦 [ ပစ္စည်းပို့ဆောင်မည့် အော်ဒါ ]\n`;
+                viberMsg = `📦 [ ပစ္စည်းပို့ဆောင်ခိုင်းသည့် အော်ဒါ ]\n`;
                 viberMsg += `👤 ပေးပို့သူ: ${sName} (${sPhone})\n`;
-                viberMsg += `📍 ပစ္စည်းယူရမည့်လိပ်စာ: ${pWard} ${sAddress ? '(' + sAddress + ')' : ''}\n\n`;
-                viberMsg += `🏠 ပို့ဆောင်ရမည့်နေရာ: ${rName} (${rPhone})\n`;
-                viberMsg += `📍 လိပ်စာ: ${dWard} ${rAddress ? '(' + rAddress + ')' : ''}\n\n`;
-                viberMsg += `💵 ကုန်ပစ္စည်းတန်ဖိုး: ${parcelVal.toLocaleString()} ကျပ်\n`;
+                viberMsg += `📍 သွားယူရမည့်လိပ်စာ: ${pWard} ${sAddress ? '(' + sAddress + ')' : ''}\n\n`;
+                viberMsg += `🏠 လက်ခံသူ: ${rName} (${rPhone})\n`;
+                viberMsg += `📍 ပို့ဆောင်ရမည့်လိပ်စာ: ${dWard} ${rAddress ? '(' + rAddress + ')' : ''}\n\n`;
                 viberMsg += `⚖️ အလေးချိန်: ${weightText}\n`;
+                viberMsg += `📐 အရွယ်အစား: ${sizeText}\n`;
+                viberMsg += `🚀 အမြန်နှုန်း: ${speedText}\n`;
                 viberMsg += `💳 ပေးချေမှုပုံစံ: ${parcelPayMethod}\n`;
-                viberMsg += `📌 ကောက်ခံရမည့်ပုံစံ: ${collectText}\n`;
-                if (parcelNote) viberMsg += `📝 မှတ်ချက်: ${parcelNote}\n`;
-                viberMsg += `\n🚚 ပို့ဆောင်ခ: ${delFeeStr}\n`;
+                viberMsg += `📌 ကောက်ခံမှုပုံစံ: ${collectText}\n`;
+                if (parcelNote) viberMsg += `💡 မှတ်ချက်: ${parcelNote}\n`;
+                viberMsg += `\n💵 ပစ္စည်းတန်ဖိုး: ${parcelVal.toLocaleString()} ကျပ်\n`;
+                viberMsg += `🚚 ပို့ဆောင်ခ: ${delFeeStr}\n`;
                 viberMsg += `💰 စုစုပေါင်း ကျသင့်ငွေ: ${grandTotalStr}`;
             }
 
@@ -1918,13 +1986,13 @@
             window.location.href = viberUrl;
         }
 
-        // Initialize Page
         window.onload = function() {
             initWards();
             renderPartnerOrdersForm();
-            renderMenu();
-            calculatePrice();
-            setInterval(updateNormalScheduleOptions, 30000);
+            handleStoreChange();
+            onPartnerStoreChange();
+            updateNormalScheduleOptions();
+            setInterval(updateNormalScheduleOptions, 60000);
         };
     </script>
 </body>
