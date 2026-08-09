@@ -114,8 +114,8 @@
                 <select id="storeSelect" onchange="handleStoreChange()" class="w-full p-2.5 border rounded-xl bg-white font-bold text-gray-800 focus:ring-2 focus:ring-amber-400 outline-none">
                     <option value="maydanbauk">မေဒံပေါက် (ဖက်တန်းရပ်ကွက် Zone A)</option>
                     <option value="shwelatyar">ရွှေလက်ရာထမင်းပေါင်း (ဖက်တန်းရပ်ကွက် Zone A)</option>
-                    <option value="bangkokkitchen">Bangkok Kitchen (မန္တလေးရပ်ကွက် Zone A)</option>
-                    <option value="seoulhouse">Seoul House (ဈေးကြိုရပ်ကွက် Zone B)</option>
+                    <option value="ရွှေလက်ရာမွန်">ရွှေလက်ရာမွန် (မြိုင်သာယာရပ်ကွက် Zone B)</option>
+                    <option value="ဆကာကြီးမုန့်ဟင်းခါး">ဆကာကြီးမုန့်ဟင်းခါး (မြေနီကုန်းရပ်ကွက် Zone C)</option>
                     <option value="tokyosushi">Tokyo Sushi (ရွှေတောင်ရပ်ကွက် Zone A)</option>
                     <option value="shweteahouse">ရွှေမြို့တော် လက်ဖက်ရည်ဆိုင် (မရမ်းကုန်းရပ်ကွက် Zone A)</option>
                 </select>
@@ -676,11 +676,11 @@
 
         const storesData = {
             maydanbauk: { name: 'မေဒံပေါက်', zone: 'A', ward: 'ဖက်တန်းရပ်ကွက်', hasWaitingFee: false },
-            shwelatyar: { name: 'ရွှေလက်ရာထမင်းပေါင်း', zone: 'A', ward: 'ဖက်တန်းရပ်ကွက်', hasWaitingFee: true },
-            bangkokkitchen: { name: 'Bangkok Kitchen', zone: 'A', ward: 'မန္တလေးရပ်ကွက်', hasWaitingFee: false },
-            seoulhouse: { name: 'Seoul House', zone: 'B', ward: 'ဈေးကြိုရပ်ကွက်', hasWaitingFee: false },
+            shwelatyar: { name: 'ရွှေလက်ရာထမင်းပေါင်း', zone: 'A', ward: 'ဖက်တန်းရပ်ကွက်', hasWaitingFee: false },
+            ရွှေလက်ရာမွန်: { name: 'ရွှေလက်ရာမွန်', zone: 'B', ward: 'မြိုင်သာယာရပ်ကွက်', hasWaitingFee: false },
+            ဆကာကြီးမုန့်ဟင်းခါး: { name: 'ဆကာကြီးမုန့်ဟင်းခါး', zone: 'C', ward: 'မြေနီကုန်းရပ်ကွက်', hasWaitingFee: false },
             tokyosushi: { name: 'Tokyo Sushi', zone: 'A', ward: 'ရွှေတောင်ရပ်ကွက်', hasWaitingFee: false },
-            shweteahouse: { name: 'ရွှေမြို့တော် လက်ဖက်ရည်ဆိုင်', zone: 'A', ward: 'မရမ်းကုန်းရပ်ကွက်', hasWaitingFee: false }
+            shweteahouse: { name: 'ရွှေမြို့တော် လက်ဖက်ရည်ဆိုင်', zone: 'A', ward: 'မရမ်းကုန်းရပ်ကွက်', hasWaitingFee: true }
         };
 
         const storeMenus = {
@@ -698,15 +698,87 @@
                 { id: 's2', name: 'ကြက်နှပ်ထမင်းပေါင်း', price: 13000 },
                 { id: 's3', name: 'ဆိတ်သားဟင်းထမင်းပေါင်း', price: 13000 }
             ],
-            bangkokkitchen: [
-                { id: 'bk1', name: 'တုံယမ်းဟင်းချို', price: 9000 },
-                { id: 'bk2', name: 'ဖတ်ထိုင်း (Pad Thai)', price: 7000 },
-                { id: 'bk3', name: 'သင်္ဘောသီးထောင်း', price: 4000 }
+            ရွှေလက်ရာမွန်: [
+                { id: 'sl1', name: 'ကွတ်တီယိုအရည်မဲ(ကြက်)', price: 4500 },
+                 { id: 'sl2', name: 'ကွတ်တီယိုအရည်မဲ(ဝက်)', price: 4500 },
+                { id: 'sl3', name: 'ကွတ်တီယိုအရည်ကြည်(ကြက်)', price: 4000 },
+                { id: 'sl4', name: 'ကွတ်တီယိုအရည်ကြည်(ဝက်)', price: 4000 },
+                { id: 'sl5', name: 'ကွတ်တီယိုအသုပ်(ကြက်)', price: 4000 },
+                 { id: 'sl6', name: 'ကွတ်တီယိုအသုပ်(ဝက်)', price: 4000 },
+                { id: 'sl7', name: 'ကွတ်တီယိုအပြုတ်(ကြက်)', price: 4000 },
+                 { id: 'sl8', name: 'ကွတ်တီယိုအသုပ်(ဝက်)', price: 4000 },
+                { id: 'sl9', name: 'ကွတ်တီယိုအသုပ်(ပင်လယ်စာ)', price: 4500 },
+                { id: 'sl10', name: 'တုံယမ်းကွတ်တီယို(ကြက်)', price: 6000 },
+                { id: 'sl11', name: 'တုံယမ်းကွတ်တီယို(ဝက်)', price: 6000 },
+                { id: 'sl12', name: 'တုံယမ်းမားမားပြုတ်(ကြက်)', price: 6000 },
+                { id: 'sl13', name: 'တုံယမ်းမားမားပြုတ်(ဝက်)', price: 6000 },
+                { id: 'sl14', name: 'ကြက်ခြေထောက်ချဉ်စပ်ပြုတ်', price: 6000 },
+                { id: 'sl15', name: 'ကြက်ဉမွှေကြော်ထမင်းအုပ်', price: 4000 },
+                { id: 'sl16', name: 'ဝက်ခေါက်ကင်ထောင်း', price: 8500 },
+                { id: 'sl17', name: 'သင်္ဘောသီးထောင်း', price: 3500 },
+                { id: 'sl18', name: 'သင်္ဘောသီးထောင်း(ဝက်ခေါက်ကင်)', price: 5500 },
+                { id: 'sl19', name: 'သင်္ဘောသီးထောင်း(ပင်လယ်စာ)', price: 6000 },
+                { id: 'sl20', name: 'မုယောထောင်း', price: 5000 },
+                { id: 'sl21', name: 'ဆိုက်ကော်ထောင်း', price: 5000 },
+                { id: 'sl22', name: 'ကြက်သားလုံးထောင်း', price: 5000 },
+                { id: 'sl23', name: 'မုန့်ဖက်ထောင်း', price: 3500 },
+                { id: 'sl24', name: 'မုန့်ဖက်ထောင်း(ပင်လယ်စာ)', price: 6000 },
+                { id: 'sl25', name: 'ပင်လယ်စာထောင်း', price: 12000 }, 
+                { id: 'sl26', name: 'ပုဇွန်ထောင်း', price: 12000 },
+                 { id: 'sl27', name: 'ကင်မွန်းထောင်း', price: 12000 },
+                { id: 'sl28', name: 'ကြက်ခြေထောက်ထောင်း', price: 5000 },           
+                { id: 'sl29', name: 'အပ်မှိုထောင်း(ပင်လယ်စာ)', price: 6000 },
+               { id: 'sl30', name: 'အပ်မှိုထောင်း(အသားလုံး)', price: 5000 },
+               { id: 'sl31', name: 'ကြာဇံထောင်း(ပင်လယ်စာ)', price: 6000 },
+               { id: 'sl32', name: 'ကြာဇံထောင်း(အသားလုံး)', price: 5000 },
+               { id: 'sl33', name: 'ဖက်ကဖောင်းထမင်း(ကြက်)', price: 5500 },
+               { id: 'sl34', name: 'ဖက်ကဖောင်းထမင်း(ကြက်/ကြက်ဉအုပ်)', price: 6500 },
+               { id: 'sl35', name: 'ဖက်ကဖောင်းထမင်း(ဝက်)', price: 6000 },
+               { id: 'sl36', name: 'ဖက်ကဖောင်းထမင်း(ဝက်/ကြက်ဉအုပ်)', price: 7000 },
+               { id: 'sl37', name: 'ဖက်ကဖောင်းထမင်း(ပင်လယ်စာ)', price: 6500 },
+               { id: 'sl38', name: 'ဖက်ကဖောင်းထမင်း(ပင်လယ်စာ/ကြက်ဉအုပ်)', price: 7500 },
+               { id: 'sl39', name: 'ဖက်ဖစ်ထမင်း(ကြက်)', price: 5500 },
+               { id: 'sl40', name: 'ဖက်ဖစ်ထမင်း(ကြက်/ကြက်ဉအုပ်)', price: 6500 },
+               { id: 'sl41', name: 'ဖက်ဖစ်ထမင်း(ဝက်)', price: 6000 },
+               { id: 'sl42', name: 'ဖက်ဖစ်ထမင်း(ဝက်/ကြက်ဉအုပ်)', price: 7000 },
+               { id: 'sl43', name: 'ဖက်ဖစ်ထမင်း(ပင်လယ်စာ)', price: 6500 },
+               { id: 'sl44', name: 'ဖက်ဖစ်ထမင်း(ပင်လယ်စာ/ကြက်ဉအုပ်)', price: 7500 },
+               { id: 'sl45', name: 'ဆူကီပြုတ်(ကြက်)', price: 5000 },
+               { id: 'sl46', name: 'ဆူကီပြုတ်(ဝက်)', price: 5000 },
+               { id: 'sl47', name: 'ဆူကီပြုတ်(ပင်လယ်စာ)', price: 6000 },
+               { id: 'sl48', name: 'ဆူကီကြော်(ကြက်)', price: 5000 },
+               { id: 'sl49', name: 'ဆူကီကြော်(ဝက်)', price: 5000 },
+               { id: 'sl50', name: 'ဆူကီကြော်(ပင်လယ်စာ)', price: 6000 },
+               { id: 'sl51', name: 'တုံယမ်းဟင်းချို', price: 10000 },
+               { id: 'sl52', name: 'ယိုးဒယားထမင်းကြော်(ကြက်)', price: 6000 },
+               { id: 'sl53', name: 'ယိုးဒယားထမင်းကြော်(ဝက်)', price: 6000 },
+               { id: 'sl54', name: 'ယိုးဒယားထမင်းကြော်(ပင်လယ်စာ)', price: 7000 },
+               { id: 'sl55', name: 'ကြာဇံကြော်(ကြက်)', price: 6500 },
+               { id: 'sl56', name: 'ကြာဇံကြော်(ဝက်)', price: 6500 },
+               { id: 'sl57', name: 'ကြာဇံကြော်(ပင်လယ်စာ)', price: 7000 },
+              { id: 'sl58', name: 'တုံယမ်းထမင်းကြော်(ကြက်)', price: 6000 },
+               { id: 'sl59', name: 'တုံယမ်းထမင်းကြော်(ဝက်)', price: 6000 },
+               { id: 'sl60', name: 'တုံယမ်းထမင်းကြော်(ပင်လယ်စာ)', price: 7000 },
+               { id: 'sl61', name: 'ထမင်းဖြူ', price: 1500 }
             ],
-            seoulhouse: [
-                { id: 'sh1', name: 'ကင်မ်ချီဆူပု', price: 8500 },
-                { id: 'sh2', name: 'တက်ပုကီ (Tteokbokki)', price: 6500 },
-                { id: 'sh3', name: 'ဂင်ဘပ် (Gimbap)', price: 5000 }
+            ဆကာကြီးမုန့်ဟင်းခါး: [
+                { id: 'sg1', name: 'မုန့်ဟင်းခါးအလွတ်', price: 2000 },
+                { id: 'sg2', name: 'ညှပ်ခေါက်ဆွဲအလွတ်', price: 2000 },
+                { id: 'sg3', name: 'အုန်းနို့ခေါက်အလွတ်', price: 2000 },
+               { id: 'sg4', name: 'ပဲကြော်', price: 500 },
+               { id: 'sg5', name: 'အီကြာကွေး', price: 500 },
+               { id: 'sg6', name: 'အိုးဘဲဉ', price: 1000 },
+               { id: 'sg7', name: 'နန်းကြီးသုပ်', price: 4000 },
+               { id: 'sg8', name: 'နန်းပြားသုပ်', price: 4000 },
+                { id: 'sg9', name: 'ခေါက်ဆွဲသုပ်', price: 4000 },
+                { id: 'sg10', name: 'ထမင်းကြော်(ကြက်ဉကြော်)', price: 4000 },
+               { id: 'sg11', name: 'ထမင်းကြော်(ကြက်သားဟင်း)', price: 5000 },
+               { id: 'sg12', name: 'ဇလုံထမင်း(ကြက်ဉကြော်)', price: 4000 },
+               { id: 'sg13', name: 'ဇလုံထမင်း(ကြက်သားဟင်း)', price: 5000 },
+               { id: 'sg14', name: 'ထမင်းဆီဆမ်း(ကြက်ဉကြော်)', price: 4000 },
+               { id: 'sg15', name: 'ထမင်းဆီဆမ်း(ကြက်သားဟင်း)', price: 5000 },
+              { id: 'sg16', name: 'ထမင်းသုပ်(ကြက်ဉကြော်)', price: 4000 },
+               { id: 'sg17', name: 'ထမင်းသုပ်(ကြက်သားဟင်း)', price: 5000 }
             ],
             tokyosushi: [
                 { id: 'ts1', name: 'ဆာရှီမီ ပန်းကန်စုံ', price: 15000 },
