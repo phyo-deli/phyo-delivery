@@ -116,7 +116,7 @@
                     <option value="shwelatyar">ရွှေလက်ရာထမင်းပေါင်း (ဖက်တန်းရပ်ကွက် Zone A)</option>
                     <option value="ရွှေလက်ရာမွန်">ရွှေလက်ရာမွန် (မြိုင်သာယာရပ်ကွက် Zone B)</option>
                     <option value="ဆကာကြီးမုန့်ဟင်းခါး">ဆကာကြီးမုန့်ဟင်းခါး (မြေနီကုန်းရပ်ကွက် Zone C)</option>
-                    <option value="tokyosushi">Tokyo Sushi (ရွှေတောင်ရပ်ကွက် Zone A)</option>
+                    <option value="ကိုနိုင်ကြက်ကင်ဘဲကင်ဝက်ခေါက်ကင်">ကိုနိုင်ကြက်ကင်ဘဲကင်ဝက်ခေါက်ကင် (ဈေးကြိုရပ်ကွက် Zone B)</option>
                     <option value="shweteahouse">ရွှေမြို့တော် လက်ဖက်ရည်ဆိုင် (မရမ်းကုန်းရပ်ကွက် Zone A)</option>
                 </select>
             </div>
@@ -677,9 +677,9 @@
         const storesData = {
             maydanbauk: { name: 'မေဒံပေါက်', zone: 'A', ward: 'ဖက်တန်းရပ်ကွက်', hasWaitingFee: false },
             shwelatyar: { name: 'ရွှေလက်ရာထမင်းပေါင်း', zone: 'A', ward: 'ဖက်တန်းရပ်ကွက်', hasWaitingFee: false },
-            ရွှေလက်ရာမွန်: { name: 'ရွှေလက်ရာမွန်', zone: 'B', ward: 'မြိုင်သာယာရပ်ကွက်', hasWaitingFee: false },
+            ရွှေလက်ရာမွန်ထိုင်းအစားအစာ: { name: 'ရွှေလက်ရာမွန်', zone: 'B', ward: 'မြိုင်သာယာရပ်ကွက်', hasWaitingFee: false },
             ဆကာကြီးမုန့်ဟင်းခါး: { name: 'ဆကာကြီးမုန့်ဟင်းခါး', zone: 'C', ward: 'မြေနီကုန်းရပ်ကွက်', hasWaitingFee: false },
-            tokyosushi: { name: 'Tokyo Sushi', zone: 'A', ward: 'ရွှေတောင်ရပ်ကွက်', hasWaitingFee: false },
+            ကိုနိုင်ကြက်ကင်ဘဲကင်ဝက်ခေါက်ကင်: { name: 'ကိုနိုင်ကြက်ကင်ဘဲကင်ဝက်ခေါက်ကင်', zone: 'B', ward: 'ဈေးကြိုရပ်ကွက်', hasWaitingFee: false },
             shweteahouse: { name: 'ရွှေမြို့တော် လက်ဖက်ရည်ဆိုင်', zone: 'A', ward: 'မရမ်းကုန်းရပ်ကွက်', hasWaitingFee: true }
         };
 
@@ -780,10 +780,14 @@
               { id: 'sg16', name: 'ထမင်းသုပ်(ကြက်ဉကြော်)', price: 4000 },
                { id: 'sg17', name: 'ထမင်းသုပ်(ကြက်သားဟင်း)', price: 5000 }
             ],
-            tokyosushi: [
-                { id: 'ts1', name: 'ဆာရှီမီ ပန်းကန်စုံ', price: 15000 },
-                { id: 'ts2', name: 'ရာမင်ခေါက်ဆွဲ', price: 9500 },
-                { id: 'ts3', name: 'ဆူရှီလိပ်', price: 7000 }
+            ကိုနိုင်ကြက်ကင်ဘဲကင်ဝက်ခေါက်ကင်: [
+                { id: 'kn1', name: 'ကြက်ကင်တစိတ်', price: 9000 },
+                { id: 'kn2', name: 'ကြက်ကင်တခြမ်း', price: 18000 },
+               { id: 'kn3', name: 'ကြက်ကင်တကောင်', price: 35000 },
+               { id: 'kn4', name: 'ဘဲကင်တစိတ်', price: 14000 },
+               { id: 'kn5', name: 'ဘဲကင်တခြမ်း', price: 28000 },
+               { id: 'kn6', name: 'ဘဲကင်တကောင်', price: 55000 },
+               { id: 'kn7', name: 'ဝက်ခေါက်ကင်တပွဲ', price: 10000 }
             ],
             shweteahouse: [
                 { id: 'st1', name: 'လက်ဖက်ရည် (ချိုစိမ့်)', price: 1500 },
