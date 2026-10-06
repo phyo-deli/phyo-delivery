@@ -1209,19 +1209,15 @@
             document.getElementById('partnerMonthlyCount').innerText = `${count} ခု`;
         }
 
-        const PARTNER_PASSWORD = "1234"; 
+        const partnerPasswords = {
+    partner1: "1111", // PC4411 ဆိုင်အတွက် Password
+    partner2: "2222", // DD4264 ဆိုင်အတွက် Password
+    partner3: "3333", // TP1223 ဆိုင်အတွက် Password
+    partner4: "4444"  // KQ4513 ဆိုင်အတွက် Password
+}; 
 
         function switchServiceMode(mode) {
-            if (mode === 'partner') {
-                const inputPassword = prompt("မိတ်ဖက်ဆိုင်များ ဝင်ရောက်ရန် Password ရိုက်ထည့်ပါ -");
-                
-                if (inputPassword !== PARTNER_PASSWORD) {
-                    alert("❌ Password မှားယွင်းနေပါသည်။ မိတ်ဖက်အကွက်သို့ ဝင်ရောက်ခွင့်မရှိပါ။");
-                    return; 
-                }
-            }
-
-            currentMode = mode;
+    currentMode = mode;
             
             const tabFood = document.getElementById('tabFood');
             const tabShopping = document.getElementById('tabShopping');
@@ -1416,22 +1412,39 @@
             calculatePrice();
         }
 
-        function onPartnerStoreChange() {
-            const partnerSelect = document.getElementById('partnerStoreSelect');
-            if (partnerSelect) {
-                const partnerKey = partnerSelect.value;
-                if (partnerStoresData[partnerKey]) {
-                    const pData = partnerStoresData[partnerKey];
-                    const pWardDisp = document.getElementById('partnerWardDisplay');
-                    if (pWardDisp) {
-                        pWardDisp.innerText = `${pData.ward} (Zone ${pData.zone})`;
-                    }
-                }
-            }
+        // ယခင် ရွေးချယ်ထားခဲ့သော ဆိုင်ကို မှတ်ထားရန် Variable
+let previousPartnerStore = 'partner1';
 
-            updatePartnerMonthlyDisplay();
-            calculatePartnerOrders();
+function onPartnerStoreChange() {
+    const partnerSelect = document.getElementById('partnerStoreSelect');
+    if (!partnerSelect) return;
+
+    const selectedPartnerKey = partnerSelect.value; // ရွေးလိုက်သော ဆိုင် (ဥပမာ- partner1, partner2)
+    const correctPassword = partnerPasswords[selectedPartnerKey]; // အဆိုပါဆိုင်၏ မှန်ကန်သော Password
+
+    // ဆိုင်အလိုက် Password မေးခြင်း
+    const inputPassword = prompt(`ရွေးချယ်ထားသော မိတ်ဖက်ဆိုင်၏ Password ရိုက်ထည့်ပါ -`);
+
+    if (inputPassword !== correctPassword) {
+        alert("❌ Password မှားယွင်းနေပါသည်။ ဆိုင်ပြောင်းလဲခွင့် မရှိပါ။");
+        partnerSelect.value = previousPartnerStore; // Password မှားပါက ယခင်ဆိုင်သို့ ပြန်ပြောင်းမည်
+        return;
+    }
+
+    // Password မှန်ပါက ယခင်ဆိုင်နေရာတွင် အသစ်ရွေးလိုက်သော ဆိုင်ကို မှတ်မည်
+    previousPartnerStore = selectedPartnerKey;
+
+    if (partnerStoresData[selectedPartnerKey]) {
+        const pData = partnerStoresData[selectedPartnerKey];
+        const pWardDisp = document.getElementById('partnerWardDisplay');
+        if (pWardDisp) {
+            pWardDisp.innerText = `${pData.ward} (Zone ${pData.zone})`;
         }
+    }
+
+    updatePartnerMonthlyDisplay();
+    calculatePartnerOrders();
+}
 
         function renderMenu() {
             const storeKey = document.getElementById('storeSelect').value;
