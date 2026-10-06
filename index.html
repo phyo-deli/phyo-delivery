@@ -302,28 +302,57 @@
         </section>
 
         <!-- 2. PARCEL SECTION -->
-        <section id="parcelSection" class="hidden bg-white p-4 rounded-2xl shadow-sm border border-amber-100 space-y-4">
-            <h2 class="font-bold text-lg text-gray-800 border-b pb-2 flex items-center gap-2">
-                <i class="fa-solid fa-box-open text-amber-500"></i> ပစ္စည်းသွားယူရမည့် လိပ်စာ (ပေးပို့သူ)
-            </h2>
+<section id="parcelSection" class="hidden space-y-4">
 
-            <div class="grid grid-cols-2 gap-3">
-                <div>
-                    <label class="block text-sm font-bold text-gray-700 mb-1">ပေးပို့သူ အမည်</label>
-                    <input type="text" id="senderName" placeholder="အမည်" class="w-full p-2.5 border rounded-xl text-sm focus:ring-2 focus:ring-amber-400 outline-none bg-white text-gray-800">
-                </div>
-                <div>
-                    <label class="block text-sm font-bold text-gray-700 mb-1">ဖုန်းနံပါတ်</label>
-                    <input type="tel" id="senderPhone" placeholder="09xxxxxxxxx" class="w-full p-2.5 border rounded-xl text-sm focus:ring-2 focus:ring-amber-400 outline-none bg-white text-gray-800">
-                </div>
-            </div>
+    <!-- ၁။ မြို့တွင်း / နယ်ဝေး ရွေးချယ်သည့် သီးသန့် Card Box -->
+    <div class="bg-white p-4 rounded-2xl shadow-sm border border-amber-100 space-y-3">
+        <label class="block text-sm font-bold text-gray-700 flex items-center gap-2">
+            <i class="fa-solid fa-map-location-dot text-amber-500"></i> ပို့ဆောင်မည့် နယ်မြေအမျိုးအစား
+        </label>
+        
+        <select id="parcelDestinationType" onchange="toggleParcelDestination()" class="w-full p-2.5 border rounded-xl bg-white font-bold text-gray-800 focus:ring-2 focus:ring-amber-400 outline-none">
+            <option value="local">မြို့တွင်း ပို့ဆောင်မည်</option>
+            <option value="outstation">နယ်ဝေး ပို့ဆောင်မည်</option>
+        </select>
 
-            <div id="pickupWardParcelBox">
-                <label class="block text-sm font-bold text-gray-700 mb-1">ပစ္စည်းကောက်ယူမည့် ရပ်ကွက်</label>
-                <select id="pickupWardParcel" onchange="calculatePrice()" class="w-full p-2.5 border rounded-xl bg-white font-bold text-gray-800 focus:ring-2 focus:ring-amber-400 outline-none">
-                    <option value="">-- ရပ်ကွက် ရွေးချယ်ပါ --</option>
+        <!-- နယ်ဝေး ရွေးချယ်ပါက ပေါ်လာမည့် အသေးစိတ် Box -->
+        <div id="outstationParcelBox" class="hidden space-y-3 bg-amber-50 p-3 rounded-xl border border-amber-200 mt-2">
+            <div>
+                <label class="block text-sm font-bold text-gray-700 mb-1">နယ်ဝေး ပို့ဆောင်မည့် မြို့နယ်/ပြည်နယ်</label>
+                <select id="outstationCitySelect" onchange="calculatePrice()" class="w-full p-2.5 border rounded-xl bg-white font-bold text-gray-800 focus:ring-2 focus:ring-amber-400 outline-none">
+                    <option value="5000">မုဒုံ (၅,၀၀၀ ကျပ်)</option>
+                    <option value="5000">ချောင်းဆုံ (၅,၀၀၀ ကျပ်)</option>
+                    <option value="5000">ကျိုက်မရော (၅,၀၀၀ ကျပ်)</option>
+                    <option value="6000">ရန်ကုန် (၆,၀၀၀ ကျပ်)</option>
                 </select>
             </div>
+        </div>
+    </div>
+
+    <!-- ၂။ ပစ္စည်းသွားယူရမည့် လိပ်စာ (ပေးပို့သူ) Card Box -->
+    <div class="bg-white p-4 rounded-2xl shadow-sm border border-amber-100 space-y-4">
+        <h2 class="font-bold text-lg text-gray-800 border-b pb-2 flex items-center gap-2">
+            <i class="fa-solid fa-box-open text-amber-500"></i> ပစ္စည်းသွားယူရမည့် လိပ်စာ (ပေးပို့သူ)
+        </h2>
+
+        <!-- ပေးပို့သူ အချက်အလက်များ -->
+        <div class="grid grid-cols-2 gap-3">
+            <div>
+                <label class="block text-sm font-bold text-gray-700 mb-1">ပေးပို့သူ အမည်</label>
+                <input type="text" id="senderName" placeholder="အမည်" class="w-full p-2.5 border rounded-xl text-sm focus:ring-2 focus:ring-amber-400 outline-none bg-white text-gray-800">
+            </div>
+            <div>
+                <label class="block text-sm font-bold text-gray-700 mb-1">ဖုန်းနံပါတ်</label>
+                <input type="tel" id="senderPhone" placeholder="09xxxxxxxxx" class="w-full p-2.5 border rounded-xl text-sm focus:ring-2 focus:ring-amber-400 outline-none bg-white text-gray-800">
+            </div>
+        </div>
+
+        <div id="pickupWardParcelBox">
+            <label class="block text-sm font-bold text-gray-700 mb-1">ပစ္စည်းကောက်ယူမည့် ရပ်ကွက်</label>
+            <select id="pickupWardParcel" onchange="calculatePrice()" class="w-full p-2.5 border rounded-xl bg-white font-bold text-gray-800 focus:ring-2 focus:ring-amber-400 outline-none">
+                <option value="">-- ရပ်ကွက် ရွေးချယ်ပါ --</option>
+            </select>
+        </div>
 
             <div>
                 <div class="flex justify-between items-center mb-1">
@@ -938,7 +967,40 @@
                 if (scheduleBox) scheduleBox.classList.add('hidden');
             }
         }
+function toggleParcelDestination() {
+    const destType = document.getElementById('parcelDestinationType').value;
+    const outstationBox = document.getElementById('outstationParcelBox');
+    const dropWardBox = document.getElementById('dropWard')?.parentElement; // လက်ခံမည့် ရပ်ကွက် Box
+    const generalSpeedBox = document.getElementById('generalSpeedBox'); // ပို့ဆောင်မှုအမြန်နှုန်း Box
 
+    if (destType === 'outstation') {
+        outstationBox.classList.remove('hidden');
+        if (dropWardBox) dropWardBox.classList.add('hidden');
+        if (generalSpeedBox) generalSpeedBox.classList.add('hidden'); // နယ်ဝေးဆိုပါက အမြန်နှုန်း Box ကို ဖျောက်မည်
+    } else {
+        outstationBox.classList.add('hidden');
+        if (dropWardBox) dropWardBox.classList.remove('hidden');
+        if (generalSpeedBox) generalSpeedBox.classList.remove('hidden'); // မြို့တွင်းဆိုပါက အမြန်နှုန်း Box ကို ပြန်ဖော်မည်
+    }
+    calculatePrice(); // ဈေးနှုန်း အသစ်ပြန်တွက်ရန်
+}
+function togglePartnerDestination(i) {
+    const type = document.getElementById(`pDestType_${i}`).value;
+    const localBox = document.getElementById(`pLocalWardBox_${i}`);
+    const outBox = document.getElementById(`pOutstationBox_${i}`);
+    const speedBox = document.getElementById(`pSpeedBox_${i}`); // သီးသန့်ပေးထားသော ID
+
+    if (type === 'outstation') {
+        localBox.classList.add('hidden');
+        outBox.classList.remove('hidden');
+        if (speedBox) speedBox.classList.add('hidden'); // ဖျောက်မည်
+    } else {
+        localBox.classList.remove('hidden');
+        outBox.classList.add('hidden');
+        if (speedBox) speedBox.classList.remove('hidden'); // ပြန်ဖော်မည်
+    }
+    calculatePartnerOrders();
+}
         // Generate Dynamic 10 Partner Orders Form
         function renderPartnerOrdersForm() {
             const container = document.getElementById('partnerOrdersContainer');
@@ -961,13 +1023,34 @@
                                 <label class="block text-xs font-bold text-gray-700 mb-1">လက်ခံမည့်သူဖုန်းနံပါတ်</label>
                                 <input type="tel" id="pPhone_${i}" placeholder="09xxxxxxxxx" class="w-full p-2 border rounded-xl text-xs bg-white">
                             </div>
-                            <div>
-                                <label class="block text-xs font-bold text-gray-700 mb-1">လက်ခံမည့် ရပ်ကွက်</label>
-                                <select id="pWard_${i}" onchange="calculatePartnerOrders()" class="w-full p-2 border rounded-xl text-xs bg-white font-bold">
-                                    <option value="">-- ရပ်ကွက် ရွေးပါ --</option>
-                                    ${getWardOptionsHTML()}
-                                </select>
-                            </div>
+                            <!-- ၁။ နယ်မြေ အမျိုးအစား ရွေးရန် -->
+<div>
+    <label class="block text-xs font-bold text-gray-700 mb-1">နယ်မြေ အမျိုးအစား</label>
+    <select id="pDestType_${i}" onchange="togglePartnerDestination(${i})" class="w-full p-2 border rounded-xl text-xs bg-white font-bold">
+        <option value="local">မြို့တွင်း</option>
+        <option value="outstation">နယ်ဝေး</option>
+    </select>
+</div>
+
+<!-- ၂။ မြို့တွင်း လက်ခံမည့် ရပ်ကွက် Box -->
+<div id="pLocalWardBox_${i}">
+    <label class="block text-xs font-bold text-gray-700 mb-1">လက်ခံမည့် ရပ်ကွက်</label>
+    <select id="pWard_${i}" onchange="calculatePartnerOrders()" class="w-full p-2 border rounded-xl text-xs bg-white font-bold">
+        <option value="">-- ရပ်ကွက် ရွေးပါ --</option>
+        ${getWardOptionsHTML()}
+    </select>
+</div>
+
+<!-- ၃။ နယ်ဝေး မြို့နယ် ရွေးရန် Box (Default မမြင်ရအောင် hidden လုပ်ထားသည်) -->
+<div id="pOutstationBox_${i}" class="hidden">
+    <label class="block text-xs font-bold text-gray-700 mb-1">နယ်ဝေး မြို့နယ် ရွေးရန်</label>
+    <select id="pOutstationCity_${i}" onchange="calculatePartnerOrders()" class="w-full p-2 border rounded-xl text-xs bg-white font-bold">
+        <option value="5000">မုဒုံ (၅,၀၀၀ ကျပ်)</option>
+        <option value="5000">ချောင်းဆုံ (၅,၀၀၀ ကျပ်)</option>
+        <option value="5000">ကျိုက်မရော (၅,၀၀၀ ကျပ်)</option>
+        <option value="6000">ရန်ကုန် (၆,၀၀၀ ကျပ်)</option>
+    </select>
+</div>
                         </div>
 
                         <div>
@@ -999,7 +1082,7 @@
                             </div>
                         </div>
 
-                        <div class="border p-2.5 rounded-xl bg-white/70 space-y-2">
+                        <div id="pSpeedBox_${i}" class="border p-2.5 rounded-xl bg-white/70 space-y-2">
                             <label class="block text-xs font-bold text-amber-900 mb-1">🚀 ပို့ဆောင်မှု အမြန်နှုန်း ရွေးချယ်ပါ</label>
                             <select id="pSpeed_${i}" onchange="onPartnerSpeedChange(${i})" class="w-full p-2 border rounded-xl text-xs bg-white font-bold text-gray-800">
                                 <option value="express">(A) အမြန်ပို့ (Express)</option>
@@ -1118,68 +1201,77 @@
         }
 
         function calculatePartnerOrders() {
-            const partnerKey = document.getElementById('partnerStoreSelect').value;
-            const pZone = partnerStoresData[partnerKey] ? partnerStoresData[partnerKey].zone : 'A';
-            const pWard = partnerStoresData[partnerKey] ? partnerStoresData[partnerKey].ward : '';
+    const partnerKey = document.getElementById('partnerStoreSelect').value;
+    const pZone = partnerStoresData[partnerKey] ? partnerStoresData[partnerKey].zone : 'A';
+    const pWard = partnerStoresData[partnerKey] ? partnerStoresData[partnerKey].ward : '';
 
-            let activeOrdersCount = 0;
-            let grandValueTotal = 0;
-            let grandDeliveryTotal = 0;
-            let grandFinalTotal = 0;
+    let activeOrdersCount = 0;
+    let grandValueTotal = 0;
+    let grandDeliveryTotal = 0;
+    let grandFinalTotal = 0;
 
-            for (let i = 1; i <= 10; i++) {
-                const nameEl = document.getElementById(`pName_${i}`);
-                if (!nameEl) continue;
+    for (let i = 1; i <= 10; i++) {
+        const nameEl = document.getElementById(`pName_${i}`);
+        if (!nameEl) continue;
 
-                const name = nameEl.value.trim();
-                const wardVal = document.getElementById(`pWard_${i}`).value;
-                const itemVal = parseFloat(document.getElementById(`pValue_${i}`).value) || 0;
-                const weightOpt = document.getElementById(`pWeight_${i}`).value;
-                const speedVal = document.getElementById(`pSpeed_${i}`).value;
+        const name = nameEl.value.trim();
+        const destType = document.getElementById(`pDestType_${i}`).value; // နယ်မြေအမျိုးအစား စစ်မည်
+        const wardVal = document.getElementById(`pWard_${i}`).value;
+        const outstationFee = parseFloat(document.getElementById(`pOutstationCity_${i}`).value) || 0; // နယ်ဝေးခ
+        const itemVal = parseFloat(document.getElementById(`pValue_${i}`).value) || 0;
+        const weightOpt = document.getElementById(`pWeight_${i}`).value;
+        const speedVal = document.getElementById(`pSpeed_${i}`).value;
 
-                let deliveryFee = 0;
-                let weightSurcharge = 0;
+        let deliveryFee = 0;
+        let weightSurcharge = 0;
 
-                let calcSpeed = 'express';
-                if (speedVal === 'normal_food' || speedVal === 'normal_item') {
-                    calcSpeed = 'normal';
-                } else if (speedVal === 'slow') {
-                    calcSpeed = 'slow';
-                }
-
-                if (wardVal && pWard) {
-                    const [dWard, dZone] = wardVal.split('|');
-                    const sameWard = (pWard === dWard);
-                    
-                    const priceTable = getPriceByZone(pZone, dZone, sameWard, pWard, dWard);
-                    deliveryFee = priceTable[calcSpeed] || 0;
-
-                    if (speedVal === 'normal_item') {
-                        deliveryFee = Math.max(0, deliveryFee - 500);
-                    }
-                }
-
-                if (weightOpt === '3to8') weightSurcharge = 500;
-                else if (weightOpt === '8to13') weightSurcharge = 1000;
-                else if (weightOpt === 'above13') weightSurcharge = 1500;
-
-                const itemTotal = itemVal + deliveryFee + weightSurcharge;
-
-                document.getElementById(`pDelFeeDisplay_${i}`).innerText = deliveryFee.toLocaleString();
-                document.getElementById(`pWeightDisplay_${i}`).innerText = weightSurcharge.toLocaleString();
-                document.getElementById(`pTotalDisplay_${i}`).innerText = itemTotal.toLocaleString();
-
-                if (name || wardVal || itemVal > 0) {
-                    activeOrdersCount++;
-                    grandValueTotal += itemVal;
-                    grandDeliveryTotal += deliveryFee + weightSurcharge;
-                    grandFinalTotal += itemTotal;
-                }
+        // နယ်ဝေး သို့မဟုတ် မြို့တွင်း အလိုက် ဒလီခ တွက်ချက်ခြင်း
+        if (destType === 'outstation') {
+            deliveryFee = outstationFee; // နယ်ဝေးရွေးထားပါက ရွေးချယ်ထားသော မြို့၏ ဒလီခကို တိုက်ရိုက်ယူမည်
+        } else {
+            // မြို့တွင်း စစ်ဆေးခြင်း
+            let calcSpeed = 'express';
+            if (speedVal === 'normal_food' || speedVal === 'normal_item') {
+                calcSpeed = 'normal';
+            } else if (speedVal === 'slow') {
+                calcSpeed = 'slow';
             }
 
-            document.getElementById('pSummaryTotalOrders').innerText = `${activeOrdersCount} ခု`;
-            document.getElementById('pSummaryTotalValue').innerText = `${grandValueTotal.toLocaleString()} ကျပ်`;
+            if (wardVal && pWard) {
+                const [dWard, dZone] = wardVal.split('|');
+                const sameWard = (pWard === dWard);
+                
+                const priceTable = getPriceByZone(pZone, dZone, sameWard, pWard, dWard);
+                deliveryFee = priceTable[calcSpeed] || 0;
+
+                if (speedVal === 'normal_item') {
+                    deliveryFee = Math.max(0, deliveryFee - 500);
+                }
+            }
         }
+
+        // အလေးချိန် ထပ်ဆောင်းခ တွက်ခြင်း
+        if (weightOpt === '3to8') weightSurcharge = 500;
+        else if (weightOpt === '8to13') weightSurcharge = 1000;
+        else if (weightOpt === 'above13') weightSurcharge = 1500;
+
+        const itemTotal = itemVal + deliveryFee + weightSurcharge;
+
+        document.getElementById(`pDelFeeDisplay_${i}`).innerText = deliveryFee.toLocaleString();
+        document.getElementById(`pWeightDisplay_${i}`).innerText = weightSurcharge.toLocaleString();
+        document.getElementById(`pTotalDisplay_${i}`).innerText = itemTotal.toLocaleString();
+
+        if (name || wardVal || destType === 'outstation' || itemVal > 0) {
+            activeOrdersCount++;
+            grandValueTotal += itemVal;
+            grandDeliveryTotal += deliveryFee + weightSurcharge;
+            grandFinalTotal += itemTotal;
+        }
+    }
+
+    document.getElementById('pSummaryTotalOrders').innerText = `${activeOrdersCount} ခု`;
+    document.getElementById('pSummaryTotalValue').innerText = `${grandValueTotal.toLocaleString()} ကျပ်`;
+}
 
         function getPartnerMonthlyCount(partnerKey) {
             const now = new Date();
@@ -1707,14 +1799,22 @@ let previousPartnerStore = 'partner1';
                 }
             }
 
-            if (dVal && pWard) {
-                const [dWard, dZone] = dVal.split('|');
-                const sameWard = (pWard === dWard);
-                const priceTable = getPriceByZone(pZone, dZone, sameWard, pWard, dWard);
-                baseDeliveryFee = priceTable[speed === 'scheduled' ? 'normal' : speed] || 2500;
-            } else {
-                baseDeliveryFee = 1500; // Default Fee
-            }
+            // နယ်ဝေး စစ်ဆေး၍ ပို့ဆောင်ခ တွက်ချက်ခြင်း
+const parcelDestType = document.getElementById('parcelDestinationType')?.value;
+
+if (currentMode === 'parcel' && parcelDestType === 'outstation') {
+    // နယ်ဝေး ရွေးထားပါက ရွေးချယ်ထားသော မြို့နယ်၏ ပို့ဆောင်ခအတိုင်း ယူမည်
+    baseDeliveryFee = parseFloat(document.getElementById('outstationCitySelect')?.value) || 3000;
+} else {
+    if (dVal && pWard) {
+        const [dWard, dZone] = dVal.split('|');
+        const sameWard = (pWard === dWard);
+        const priceTable = getPriceByZone(pZone, dZone, sameWard, pWard, dWard);
+        baseDeliveryFee = priceTable[speed === 'scheduled' ? 'normal' : speed] || 2500;
+    } else {
+        baseDeliveryFee = 1500; // Default Fee
+    }
+}
 
             let deliveryFeeFinal = baseDeliveryFee;
             const discountRow = document.getElementById('discountRow');
@@ -2007,14 +2107,22 @@ let previousPartnerStore = 'partner1';
                 const shoppingPaymentMethod = shoppingPaymentEl ? shoppingPaymentEl.value : 'cash';
 
                 const rName = document.getElementById('receiverName').value.trim();
-                const rPhone = document.getElementById('receiverPhone').value.trim();
-                const dropWardVal = document.getElementById('dropWard').value;
-                const rAddress = document.getElementById('receiverAddress').value.trim();
+const rPhone = document.getElementById('receiverPhone').value.trim();
+const dropWardVal = document.getElementById('dropWard').value;
+const rAddress = document.getElementById('receiverAddress').value.trim();
+const parcelDestType = document.getElementById('parcelDestinationType').value;
 
-                if (!shopStoreName || !shopStoreWardVal || !shoppingItems) {
-                    alert('ကျေးဇူးပြု၍ ဆိုင်အမည်၊ ဆိုင်ရပ်ကွက် နှင့် ဝယ်ယူလိုသည့် ပစ္စည်းစာရင်း ဖြည့်စွက်ပေးပါ။');
-                    return;
-                }
+if (parcelDestType === 'local') {
+    if (!rName || !rPhone || !dropWardVal) {
+        alert('ကျေးဇူးပြု၍ လက်ခံသူ အချက်အလက်များ နှင့် လက်ခံမည့် ရပ်ကွက် ရွေးချယ်ပေးပါ။');
+        return;
+    }
+} else if (parcelDestType === 'outstation') {
+    if (!rName || !rPhone) {
+        alert('ကျေးဇူးပြု၍ လက်ခံသူ အမည်နှင့် ဖုန်းနံပါတ် ဖြည့်ပေးပါ။');
+        return;
+    }
+}
 
                 if (!rName || !rPhone || !dropWardVal) {
                     alert('ကျေးဇူးပြု၍ လက်ခံသူ အချက်အလက်များ နှင့် လက်ခံမည့် ရပ်ကွက် ရွေးချယ်ပေးပါ။');
@@ -2195,11 +2303,21 @@ let previousPartnerStore = 'partner1';
                 const delFeeStr = document.getElementById('deliveryFee').innerText;
                 const grandTotalStr = document.getElementById('grandTotal').innerText;
 
-                viberMsg = `📦 [ ပစ္စည်းပို့ဆောင်ခိုင်းသည့် အော်ဒါ ]\n`;
-                viberMsg += `👤 ပေးပို့သူ: ${sName} (${sPhone})\n`;
-                viberMsg += `📍 သွားယူရမည့်လိပ်စာ: ${pWard} ${sAddress ? '(' + sAddress + ')' : ''}\n\n`;
-                viberMsg += `🏠 လက်ခံသူ: ${rName} (${rPhone})\n`;
-                viberMsg += `📍 ပို့ဆောင်ရမည့်လိပ်စာ: ${dWard} ${rAddress ? '(' + rAddress + ')' : ''}\n\n`;
+               const outstationSelect = document.getElementById('outstationCitySelect');
+const selectedCityText = outstationSelect ? outstationSelect.options[outstationSelect.selectedIndex].text : '';
+const outstationAddressDetail = document.getElementById('outstationAddressDetail').value.trim();
+
+viberMsg = `📦 [ ပစ္စည်းပို့ဆောင်ခိုင်းသည့် အော်ဒါ ]\n`;
+viberMsg += `📌 နယ်မြေ: ${parcelDestType === 'outstation' ? 'နယ်ဝေးပို့ဆောင်မည်' : 'မြို့တွင်းပို့ဆောင်မည်'}\n`;
+viberMsg += `👤 ပေးပို့သူ: ${sName} (${sPhone})\n`;
+viberMsg += `📍 သွားယူရမည့်လိပ်စာ: ${pWard} ${sAddress ? '(' + sAddress + ')' : ''}\n\n`;
+viberMsg += `🏠 လက်ခံသူ: ${rName} (${rPhone})\n`;
+if (parcelDestType === 'outstation') {
+    viberMsg += `🏙️ ပို့ဆောင်မည့်မြို့: ${selectedCityText}\n`;
+    viberMsg += `📍 အသေးစိတ်လိပ်စာ: ${outstationAddressDetail || '-'}\n\n`;
+} else {
+    viberMsg += `📍 ပို့ဆောင်ရမည့်လိပ်စာ: ${dWard} ${rAddress ? '(' + rAddress + ')' : ''}\n\n`;
+}
                 viberMsg += `⚖️ အလေးချိန်: ${weightText}\n`;
                 viberMsg += `📐 အရွယ်အစား: ${sizeText}\n`;
                 viberMsg += `🚀 အမြန်နှုန်း: ${speedText}\n`;
@@ -2217,12 +2335,13 @@ let previousPartnerStore = 'partner1';
         }
 
         window.onload = function() {
-            initWards();
-            renderPartnerOrdersForm();
-            handleStoreChange();
-            updateNormalScheduleOptions();
-            setInterval(updateNormalScheduleOptions, 60000);
-        };
+    initWards();
+    renderPartnerOrdersForm();
+    handleStoreChange();
+    toggleParcelDestination(); // နယ်ဝေး/မြို့တွင်း UI အခြေအနေကို စတင်ချိန်မှာ စစ်ဆေးပေးမည်
+    updateNormalScheduleOptions();
+    setInterval(updateNormalScheduleOptions, 60000);
+};
     </script>
 </body>
 </html>
