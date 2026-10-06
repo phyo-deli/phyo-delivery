@@ -417,14 +417,19 @@
             </h2>
 
             <div>
-                <label class="block text-sm font-bold text-gray-700 mb-1">မိမိ မိတ်ဖက်ဆိုင် ရွေးချယ်ပါ</label>
-                <select id="partnerStoreSelect" onchange="onPartnerStoreChange()" class="w-full p-2.5 border rounded-xl bg-white font-bold text-gray-800 focus:ring-2 focus:ring-amber-400 outline-none">
-                    <option value="partner1">PC4411 (Zone B)</option>
-                    <option value="partner2">DD4264 (Zone B)</option>
-                    <option value="partner3">TP1223 (Zone B)</option>
-                    <option value="partner4">KQ4513 (Zone A)</option>
-                </select>
-            </div>
+    <label class="block text-sm font-bold text-gray-700 mb-1">မိမိ မိတ်ဖက်ဆိုင်၏ Code/Password ရိုက်ထည့်ပါ</label>
+    <div class="flex gap-2">
+        <input type="password" id="partnerCodeInput" placeholder="ဥပမာ- PC4411 သို့မဟုတ် Password" class="w-full p-2.5 border rounded-xl bg-white font-bold text-gray-800 focus:ring-2 focus:ring-amber-400 outline-none">
+        <button type="button" onclick="loginPartnerStore()" class="bg-amber-500 hover:bg-amber-600 text-gray-900 font-bold px-5 py-2.5 rounded-xl text-sm whitespace-nowrap shadow">
+            ဝင်ရောက်မည်
+        </button>
+    </div>
+    <div id="loggedPartnerName" class="hidden mt-2 font-bold text-emerald-700 text-sm">
+        ✅ လက်ရှိဝင်ရောက်ထားသောဆိုင် - <span id="partnerStoreDisplayName"></span>
+    </div>
+</div>
+<!-- JS Logic အတွက် Hidden Input သုံးထားခြင်း -->
+<input type="hidden" id="partnerStoreSelect" value="partner1">
 
             <!-- မိတ်ဖက်ဆိုင် ရပ်ကွက် အလိုအလျောက် ပေါ်လာမည့် Box -->
             <div id="partnerStoreWardBox" class="bg-amber-100 p-2.5 rounded-xl border border-amber-300 font-bold text-amber-900 text-sm flex items-center gap-2">
@@ -668,10 +673,10 @@
         let baseDeliveryFee = 0;
 
         const partnerStoresData = {
-            partner1: { name: 'PC4411', zone: 'B', ward: 'မြိုင်သာယာရပ်ကွက်' },
-            partner2: { name: 'DD4264', zone: 'B', ward: 'ဇေယျာမြိုင်ရပ်ကွက်' },
-            partner3: { name: 'TP1223', zone: 'C', ward: 'ဈေးကြိုရပ်ကွက်' },
-            partner4: { name: 'KQ4513', zone: 'A', ward: 'ရွှေတောင်ရပ်ကွက်' }
+            partner1: { name: 'မစုလွင်(SL)', zone: 'B', ward: 'မြိုင်သာယာရပ်ကွက်' },
+            partner2: { name: 'Do Do', zone: 'B', ward: 'ဇေယျာမြိုင်ရပ်ကွက်' },
+            partner3: { name: 'Ngu Wah Ko', zone: 'B', ward: 'မြိုင်သာယာရပ်ကွက်' },
+            partner4: { name: 'Crystal Gift Shop', zone: 'B', ward: 'သီရီမြိုင်ရပ်ကွက်' }
         };
 
         const storesData = {
@@ -1209,12 +1214,47 @@
             document.getElementById('partnerMonthlyCount').innerText = `${count} ခု`;
         }
 
+        // ဆိုင်အလိုက် Password/Code ဇယား
         const partnerPasswords = {
-    partner1: "1111", // PC4411 ဆိုင်အတွက် Password
-    partner2: "2222", // DD4264 ဆိုင်အတွက် Password
-    partner3: "3333", // TP1223 ဆိုင်အတွက် Password
-    partner4: "4444"  // KQ4513 ဆိုင်အတွက် Password
-}; 
+            "SL8719": "partner1",
+            "DD4264": "partner2",
+            "NWK6489": "partner3",
+            "CGS0428": "partner4"
+        };
+
+        function loginPartnerStore() {
+            const inputCode = document.getElementById('partnerCodeInput').value.trim();
+            const matchedPartnerKey = partnerPasswords[inputCode];
+
+            if (!matchedPartnerKey) {
+                alert("❌ မှားယွင်းသော ဆိုင် Code/Password ဖြစ်ပါသည်။ ပြန်လည်စစ်ဆေးပါ။");
+                return;
+            }
+
+            // စကားဝှက်မှန်ပါက Hidden Selected Value ကို ပြောင်းမည်
+            document.getElementById('partnerStoreSelect').value = matchedPartnerKey;
+
+            const pData = partnerStoresData[matchedPartnerKey];
+            if (pData) {
+                // ဆိုင်အမည်ကို UI တွင် ဖော်ပြပေးမည်
+                document.getElementById('partnerStoreDisplayName').innerText = `${pData.name} (${pData.ward})`;
+                document.getElementById('loggedPartnerName').classList.remove('hidden');
+                
+                const pWardDisp = document.getElementById('partnerWardDisplay');
+                if (pWardDisp) {
+                    pWardDisp.innerText = `${pData.ward} (Zone ${pData.zone})`;
+                }
+            }
+
+            alert(`✅ ${pData.name} ဆိုင်အဖြစ် အောင်မြင်စွာ ဝင်ရောက်ပြီးပါပြီ။`);
+
+            updatePartnerMonthlyDisplay();
+            calculatePartnerOrders();
+        }
+
+        function onPartnerStoreChange() {
+            loginPartnerStore();
+        }
 
         function switchServiceMode(mode) {
     currentMode = mode;
@@ -1415,36 +1455,39 @@
         // ယခင် ရွေးချယ်ထားခဲ့သော ဆိုင်ကို မှတ်ထားရန် Variable
 let previousPartnerStore = 'partner1';
 
-function onPartnerStoreChange() {
-    const partnerSelect = document.getElementById('partnerStoreSelect');
-    if (!partnerSelect) return;
+        function onPartnerStoreChange(isUserAction = false) {
+            const partnerSelect = document.getElementById('partnerStoreSelect');
+            if (!partnerSelect) return;
 
-    const selectedPartnerKey = partnerSelect.value; // ရွေးလိုက်သော ဆိုင် (ဥပမာ- partner1, partner2)
-    const correctPassword = partnerPasswords[selectedPartnerKey]; // အဆိုပါဆိုင်၏ မှန်ကန်သော Password
+            // သုံးစွဲသူမှ ကိုယ်တိုင် Dropdown ကို ပြောင်းလဲနှိပ်မှသာ Password တောင်းမည်
+            if (isUserAction) {
+                const selectedPartnerKey = partnerSelect.value;
+                const correctPassword = partnerPasswords[selectedPartnerKey];
 
-    // ဆိုင်အလိုက် Password မေးခြင်း
-    const inputPassword = prompt(`ရွေးချယ်ထားသော မိတ်ဖက်ဆိုင်၏ Password ရိုက်ထည့်ပါ -`);
+                const inputPassword = prompt(`ရွေးချယ်ထားသော မိတ်ဖက်ဆိုင်၏ Password ရိုက်ထည့်ပါ -`);
 
-    if (inputPassword !== correctPassword) {
-        alert("❌ Password မှားယွင်းနေပါသည်။ ဆိုင်ပြောင်းလဲခွင့် မရှိပါ။");
-        partnerSelect.value = previousPartnerStore; // Password မှားပါက ယခင်ဆိုင်သို့ ပြန်ပြောင်းမည်
-        return;
-    }
+                if (inputPassword !== correctPassword) {
+                    alert("❌ Password မှားယွင်းနေပါသည်။ ဆိုင်ပြောင်းလဲခွင့် မရှိပါ။");
+                    partnerSelect.value = previousPartnerStore; // Password မှားပါက ယခင်ဆိုင်သို့ ပြန်ပြောင်းမည်
+                    return;
+                }
 
-    // Password မှန်ပါက ယခင်ဆိုင်နေရာတွင် အသစ်ရွေးလိုက်သော ဆိုင်ကို မှတ်မည်
-    previousPartnerStore = selectedPartnerKey;
+                // Password မှန်ပါက ယခင်ဆိုင်နေရာတွင် အသစ်ရွေးလိုက်သော ဆိုင်ကို မှတ်မည်
+                previousPartnerStore = selectedPartnerKey;
+            }
 
-    if (partnerStoresData[selectedPartnerKey]) {
-        const pData = partnerStoresData[selectedPartnerKey];
-        const pWardDisp = document.getElementById('partnerWardDisplay');
-        if (pWardDisp) {
-            pWardDisp.innerText = `${pData.ward} (Zone ${pData.zone})`;
+            const partnerKey = partnerSelect.value;
+            if (partnerStoresData[partnerKey]) {
+                const pData = partnerStoresData[partnerKey];
+                const pWardDisp = document.getElementById('partnerWardDisplay');
+                if (pWardDisp) {
+                    pWardDisp.innerText = `${pData.ward} (Zone ${pData.zone})`;
+                }
+            }
+
+            updatePartnerMonthlyDisplay();
+            calculatePartnerOrders();
         }
-    }
-
-    updatePartnerMonthlyDisplay();
-    calculatePartnerOrders();
-}
 
         function renderMenu() {
             const storeKey = document.getElementById('storeSelect').value;
@@ -2177,7 +2220,6 @@ function onPartnerStoreChange() {
             initWards();
             renderPartnerOrdersForm();
             handleStoreChange();
-            onPartnerStoreChange();
             updateNormalScheduleOptions();
             setInterval(updateNormalScheduleOptions, 60000);
         };
