@@ -1,6 +1,56 @@
 <!DOCTYPE html>
-<html lang="my">
+<html>
+
 <head>
+    <title>Downloaded HTML</title>
+</head>
+
+<body>
+    <pre style="white-space: pre-wrap; word-wrap: break-word;">
+
+
+
+    <title>Downloaded HTML</title></pre>
+    <pre style="white-space: pre-wrap; word-wrap: break-word;">
+
+
+
+    <title>Downloaded HTML</title>
+
+
+
+    <pre style="white-space: pre-wrap; word-wrap: break-word;">
+
+
+    <title>Downloaded HTML</title></pre><br>
+    <pre style="white-space: pre-wrap; word-wrap: break-word;">
+
+
+    <title>Downloaded HTML</title>
+
+
+
+    <pre style="white-space: pre-wrap; word-wrap: break-word;">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ဖြိုး လျင်မြန်စွာပို့ဆောင်ရေး</title>
+    
+    <!-- Tailwind CSS & FontAwesome -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body { 
+            font-family: 'Padauk', sans-serif; 
+        }
+        select option {
+            background-color: #ffffff !important;
+            color: #1f2937 !important;
+            padding: 8px;
+        }
+    </style></pre><br><br>
+    <pre style="white-space: pre-wrap; word-wrap: break-word;">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ဖြိုး လျင်မြန်စွာပို့ဆောင်ရေး</title>
@@ -20,16 +70,16 @@
             padding: 8px;
         }
     </style>
-</head>
 
-<body class="m-0 p-0 bg-amber-50 min-h-screen text-gray-800 pt-28">
+
+
 
     <!-- Fixed Navbar -->
     <nav class="fixed top-0 left-0 right-0 w-full bg-amber-500 text-gray-900 px-4 py-3 shadow-md z-50">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="flex items-center gap-3">
                 <div class="w-10 h-10 rounded-full bg-white p-0.5 shadow flex items-center justify-center overflow-hidden shrink-0">
-                    <img src="IMG_20260722_064009_075-removebg-preview.png" alt="Phyo Delivery Logo" class="w-full h-full object-contain" onerror="this.onerror=null; this.parentElement.innerHTML='<i class=\'fa-solid fa-truck-fast text-base text-amber-600\'></i>';">
+                    <img src="IMG_20260722_064009_075-removebg-preview.png" alt="Phyo Delivery Logo" class="w-full h-full object-contain" onerror="this.onerror=null; this.parentElement.innerHTML='&lt;i class=\'fa-solid fa-truck-fast text-base text-amber-600\'&gt;&lt;/i&gt;';">
                 </div>
                 <h1 class="text-xl sm:text-2xl md:text-3xl font-bold flex items-center text-gray-900 leading-tight">
                     ဖြိုး လျင်မြန်စွာပို့ဆောင်ရေး
@@ -37,7 +87,7 @@
             </div>
 
             <button id="cartBtn" onclick="toggleCart()" class="relative bg-amber-900 hover:bg-amber-950 text-white text-base sm:text-lg px-6 py-2.5 rounded-full font-bold flex items-center gap-3 transition shadow">
-                <i class="fa-solid fa-shopping-cart text-xl"></i>
+                
                 <span>ခြင်းတောင်း</span>
                 <span id="cartCount" class="bg-white text-amber-800 px-3 py-1 rounded-full text-sm sm:text-base font-bold ml-2">0</span>
             </button>
@@ -67,15 +117,15 @@
             
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-4">
                 <a href="tel:09978730790" class="flex items-center justify-center gap-2 bg-amber-50 hover:bg-amber-100 text-amber-800 p-3 rounded-xl border border-amber-200 transition font-bold text-sm">
-                    <i class="fa-solid fa-phone text-base"></i>
+                    
                     <span>09978730790</span>
                 </a>
-                <a href="viber://chat?number=%2B959978730790" class="flex items-center justify-center gap-2 bg-purple-50 hover:bg-purple-100 text-purple-800 p-3 rounded-xl border border-purple-200 transition font-bold text-sm">
-                    <i class="fa-brands fa-viber text-lg"></i>
+                <a href="viber://chat?number=+959978730790" class="flex items-center justify-center gap-2 bg-purple-50 hover:bg-purple-100 text-purple-800 p-3 rounded-xl border border-purple-200 transition font-bold text-sm">
+                    
                     <span>Viber Chat</span>
                 </a>
                 <a href="https://t.me/phyo_delivery" target="_blank" class="flex items-center justify-center gap-2 bg-sky-50 hover:bg-sky-100 text-sky-700 p-3 rounded-xl border border-sky-200 transition font-bold text-sm">
-                    <i class="fa-brands fa-telegram text-lg"></i>
+                    
                     <span>Telegram Chat</span>
                 </a>
             </div>
@@ -83,30 +133,31 @@
 
         <!-- Main Menu Tabs -->
         <div class="max-w-3xl mx-auto bg-amber-100/60 p-3 rounded-2xl border border-amber-200 shadow-sm">
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                <button id="tabFood" onclick="switchServiceMode('food')" class="flex items-center justify-center gap-2 py-3 px-2 rounded-xl font-bold text-xs sm:text-sm bg-amber-500 text-white shadow-md transition-all">
-                    <i class="fa-solid fa-utensils"></i>
-                    <span>စားသောက်ဆိုင်</span>
-                </button>
-                <button id="tabShopping" onclick="switchServiceMode('shopping')" class="flex items-center justify-center gap-2 py-3 px-2 rounded-xl font-bold text-xs sm:text-sm bg-white text-gray-800 hover:bg-amber-50 transition-all border border-amber-200">
-                    <i class="fa-solid fa-cart-shopping text-amber-600"></i>
-                    <span>ဈေး/ကုန်စုံ ဝယ်ခိုင်းမည်</span>
-                </button>
-                <button id="tabParcel" onclick="switchServiceMode('parcel')" class="flex items-center justify-center gap-2 py-3 px-2 rounded-xl font-bold text-xs sm:text-sm bg-white text-gray-800 hover:bg-amber-50 transition-all border border-amber-200">
-                    <i class="fa-solid fa-box text-amber-600"></i>
-                    <span>ပစ္စည်းပို့ဆောင်မည်</span>
-                </button>
-                <button id="tabPartner" onclick="switchServiceMode('partner')" class="flex items-center justify-center gap-2 py-3 px-2 rounded-xl font-bold text-xs sm:text-sm bg-white text-gray-800 hover:bg-amber-50 transition-all border border-amber-200">
-                    <i class="fa-solid fa-handshake text-amber-600"></i>
-                    <span>မိတ်ဖက်ဆိုင်များ</span>
-                </button>
-            </div>
-        </div>
+    <div class="grid grid-cols-2 sm:grid-cols-5 gap-2">
+        <button id="tabFood" onclick="switchServiceMode('food')" class="...">
+             <span>စားသောက်ဆိုင်</span>
+        </button>
+        <button id="tabShopping" onclick="switchServiceMode('shopping')" class="...">
+             <span>ဈေး/ကုန်စုံ</span>
+        </button>
+        <button id="tabParcel" onclick="switchServiceMode('parcel')" class="...">
+             <span>ပစ္စည်းပို့</span>
+        </button>
+        <!-- ယာဉ်ငှားရမ်းခြင်း Tab အသစ် -->
+        <button id="tabRental" onclick="switchServiceMode('rental')" class="flex items-center justify-center gap-2 py-3 px-2 rounded-xl font-bold text-xs sm:text-sm bg-white text-gray-800 hover:bg-amber-50 transition-all border border-amber-200">
+            
+            <span>ယာဉ်မျိုးစုံ ငှားမည်</span>
+        </button>
+        <button id="tabPartner" onclick="switchServiceMode('partner')" class="...">
+             <span>မိတ်ဖက်ဆိုင်များ</span>
+        </button>
+    </div>
+</div>
 
         <!-- 1. FOOD SECTION -->
         <section id="foodSection" class="bg-white p-4 rounded-2xl shadow-sm border border-amber-100 space-y-4">
             <h2 class="font-bold text-lg text-gray-800 border-b pb-2 flex items-center gap-2">
-                <i class="fa-solid fa-utensils text-amber-500"></i> စားသောက်ဆိုင် ရွေးချယ်ရန်
+                 စားသောက်ဆိုင် ရွေးချယ်ရန်
             </h2>
             
             <div>
@@ -123,7 +174,7 @@
 
             <!-- ရပ်ကွက် အလိုအလျောက် ပေါ်လာမည့် Box -->
             <div id="storeWardBox" class="bg-amber-100 p-2.5 rounded-xl border border-amber-300 font-bold text-amber-900 text-sm flex items-center gap-2">
-                <i class="fa-solid fa-location-dot text-amber-600"></i>
+                
                 <span>ပစ္စည်းကောက်ယူရမည့် ရပ်ကွက် - <strong id="storeWardDisplay">ဖက်တန်းရပ်ကွက် (Zone A)</strong></span>
             </div>
 
@@ -133,7 +184,8 @@
 
             <div>
                 <h3 class="font-bold text-sm text-gray-700 mb-2">မီနူးများ</h3>
-                <div id="menuList" class="grid grid-cols-1 gap-2.5"></div>
+                <div id="menuList" class="grid grid-cols-1 gap-2.5">
+</div>
             </div>
 
             <div>
@@ -146,7 +198,7 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <label class="border-2 rounded-xl p-3 flex items-center justify-between cursor-pointer transition hover:border-amber-400 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50">
                         <span class="font-bold text-sm text-gray-800">💵 ကုန်ဖိုးနှင့် ဒလီခအား ငွေသားဖြင့် ပေးချေမည်</span>
-                        <input type="radio" name="foodPaymentMethod" value="cash" checked class="accent-amber-500">
+                        <input type="radio" name="foodPaymentMethod" value="cash" checked="true" class="accent-amber-500">
                     </label>
                     <label class="border-2 rounded-xl p-3 flex items-center justify-between cursor-pointer transition hover:border-amber-400 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50">
                         <span class="font-bold text-sm text-gray-800">📱 ကုန်ဖိုးနှင့် ဒလီခအား Kpay/Wave ဖြင့် ပေးချေမည်</span>
@@ -159,7 +211,7 @@
         <!-- 4. SHOPPING SECTION -->
         <section id="shoppingSection" class="hidden bg-white p-4 rounded-2xl shadow-sm border border-amber-100 space-y-4">
             <h2 class="font-bold text-lg text-gray-800 border-b pb-2 flex items-center gap-2">
-                <i class="fa-solid fa-cart-shopping text-amber-500"></i> ဈေး/ကုန်စုံ ဝယ်ယူရမည့် အချက်အလက်
+                 ဈေး/ကုန်စုံ ဝယ်ယူရမည့် အချက်အလက်
             </h2>
 
             <!-- ၁။ ဝယ်ယူရမည့် အမျိုးအစား (Shopping Type Option) -->
@@ -171,7 +223,7 @@
                             <span class="font-bold text-sm text-gray-800">🍜 အဆင်သင့်ရ စားသောက်ဆိုင်</span>
                             <span class="text-xs text-emerald-600 font-bold">ဝယ်ယူရေး ဝန်ဆောင်ခ = ၀ ကျပ်</span>
                         </div>
-                        <input type="radio" name="shoppingType" value="ready_food" checked onchange="calculatePrice()" class="accent-amber-500">
+                        <input type="radio" name="shoppingType" value="ready_food" checked="true" onchange="calculatePrice()" class="accent-amber-500">
                     </label>
                     <label class="border-2 rounded-xl p-3 flex items-center justify-between cursor-pointer transition hover:border-amber-400 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50">
                         <div class="flex flex-col">
@@ -215,7 +267,7 @@
             <!-- ဝယ်ယူလိုသည့် ပစ္စည်းများ -->
             <div class="space-y-3">
                 <h3 class="font-bold text-md text-amber-800 flex items-center gap-1.5">
-                    <i class="fa-solid fa-list-check"></i> ဝယ်ယူလိုသည့် ပစ္စည်းများ
+                     ဝယ်ယူလိုသည့် ပစ္စည်းများ
                 </h3>
 
                 <div>
@@ -249,14 +301,14 @@
             <!-- ပို့ဆောင်ပေးရမည့် အချိန်သတ်မှတ်ချက် -->
             <div class="space-y-3">
                 <h3 class="font-bold text-md text-amber-800 flex items-center gap-1.5">
-                    <i class="fa-solid fa-clock"></i> ပို့ဆောင်ပေးရမည့် အချိန်သတ်မှတ်ချက်
+                     ပို့ဆောင်ပေးရမည့် အချိန်သတ်မှတ်ချက်
                 </h3>
 
                 <div>
                     <label class="block text-sm font-bold text-gray-700 mb-2">ပို့ဆောင်မှု အမြန်နှုန်း</label>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
                         <label class="border-2 rounded-xl p-2.5 flex flex-col items-center cursor-pointer transition hover:border-amber-400 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50">
-                            <input type="radio" name="shoppingSpeed" value="express" checked onchange="toggleShoppingSpeedNotice(); calculatePrice();" class="accent-amber-500 mb-1">
+                            <input type="radio" name="shoppingSpeed" value="express" checked="true" onchange="toggleShoppingSpeedNotice(); calculatePrice();" class="accent-amber-500 mb-1">
                             <span class="font-bold text-xs text-gray-800">အမြန် (Express)</span>
                         </label>
                         <label class="border-2 rounded-xl p-2.5 flex flex-col items-center cursor-pointer transition hover:border-amber-400 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50">
@@ -291,7 +343,7 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <label class="border-2 rounded-xl p-3 flex items-center justify-between cursor-pointer transition hover:border-amber-400 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50">
                         <span class="font-bold text-sm text-gray-800">💵 ငွေသားဖြင့် ပေးချေမည် (Cash on Delivery)</span>
-                        <input type="radio" name="shoppingPaymentMethod" value="cash" checked class="accent-amber-500">
+                        <input type="radio" name="shoppingPaymentMethod" value="cash" checked="true" class="accent-amber-500">
                     </label>
                     <label class="border-2 rounded-xl p-3 flex items-center justify-between cursor-pointer transition hover:border-amber-400 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50">
                         <span class="font-bold text-sm text-gray-800">📱 KPay / Wave Money ဖြင့် ပေးချေမည်</span>
@@ -307,7 +359,7 @@
     <!-- ၁။ မြို့တွင်း / နယ်ဝေး ရွေးချယ်သည့် သီးသန့် Card Box -->
     <div class="bg-white p-4 rounded-2xl shadow-sm border border-amber-100 space-y-3">
         <label class="block text-sm font-bold text-gray-700 flex items-center gap-2">
-            <i class="fa-solid fa-map-location-dot text-amber-500"></i> ပို့ဆောင်မည့် နယ်မြေအမျိုးအစား
+             ပို့ဆောင်မည့် နယ်မြေအမျိုးအစား
         </label>
         
         <select id="parcelDestinationType" onchange="toggleParcelDestination()" class="w-full p-2.5 border rounded-xl bg-white font-bold text-gray-800 focus:ring-2 focus:ring-amber-400 outline-none">
@@ -332,7 +384,7 @@
     <!-- ၂။ ပစ္စည်းသွားယူရမည့် လိပ်စာ (ပေးပို့သူ) Card Box -->
     <div class="bg-white p-4 rounded-2xl shadow-sm border border-amber-100 space-y-4">
         <h2 class="font-bold text-lg text-gray-800 border-b pb-2 flex items-center gap-2">
-            <i class="fa-solid fa-box-open text-amber-500"></i> ပစ္စည်းသွားယူရမည့် လိပ်စာ (ပေးပို့သူ)
+             ပစ္စည်းသွားယူရမည့် လိပ်စာ (ပေးပို့သူ)
         </h2>
 
         <!-- ပေးပို့သူ အချက်အလက်များ -->
@@ -358,8 +410,8 @@
                 <div class="flex justify-between items-center mb-1">
                     <label class="block text-sm font-bold text-gray-700">ပစ္စည်းကောက်ယူမည့် အသေးစိတ်လိပ်စာ</label>
                     <button type="button" onclick="getGPSLocation('senderAddress')" class="text-xs text-amber-600 font-bold hover:underline flex items-center gap-1">
-                        <i class="fa-solid fa-location-crosshairs"></i> GPS တည်နေရာယူမည်
-                    </button>
+    📍 GPS တည်နေရာယူမည်
+</button>
                 </div>
                 <textarea id="senderAddress" placeholder="လမ်းအမည်၊ အိမ်နံပါတ် စသည်ဖြင့် အသေးစိတ် ရေးပါ" class="w-full p-2.5 border rounded-xl text-sm focus:ring-2 focus:ring-amber-400 outline-none bg-white text-gray-800" rows="2"></textarea>
             </div>
@@ -393,7 +445,7 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <label class="border-2 rounded-xl p-3 flex items-center justify-between cursor-pointer transition hover:border-amber-400 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50">
                         <span class="font-bold text-sm text-gray-800">💵 ကုန်ဖိုး/ဒလီ ငွေသားဖြင့် ပေးချေမည်</span>
-                        <input type="radio" name="parcelPaymentMethod" value="cash" checked class="accent-amber-500">
+                        <input type="radio" name="parcelPaymentMethod" value="cash" checked="true" class="accent-amber-500">
                     </label>
                     <label class="border-2 rounded-xl p-3 flex items-center justify-between cursor-pointer transition hover:border-amber-400 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50">
                         <span class="font-bold text-sm text-gray-800">📱 ကုန်ဖိုး/ဒလီခအား Kpay/Wave ဖြင့် ပေးချေမည်</span>
@@ -407,7 +459,7 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <label class="border-2 rounded-xl p-3 flex items-center justify-between cursor-pointer transition hover:border-amber-400 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50">
                         <span class="font-bold text-sm text-gray-800">📦 (၁) ကုန်ဖိုးနှင့် ဒလီခအား ကုန်ပစ္စည်းလက်ခံသူထံတွင် ကောက်ခံရမည်</span>
-                        <input type="radio" name="parcelCollectMethod" value="collect_both" checked class="accent-amber-500">
+                        <input type="radio" name="parcelCollectMethod" value="collect_both" checked="true" class="accent-amber-500">
                     </label>
                     <label class="border-2 rounded-xl p-3 flex items-center justify-between cursor-pointer transition hover:border-amber-400 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50">
                         <span class="font-bold text-sm text-gray-800">🚚 (၂) ကုန်ဖိုးကောက်ရန်မလိုပါ။ ဒလီခအား ကုန်ပစ္စည်းလက်ခံသူထံတွင် ကောက်ခံရမည်</span>
@@ -437,12 +489,12 @@
                 <label class="block text-sm font-bold text-gray-700 mb-1">ကုန်ပစ္စည်း သီးခြားမှတ်ချက်</label>
                 <textarea id="parcelNote" placeholder="ပစ္စည်းအမျိုးအစား သို့မဟုတ် သတိထားရမည့် အချက်များ ရေးပါ" class="w-full p-2.5 border rounded-xl text-sm focus:ring-2 focus:ring-amber-400 outline-none bg-white text-gray-800"></textarea>
             </div>
-        </section>
+        </div></section>
 
         <!-- 3. PARTNER SECTION -->
         <section id="partnerSection" class="hidden bg-white p-4 rounded-2xl shadow-sm border border-amber-100 space-y-6">
             <h2 class="font-bold text-lg text-gray-800 border-b pb-2 flex items-center gap-2">
-                <i class="fa-solid fa-handshake text-amber-500"></i> မိတ်ဖက်ဆိုင်များ ကုန်ပစ္စည်း/အစားအသောက် တင်ရန်
+                 မိတ်ဖက်ဆိုင်များ ကုန်ပစ္စည်း/အစားအသောက် တင်ရန်
             </h2>
 
             <div>
@@ -454,22 +506,22 @@
         </button>
     </div>
     <div id="loggedPartnerName" class="hidden mt-2 font-bold text-emerald-700 text-sm">
-        ✅ လက်ရှိဝင်ရောက်ထားသောဆိုင် - <span id="partnerStoreDisplayName"></span>
-    </div>
+    ✅ လက်ရှိဝင်ရောက်ထားသောဆိုင် - <span id="partnerStoreDisplayName"></span>
+</div>
 </div>
 <!-- JS Logic အတွက် Hidden Input သုံးထားခြင်း -->
 <input type="hidden" id="partnerStoreSelect" value="partner1">
 
             <!-- မိတ်ဖက်ဆိုင် ရပ်ကွက် အလိုအလျောက် ပေါ်လာမည့် Box -->
             <div id="partnerStoreWardBox" class="bg-amber-100 p-2.5 rounded-xl border border-amber-300 font-bold text-amber-900 text-sm flex items-center gap-2">
-                <i class="fa-solid fa-location-dot text-amber-600"></i>
+                
                 <span>ပစ္စည်းကောက်ယူရမည့် ရပ်ကွက် - <strong id="partnerWardDisplay">မန္တလေးရပ်ကွက် (Zone A)</strong></span>
             </div>
 
             <!-- Dashboard -->
             <div class="bg-amber-50 p-4 rounded-2xl border border-amber-200">
                 <h3 class="font-bold text-base text-amber-900 mb-1 flex items-center gap-2">
-                    <i class="fa-solid fa-calendar-check"></i> ယခုလ (လအစမှစ၍) ပို့ဆောင်ခဲ့သည့် အော်ဒါ မှတ်တမ်း
+                     ယခုလ (လအစမှစ၍) ပို့ဆောင်ခဲ့သည့် အော်ဒါ မှတ်တမ်း
                 </h3>
                 <p class="text-xs text-amber-700 mb-3">* လဆန်း (၁) ရက်နေ့ တိုင်းတွင် Count ပြန်စပါမည်။</p>
                 
@@ -482,13 +534,14 @@
             <!-- Orders Container -->
             <div class="space-y-6">
                 <h3 class="font-bold text-base text-gray-800 border-b pb-2">📦 အော်ဒါများ ဖြည့်စွက်ရန် (အများဆုံး ၁၀ ခုအထိ တပြိုင်နက် တင်နိုင်သည်)</h3>
-                <div id="partnerOrdersContainer" class="space-y-6"></div>
+                <div id="partnerOrdersContainer" class="space-y-6">
+</div>
             </div>
 
             <!-- Partner Summary & Submit Card -->
             <div class="bg-gray-800 text-white p-4 rounded-2xl space-y-3 font-bold text-sm shadow-md">
                 <div class="text-amber-400 border-b border-gray-700 pb-2 flex items-center gap-2 text-base">
-                    <i class="fa-solid fa-calculator"></i> ယခု တင်ထားသော အော်ဒါများ စုစုပေါင်း တွက်ချက်မှု
+                     ယခု တင်ထားသော အော်ဒါများ စုစုပေါင်း တွက်ချက်မှု
                 </div>
                 <div class="flex justify-between">
                     <span class="text-gray-300">တင်ထားသော အော်ဒါ စုစုပေါင်း:</span>
@@ -501,22 +554,151 @@
 
                 <!-- Submit Button for Partner Mode -->
                 <button onclick="submitOrder()" class="w-full bg-amber-500 hover:bg-amber-600 text-gray-900 font-black py-3 rounded-xl transition text-base shadow-lg flex items-center justify-center gap-2 mt-3">
-                    <i class="fa-brands fa-viber text-xl"></i> မိတ်ဖက်အော်ဒါများ တင်မည် (Viber သို့ ပို့မည်)
+                     မိတ်ဖက်အော်ဒါများ တင်မည် (Viber သို့ ပို့မည်)
                 </button>
             </div>
         </section>
 
+<!-- 5. RENTAL SECTION -->
+<section id="rentalSection" class="hidden bg-white p-4 rounded-2xl shadow-sm border border-amber-100 space-y-4">
+    <h2 class="font-bold text-lg text-gray-800 border-b pb-2 flex items-center gap-2">
+         ဆိုင်ကယ် / သုံးဘီး / ကား ယာဉ်မျိုးစုံ ငှားရမ်းရန်
+    </h2>
+
+    <!-- ၁။ ယာဉ်အမျိုးအစား ရွေးချယ်ခြင်း -->
+    <div>
+        <label class="block text-sm font-bold text-gray-700 mb-1">ငှားရမ်းလိုသော ယာဉ်အမျိုးအစား ရွေးချယ်ပါ</label>
+        <select id="vehicleType" onchange="handleVehicleTypeChange(); calculateRentalPrice();" class="w-full p-2.5 border rounded-xl bg-white font-bold text-gray-800 focus:ring-2 focus:ring-amber-400 outline-none">
+            <optgroup label="မြို့တွင်းသီးသန့် ရရှိနိုင်သော ယာဉ်များ">
+                <option value="bike">ဆိုင်ကယ် (မြို့တွင်းသီးသန့်)</option>
+                <option value="tuktuk">သုံးဘီး / တုတ်တုတ် (မြို့တွင်းသီးသန့်)</option>
+            </optgroup>
+            <optgroup label="မြို့တွင်း / နယ်ဝေး ရရှိနိုင်သော ကားများ">
+                <option value="car_family">အိမ်စီးကား (Saloon / SUV / VIP Van)</option>
+                <option value="truck_12ft">၁၂ ပေ ကုန်တင်ကား / လုပ်ငန်းသုံးကား</option>
+            </optgroup>
+            <optgroup label="လုပ်ငန်းသုံး ယန္တရားကြီးများ">
+                <option value="backhoe">ဘတ်ဟိုး (Backhoe) / မြေသယ်ကား</option>
+                <option value="heavy_machinery">အခြား လုပ်ငန်းသုံး ယန္တရားများ</option>
+            </optgroup>
+        </select>
+    </div>
+
+    <!-- ၂။ ခရီးစဉ် နယ်မြေအမျိုးအစား (မြို့တွင်း / နယ်ဝေး) -->
+    <div>
+        <label class="block text-sm font-bold text-gray-700 mb-1">ခရီးစဉ် နယ်မြေအမျိုးအစား</label>
+        <select id="rentalScope" onchange="calculateRentalPrice()" class="w-full p-2.5 border rounded-xl bg-white font-bold text-gray-800 focus:ring-2 focus:ring-amber-400 outline-none">
+            <option value="local">မြို့တွင်း ခရီးစဉ်</option>
+            <option value="outstation" id="outstationOption">မြို့ပြင် / နယ်ဝေး ခရီးစဉ်</option>
+        </select>
+    </div>
+
+    <!-- ၃။ ကြိုဆိုရမည့်သူ နာမည်နှင့် ဖုန်းနံပါတ် -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
+        <div>
+            <label class="block text-sm font-bold text-gray-700 mb-1">ကြိုဆိုရမည့်သူ နာမည်</label>
+            <input type="text" id="rentalCustomerName" placeholder="နာမည် ရေးပါ" class="w-full p-2.5 border rounded-xl text-sm focus:ring-2 focus:ring-amber-400 outline-none bg-white text-gray-800">
+        </div>
+        <div>
+            <label class="block text-sm font-bold text-gray-700 mb-1">ဆက်သွယ်ရန် ဖုန်းနံပါတ်</label>
+            <input type="tel" id="rentalCustomerPhone" placeholder="09xxxxxxxxx" class="w-full p-2.5 border rounded-xl text-sm focus:ring-2 focus:ring-amber-400 outline-none bg-white text-gray-800">
+        </div>
+    </div>
+
+    <!-- ၄။ ကြိုရမည့် လိပ်စာနှင့် သွားရောက်မည့် ခရီးစဉ် -->
+    <div class="space-y-3">
+        <!-- ကြိုရမည့် ရပ်ကွက် -->
+        <div>
+            <label class="block text-sm font-bold text-gray-700 mb-1">ကြိုရမည့် ရပ်ကွက် (Zone)</label>
+            <select id="rentalPickupWard" onchange="calculateRentalPrice()" class="w-full p-2.5 border rounded-xl text-sm focus:ring-2 focus:ring-amber-400 outline-none bg-white text-gray-800 mb-2">
+                <option value="">-- ရပ်ကွက် ရွေးချယ်ပါ(မြို့တွင်းဆိုပါက) --</option>
+            </select>
+            
+            <textarea id="rentalPickupAddress" oninput="calculateRentalPrice()" placeholder="အသေးစိတ် ကြိုရမည့် လိပ်စာ/လမ်းအမည်စသည့် ရေးပါ" class="w-full p-2.5 border rounded-xl text-sm focus:ring-2 focus:ring-amber-400 outline-none bg-white text-gray-800 mb-2" rows="2"></textarea>
+            
+            <div class="mb-2">
+                <label class="block text-sm font-bold text-gray-700 mb-1">ကြိုရမည့်တည်နေရာ</label>
+                <div class="relative w-full">
+                    <input type="text" id="rentalGpsAddress" placeholder="တည်နေရာရယူရန်နှိပ်ပါ" class="w-full p-2.5 pr-36 border rounded-xl text-sm focus:ring-2 focus:ring-amber-400 outline-none bg-white text-gray-800">
+                    <button type="button" onclick="getGPSLocation('rentalGpsAddress')" class="absolute right-2 top-1/2 -translate-y-1/2 text-xs text-amber-600 font-bold hover:underline flex items-center gap-1 bg-amber-50 hover:bg-amber-100 px-2.5 py-1.5 rounded-lg border border-amber-200 transition-all">
+                         GPS တည်နေရာယူမည်
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- သွားရောက်မည့် ရပ်ကွက် -->
+        <div>
+            <label class="block text-sm font-bold text-gray-700 mb-1">သွားရောက်မည့် ရပ်ကွက် / လိပ်စာ / မြို့နယ်</label>
+            <select id="rentalDestinationWard" onchange="calculateRentalPrice()" class="w-full p-2.5 border rounded-xl text-sm focus:ring-2 focus:ring-amber-400 outline-none bg-white text-gray-800 mb-2">
+                <option value="">-- ရပ်ကွက် ရွေးချယ်ပါ (မြို့တွင်းဆိုပါက) --</option>
+            </select>
+            <textarea id="rentalDestinationAddress" oninput="calculateRentalPrice()" placeholder="သွားရောက်မည့် တည်နေရာ(လမ်း,ရပ်ကွက်,မြို့နယ်) သို့မဟုတ် လုပ်ငန်းခွင် တည်နေရာ" class="w-full p-2.5 border rounded-xl text-sm focus:ring-2 focus:ring-amber-400 outline-none bg-white text-gray-800" rows="2"></textarea>
+        </div>
+    </div>
+
+    <!-- ၅။ ငှားရမ်းမည့် အချိန်နှင့် ရက်စွဲ -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-3">
+        <div>
+            <label class="block text-sm font-bold text-gray-700 mb-1">ကြိုရမည်(သို့မဟု)လုပ်ငန်းစတင်မည့် ရက်စွဲနှင့် အချိန်</label>
+            <input type="datetime-local" id="rentalStartTime" class="w-full p-2.5 border rounded-xl text-sm bg-white text-gray-800 focus:ring-2 focus:ring-amber-400 outline-none">
+        </div>
+        <div>
+            <label class="block text-sm font-bold text-gray-700 mb-1">ငှားရမ်းမည့် ကြာချိန် / ရက်အရေအတွက်</label>
+            <input type="text" id="rentalDuration" oninput="calculateRentalPrice()" placeholder="ဥပမာ- ၁ ရက်၊ ၃ နာရီ၊ ၁ ပတ်" class="w-full p-2.5 border rounded-xl text-sm bg-white text-gray-800 focus:ring-2 focus:ring-amber-400 outline-none">
+        </div>
+    </div>
+
+    <!-- ၆။ သီးခြား မှတ်ချက်များ -->
+    <div>
+        <label class="block text-sm font-bold text-gray-700 mb-1">လုပ်ငန်းသဘာဝနှင့် သီးခြား မှတ်ချက်များ</label>
+        <textarea id="rentalNote" placeholder="ဥပမာ- ယာဉ်မောင်း ပါပြီးသား လိုချင်ပါသည်၊ မြေကျင်းတူးရန်/ပစ္စည်းသယ်ရန် သီးသန့်" class="w-full p-2.5 border rounded-xl text-sm focus:ring-2 focus:ring-amber-400 outline-none bg-white text-gray-800" rows="2"></textarea>
+    </div>
+
+    <!-- ၇။ RENTAL SUMMARY & SUBMIT CARD (အသစ်ထည့်ထားသော အပိုင်း) -->
+    <div class="bg-gray-800 text-white p-4 rounded-2xl space-y-3 font-bold text-sm shadow-md mt-6">
+        <div class="text-amber-400 border-b border-gray-700 pb-2 flex items-center gap-2 text-base">
+             ငှားရမ်းမှု မဂ္ဂဇင်း / စုစုပေါင်း တွက်ချက်မှု
+        </div>
+        
+        <div class="flex justify-between">
+            <span class="text-gray-300">ယာဉ်အမျိုးအစား:</span>
+            <span id="rentalSummaryVehicle" class="text-amber-300">ဆိုင်ကယ်</span>
+        </div>
+        
+        <div class="flex justify-between">
+            <span class="text-gray-300">ခရီးစဉ် အမျိုးအစား:</span>
+            <span id="rentalSummaryScope" class="text-gray-200">မြို့တွင်း ခရီးစဉ်</span>
+        </div>
+
+        <div class="flex justify-between">
+            <span class="text-gray-300">ငှားရမ်းမည့် ကြာချိန်:</span>
+            <span id="rentalSummaryDuration" class="text-gray-200">-</span>
+        </div>
+
+        <div class="flex justify-between border-t border-gray-700 pt-2 text-base">
+            <span class="text-gray-300">ခန့်မှန်း ကုန်ကျစရိတ်:</span>
+            <span id="rentalSummaryTotalPrice" class="text-amber-400 text-lg font-black">စုံစမ်းဆွေးနွေးရန်</span>
+        </div>
+
+        <!-- Viber Submit Button -->
+        <button type="button" onclick="submitOrder()" class="w-full bg-amber-500 hover:bg-amber-600 text-gray-900 font-black py-3 rounded-xl transition text-base shadow-lg flex items-center justify-center gap-2 mt-3">
+             ယာဉ်ငှားရမ်းမည် (Viber သို့ ပို့မည်)
+        </button>
+    </div>
+</section>
+
         <!-- COMMON DELIVERY & RECEIVER DETAILS SECTION (Hidden for Partner Mode) -->
         <section id="commonDeliverySection" class="bg-white p-4 rounded-2xl shadow-sm border border-amber-100 space-y-4">
             <h2 class="font-bold text-lg text-gray-800 border-b pb-2 flex items-center gap-2">
-                <i class="fa-solid fa-location-dot text-amber-500"></i> လက်ခံမည့်သူ အချက်အလက် (Delivery Destination)
+                 လက်ခံမည့်သူ အချက်အလက် (Delivery Destination)
             </h2>
 
             <div id="generalSpeedBox">
                 <label class="block text-sm font-bold text-gray-700 mb-2">ပို့ဆောင်မှု နှုန်းထား/အမြန်နှုန်း</label>
                 <div id="speedOptionsContainer" class="grid grid-cols-2 gap-3">
                     <label class="border-2 rounded-xl p-2.5 flex flex-col items-center cursor-pointer transition hover:border-amber-400 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50">
-                        <input type="radio" name="speed" value="express" checked onchange="onSpeedChange()" class="accent-amber-500 mb-1">
+                        <input type="radio" name="speed" value="express" checked="true" onchange="onSpeedChange()" class="accent-amber-500 mb-1">
                         <span class="font-bold text-xs text-gray-800">အမြန်ပို့</span>
                         <span class="text-[10px] text-gray-500">Express</span>
                     </label>
@@ -540,7 +722,7 @@
                         <span>⏰ သတ်မှတ်ချိန်နာရီအတွင်းအရောက်ပို့ စားသောက်ကုန်များ</span>
                     </label>
                     <label class="flex items-start gap-2 text-sm font-bold text-gray-800 cursor-pointer">
-                        <input type="radio" name="parcelCategory" value="same_day_item" checked onchange="calculatePrice()" class="accent-blue-600 mt-1">
+                        <input type="radio" name="parcelCategory" value="same_day_item" checked="true" onchange="calculatePrice()" class="accent-blue-600 mt-1">
                         <span>📦 ပုံမှန်ပို့နေ့ချင်းရောက်ကုန်ပစ္စည်းများ (-၅၀၀ ကျပ် လျှော့ပေးမည်)</span>
                     </label>
                 </div>
@@ -586,7 +768,7 @@
                 <div class="flex justify-between items-center mb-1">
                     <label class="block text-sm font-bold text-gray-700">လက်ခံသူ အသေးစိတ်လိပ်စာ</label>
                     <button type="button" onclick="getGPSLocation('receiverAddress')" class="text-xs text-amber-600 font-bold hover:underline flex items-center gap-1">
-                        <i class="fa-solid fa-location-crosshairs"></i> GPS တည်နေရာယူမည်
+                         GPS တည်နေရာယူမည်
                     </button>
                 </div>
                 <textarea id="receiverAddress" placeholder="လမ်းအမည်၊ အိမ်နံပါတ် စသည်ဖြင့် အသေးစိတ် ရေးပါ" class="w-full p-2.5 border rounded-xl text-sm focus:ring-2 focus:ring-amber-400 outline-none bg-white text-gray-800" rows="2"></textarea>
@@ -619,7 +801,7 @@
         <!-- Summary & Price Section (Price Calculation Breakdown Display) -->
         <section id="summarySection" class="bg-gray-900 text-white p-4 rounded-2xl shadow-md space-y-3">
             <h3 class="font-bold text-base text-amber-400 border-b border-gray-700 pb-2 flex items-center gap-2">
-                <i class="fa-solid fa-receipt"></i> ကျသင့်ငွေ တွက်ချက်မှု (Price Breakdown)
+                 ကျသင့်ငွေ တွက်ချက်မှု (Price Breakdown)
             </h3>
 
             <div id="foodCostRow" class="flex justify-between text-sm">
@@ -661,6 +843,9 @@
                 <span>နေ့ချင်းရောက် လျှော့ဈေး:</span>
                 <span>-500 ကျပ်</span>
             </div>
+<div id="rentalCostRow" class="hidden flex justify-between text-sm text-amber-300">
+    <span>ယာဉ်ငှားရမ်းခ / ခရီးစဉ်စရိတ်:</span>
+    <span id="rentalCostDisplay" class="font-bold">မသတ်မှတ်ရသေးပါ (မေးမြန်းရန်)</span></div>
 
             <div class="border-t border-gray-700 pt-2 flex justify-between items-center text-base">
                 <span class="font-bold text-amber-400">စုစုပေါင်း ကျသင့်ငွေ (Total Amount):</span>
@@ -668,7 +853,7 @@
             </div>
 
             <button onclick="submitOrder()" class="w-full bg-amber-500 hover:bg-amber-600 text-gray-900 font-black py-3 rounded-xl transition text-base shadow-lg flex items-center justify-center gap-2 mt-2">
-                <i class="fa-brands fa-viber text-xl"></i> အော်ဒါ တင်မည် (Viber သို့ ပို့မည်)
+                 အော်ဒါ တင်မည် (Viber သို့ ပို့မည်)
             </button>
         </section>
 
@@ -679,12 +864,13 @@
         <div class="bg-white rounded-2xl w-full max-w-md p-4 space-y-4 max-h-[80vh] flex flex-col shadow-2xl">
             <div class="flex justify-between items-center border-b pb-2">
                 <h3 class="font-bold text-lg text-gray-800 flex items-center gap-2">
-                    <i class="fa-solid fa-basket-shopping text-amber-500"></i> မှာယူထားသော မီနူးများ
+                     မှာယူထားသော မီနူးများ
                 </h3>
                 <button onclick="toggleCart()" class="text-gray-400 hover:text-gray-600 text-xl font-bold">&times;</button>
             </div>
             
-            <div id="cartItemsList" class="flex-1 overflow-y-auto space-y-3 pr-1 text-gray-800"></div>
+            <div id="cartItemsList" class="flex-1 overflow-y-auto space-y-3 pr-1 text-gray-800">
+</div>
 
             <div class="border-t pt-3 flex justify-between items-center">
                 <button onclick="toggleCart()" class="bg-amber-500 text-gray-900 font-bold px-4 py-2 rounded-xl text-sm w-full">
@@ -939,22 +1125,29 @@
         };
 
         function initWards() {
-            const dropSelect = document.getElementById('dropWard');
-            const pickupSelect = document.getElementById('pickupWardParcel');
-            const shoppingStoreWardSelect = document.getElementById('shoppingStoreWard');
+    const dropSelect = document.getElementById('dropWard');
+    const pickupSelect = document.getElementById('pickupWardParcel');
+    const shoppingStoreWardSelect = document.getElementById('shoppingStoreWard');
+    
+    // Rental Section အတွက် Dropdown များကို ယူခြင်း
+    const rentalPickupSelect = document.getElementById('rentalPickupWard');
+    const rentalDestSelect = document.getElementById('rentalDestinationWard');
 
-            for (const [zone, wards] of Object.entries(zones)) {
-                wards.forEach(ward => {
-                    const optionText = `${ward} (Zone ${zone})`;
-                    const optionValue = `${ward}|${zone}`;
+    for (const [zone, wards] of Object.entries(zones)) {
+        wards.forEach(ward => {
+            const optionText = `${ward} (Zone ${zone})`;
+            const optionValue = `${ward}|${zone}`;
 
-                    if(dropSelect) dropSelect.add(new Option(optionText, optionValue));
-                    if(pickupSelect) pickupSelect.add(new Option(optionText, optionValue));
-                    if(shoppingStoreWardSelect) shoppingStoreWardSelect.add(new Option(optionText, optionValue));
-                });
-            }
-        }
-
+            if(dropSelect) dropSelect.add(new Option(optionText, optionValue));
+            if(pickupSelect) pickupSelect.add(new Option(optionText, optionValue));
+            if(shoppingStoreWardSelect) shoppingStoreWardSelect.add(new Option(optionText, optionValue));
+            
+            // Rental အတွက် Dropdown များထဲသို့ ရပ်ကွက်များ ထည့်သွင်းခြင်း
+            if(rentalPickupSelect) rentalPickupSelect.add(new Option(optionText, optionValue));
+            if(rentalDestSelect) rentalDestSelect.add(new Option(optionText, optionValue));
+        });
+    }
+}
         function toggleShoppingSpeedNotice() {
             const shopSpeedEl = document.querySelector('input[name="shoppingSpeed"]:checked');
             const speed = shopSpeedEl ? shopSpeedEl.value : 'express';
@@ -1000,6 +1193,25 @@ function togglePartnerDestination(i) {
         if (speedBox) speedBox.classList.remove('hidden'); // ပြန်ဖော်မည်
     }
     calculatePartnerOrders();
+}
+
+function handleVehicleTypeChange() {
+    const vehicleType = document.getElementById('vehicleType').value;
+    const rentalScope = document.getElementById('rentalScope');
+    const outstationOption = document.getElementById('outstationOption');
+
+    // ဆိုင်ကယ် သို့မဟုတ် သုံးဘီး ရွေးချယ်ထားပါက မြို့တွင်း သီးသန့်သာ ရွေးပေးမည်
+    if (vehicleType === 'bike' || vehicleType === 'tuktuk') {
+        outstationOption.disabled = true;
+        rentalScope.value = 'local'; // မြို့တွင်းသို့ အလိုအလျောက် ပြန်ပြောင်းမည်
+    } else {
+        outstationOption.disabled = false;
+    }
+
+    // Summary Card ပါ တခါတည်း Update ဖြစ်သွားစေရန် အောက်ပါ Function ကို လှမ်းခေါ်ပေးပါ
+    if (typeof calculateRentalPrice === 'function') {
+        calculateRentalPrice();
+    }
 }
         // Generate Dynamic 10 Partner Orders Form
         function renderPartnerOrdersForm() {
@@ -1350,107 +1562,128 @@ function togglePartnerDestination(i) {
 
         function switchServiceMode(mode) {
     currentMode = mode;
-            
-            const tabFood = document.getElementById('tabFood');
-            const tabShopping = document.getElementById('tabShopping');
-            const tabParcel = document.getElementById('tabParcel');
-            const tabPartner = document.getElementById('tabPartner');
-            
-            const foodSection = document.getElementById('foodSection');
-            const shoppingSection = document.getElementById('shoppingSection');
-            const parcelSection = document.getElementById('parcelSection');
-            const partnerSection = document.getElementById('partnerSection');
-            const commonDeliverySection = document.getElementById('commonDeliverySection');
-            const summarySection = document.getElementById('summarySection');
+    
+    const tabFood = document.getElementById('tabFood');
+    const tabShopping = document.getElementById('tabShopping');
+    const tabParcel = document.getElementById('tabParcel');
+    const tabRental = document.getElementById('tabRental');
+    const tabPartner = document.getElementById('tabPartner');
+    
+    const foodSection = document.getElementById('foodSection');
+    const shoppingSection = document.getElementById('shoppingSection');
+    const parcelSection = document.getElementById('parcelSection');
+    const rentalSection = document.getElementById('rentalSection');
+    const partnerSection = document.getElementById('partnerSection');
+    const commonDeliverySection = document.getElementById('commonDeliverySection');
+    const summarySection = document.getElementById('summarySection');
 
-            const activeStyle = "flex items-center justify-center gap-2 py-3 px-2 rounded-xl font-bold text-xs sm:text-sm bg-amber-500 text-white shadow-md transition-all";
-            const inactiveStyle = "flex items-center justify-center gap-2 py-3 px-2 rounded-xl font-bold text-xs sm:text-sm bg-white text-gray-800 hover:bg-amber-50 transition-all border border-amber-200";
+    const activeStyle = "flex items-center justify-center gap-2 py-3 px-2 rounded-xl font-bold text-xs sm:text-sm bg-amber-500 text-white shadow-md transition-all";
+    const inactiveStyle = "flex items-center justify-center gap-2 py-3 px-2 rounded-xl font-bold text-xs sm:text-sm bg-white text-gray-800 hover:bg-amber-50 transition-all border border-amber-200";
 
-            tabFood.className = inactiveStyle;
-            tabShopping.className = inactiveStyle;
-            tabParcel.className = inactiveStyle;
-            tabPartner.className = inactiveStyle;
+    if (tabFood) tabFood.className = inactiveStyle;
+    if (tabShopping) tabShopping.className = inactiveStyle;
+    if (tabParcel) tabParcel.className = inactiveStyle;
+    if (tabRental) tabRental.className = inactiveStyle;
+    if (tabPartner) tabPartner.className = inactiveStyle;
 
-            foodSection.classList.add('hidden');
-            shoppingSection.classList.add('hidden');
-            parcelSection.classList.add('hidden');
-            partnerSection.classList.add('hidden');
-            commonDeliverySection.classList.remove('hidden');
-            summarySection.classList.remove('hidden');
+    foodSection.classList.add('hidden');
+    shoppingSection.classList.add('hidden');
+    parcelSection.classList.add('hidden');
+    rentalSection.classList.add('hidden');
+    partnerSection.classList.add('hidden');
+    
+    commonDeliverySection.classList.remove('hidden');
 
-            if (mode === 'food') {
-                tabFood.className = activeStyle;
-                foodSection.classList.remove('hidden');
-            } else if (mode === 'shopping') {
-                tabShopping.className = activeStyle;
-                shoppingSection.classList.remove('hidden');
-            } else if (mode === 'parcel') {
-                tabParcel.className = activeStyle;
-                parcelSection.classList.remove('hidden');
-            } else if (mode === 'partner') {
-                tabPartner.className = activeStyle;
-                partnerSection.classList.remove('hidden');
-                commonDeliverySection.classList.add('hidden');
-                summarySection.classList.add('hidden');
-                updatePartnerMonthlyDisplay();
-            }
+// Rental သို့မဟုတ် Partner Mode မဟုတ်ပါက Summary Section ကို ပြန်ဖော်မည်
+if (mode === 'rental' || mode === 'partner') {
+    if (summarySection) summarySection.classList.add('hidden');
+} else {
+    if (summarySection) summarySection.classList.remove('hidden');
+}
 
-            const foodCostRow = document.getElementById('foodCostRow');
-            const shoppingCostRow = document.getElementById('shoppingCostRow');
-            const shoppingServiceFeeRow = document.getElementById('shoppingServiceFeeRow');
-            const speedFeeRow = document.getElementById('speedFeeRow');
-            const parcelValueRow = document.getElementById('parcelValueRow');
-            const weightSurchargeRow = document.getElementById('weightSurchargeRow');
-            const cartBtn = document.getElementById('cartBtn');
-            const specialHandlingBox = document.getElementById('specialHandlingBox');
-            const slowSpeedLabel = document.getElementById('slowSpeedLabel');
-            const speedContainer = document.getElementById('speedOptionsContainer');
-            const generalSpeedBox = document.getElementById('generalSpeedBox');
-            const generalDeliveryTimeBox = document.getElementById('generalDeliveryTimeBox');
+    if (mode === 'food') {
+        if (tabFood) tabFood.className = activeStyle;
+        foodSection.classList.remove('hidden');
+    } else if (mode === 'shopping') {
+        if (tabShopping) tabShopping.className = activeStyle;
+        shoppingSection.classList.remove('hidden');
+    } else if (mode === 'parcel') {
+        if (tabParcel) tabParcel.className = activeStyle;
+        parcelSection.classList.remove('hidden');
+  } else if (mode === 'rental') {
+        if (tabRental) tabRental.className = activeStyle;
+        rentalSection.classList.remove('hidden');
+        commonDeliverySection.classList.add('hidden');
+        summarySection.classList.add('hidden');
+    } else if (mode === 'partner') {
+        if (tabPartner) tabPartner.className = activeStyle;
+        partnerSection.classList.remove('hidden');
+        commonDeliverySection.classList.add('hidden');
+        summarySection.classList.add('hidden');
+        updatePartnerMonthlyDisplay();
+    }
 
-            // Reset display visibility for breakdown rows
-            foodCostRow.classList.add('hidden');
-            shoppingCostRow.classList.add('hidden');
-            shoppingServiceFeeRow.classList.add('hidden');
-            if (speedFeeRow) speedFeeRow.classList.add('hidden');
-            parcelValueRow.classList.add('hidden');
-            weightSurchargeRow.classList.add('hidden');
-            generalSpeedBox.classList.remove('hidden');
-            generalDeliveryTimeBox.classList.remove('hidden');
+    const foodCostRow = document.getElementById('foodCostRow');
+    const shoppingCostRow = document.getElementById('shoppingCostRow');
+    const shoppingServiceFeeRow = document.getElementById('shoppingServiceFeeRow');
+    const speedFeeRow = document.getElementById('speedFeeRow');
+    const parcelValueRow = document.getElementById('parcelValueRow');
+    const weightSurchargeRow = document.getElementById('weightSurchargeRow');
+    const rentalCostRow = document.getElementById('rentalCostRow'); // Rental Row ကို ခေါ်ယူခြင်း
+    const cartBtn = document.getElementById('cartBtn');
+    const specialHandlingBox = document.getElementById('specialHandlingBox');
+    const slowSpeedLabel = document.getElementById('slowSpeedLabel');
+    const speedContainer = document.getElementById('speedOptionsContainer');
+    const generalSpeedBox = document.getElementById('generalSpeedBox');
+    const generalDeliveryTimeBox = document.getElementById('generalDeliveryTimeBox');
 
-            if (mode === 'food') {
-                foodCostRow.classList.remove('hidden');
-                cartBtn.classList.remove('hidden');
-                specialHandlingBox.classList.add('hidden');
-                slowSpeedLabel.classList.add('hidden');
-                speedContainer.className = "grid grid-cols-2 gap-3";
-            } else if (mode === 'shopping') {
-                shoppingCostRow.classList.remove('hidden');
-                shoppingServiceFeeRow.classList.remove('hidden');
-                weightSurchargeRow.classList.remove('hidden');
-                cartBtn.classList.add('hidden');
-                specialHandlingBox.classList.add('hidden');
-                generalSpeedBox.classList.add('hidden'); 
-                generalDeliveryTimeBox.classList.add('hidden');
-            } else if (mode === 'parcel') {
-                parcelValueRow.classList.remove('hidden');
-                weightSurchargeRow.classList.remove('hidden');
-                cartBtn.classList.add('hidden');
-                specialHandlingBox.classList.remove('hidden');
-                slowSpeedLabel.classList.remove('hidden');
-                speedContainer.className = "grid grid-cols-3 gap-3";
-            } else if (mode === 'partner') {
-                cartBtn.classList.add('hidden');
-            }
+    // Reset display visibility for breakdown rows
+    if (foodCostRow) foodCostRow.classList.add('hidden');
+    if (shoppingCostRow) shoppingCostRow.classList.add('hidden');
+    if (shoppingServiceFeeRow) shoppingServiceFeeRow.classList.add('hidden');
+    if (speedFeeRow) speedFeeRow.classList.add('hidden');
+    if (parcelValueRow) parcelValueRow.classList.add('hidden');
+    if (weightSurchargeRow) weightSurchargeRow.classList.add('hidden');
+    if (rentalCostRow) rentalCostRow.classList.add('hidden'); // Rental Row ကို အစ၌ Hide လုပ်ထားခြင်း
+    
+    if (generalSpeedBox) generalSpeedBox.classList.remove('hidden');
+    if (generalDeliveryTimeBox) generalDeliveryTimeBox.classList.remove('hidden');
 
-            if (mode === 'shopping') {
-                toggleShoppingSpeedNotice();
-            } else {
-                onSpeedChange();
-            }
-            calculatePrice();
-        }
+    if (mode === 'food') {
+        if (foodCostRow) foodCostRow.classList.remove('hidden');
+        if (cartBtn) cartBtn.classList.remove('hidden');
+        if (specialHandlingBox) specialHandlingBox.classList.add('hidden');
+        if (slowSpeedLabel) slowSpeedLabel.classList.add('hidden');
+        if (speedContainer) speedContainer.className = "grid grid-cols-2 gap-3";
+    } else if (mode === 'shopping') {
+        if (shoppingCostRow) shoppingCostRow.classList.remove('hidden');
+        if (shoppingServiceFeeRow) shoppingServiceFeeRow.classList.remove('hidden');
+        if (weightSurchargeRow) weightSurchargeRow.classList.remove('hidden');
+        if (cartBtn) cartBtn.classList.add('hidden');
+        if (specialHandlingBox) specialHandlingBox.classList.add('hidden');
+        if (generalSpeedBox) generalSpeedBox.classList.add('hidden'); 
+        if (generalDeliveryTimeBox) generalDeliveryTimeBox.classList.add('hidden');
+    } else if (mode === 'parcel') {
+        if (parcelValueRow) parcelValueRow.classList.remove('hidden');
+        if (weightSurchargeRow) weightSurchargeRow.classList.remove('hidden');
+        if (cartBtn) cartBtn.classList.add('hidden');
+        if (specialHandlingBox) specialHandlingBox.classList.remove('hidden');
+        if (slowSpeedLabel) slowSpeedLabel.classList.remove('hidden');
+        if (speedContainer) speedContainer.className = "grid grid-cols-3 gap-3";
+    } else if (mode === 'rental') {
+        if (rentalCostRow) rentalCostRow.classList.remove('hidden'); // Rental မုဒ်ဖြစ်ပါက Rental Row ကို ပေါ်စေခြင်း
+        if (cartBtn) cartBtn.classList.add('hidden');
+    } else if (mode === 'partner') {
+        if (cartBtn) cartBtn.classList.add('hidden');
+    }
 
+    if (mode === 'shopping') {
+        toggleShoppingSpeedNotice();
+    } else {
+        onSpeedChange();
+    }
+    calculatePrice();
+}
         function updateNormalScheduleOptions() {
             const selectEl = document.getElementById('normalScheduleSelect');
             const shoppingSelectEl = document.getElementById('shoppingNormalScheduleSelect');
@@ -1711,7 +1944,7 @@ let previousPartnerStore = 'partner1';
             calculatePrice();
         }
 
-        function getPriceByZone(z1, z2, sameWard, pWard, dWard) {
+       function getPriceByZone(z1, z2, sameWard, pWard, dWard) {
             if (sameWard) return { express: 2500, normal: 2000, slow: 1000, scheduled: 2000 };
 
             const isAdjacent = 
@@ -1758,6 +1991,111 @@ let previousPartnerStore = 'partner1';
             return pairs[key] || { express: 4500, normal: 3000, slow: 2000, scheduled: 3000 };
         }
 
+        // Rental Mode တွက်ချက်သည့် Function
+        function calculateRentalPrice() {
+            const vehicleTypeElem = document.getElementById('vehicleType');
+            const vehicleType = vehicleTypeElem?.value || '';
+            const rentalScope = document.getElementById('rentalScope')?.value || 'local';
+            
+            // ၁။ ရပ်ကွက် Dropdown တန်ဖိုးများကို ယူခြင်း
+            const pickupSelectVal = document.getElementById('rentalPickupWard')?.value || '';
+            const dropSelectVal = document.getElementById('rentalDestinationWard')?.value || '';
+
+            // ၂။ "မန္တလေးရပ်ကွက်|A" ထဲမှ ရပ်ကွက်နာမည် (pWard, dWard) နှင့် Zone (pZone, dZone) ခွဲထုတ်ခြင်း
+            let pWard = '', pZone = 'A';
+            if (pickupSelectVal) {
+                const [w, z] = pickupSelectVal.split('|');
+                pWard = w;
+                pZone = z;
+            }
+
+            let dWard = '', dZone = 'A';
+            if (dropSelectVal) {
+                const [w, z] = dropSelectVal.split('|');
+                dWard = w;
+                dZone = z;
+            }
+
+            // ၃။ ရပ်ကွက် အတိအကျ တူညီမှု ရှိမရှိ စစ်ဆေးပြီး ပုံမှန် အမြန်ပို့ နှုန်းထား (Base Price) ယူခြင်း
+            const isSameWard = (pWard && dWard && pWard === dWard);
+            const priceTable = getPriceByZone(pZone, dZone, isSameWard, pWard, dWard);
+            const basePrice = priceTable ? (priceTable.express || 3500) : 3500; 
+
+            let calculatedFee = 0;
+
+            if (rentalScope === 'local') {
+                // မြို့တွင်း ရပ်ကွက်အလိုက် ယာဉ်အမျိုးအစားအလိုက် မြှောက်ဖော်ကိန်းများ
+                switch (vehicleType) {
+                    case 'bike':
+                        calculatedFee = Math.round(basePrice * 1.5); // ဆိုင်ကယ် (၁.၅ ဆ)
+                        break;
+                    case 'tuktuk':
+                        calculatedFee = Math.round(basePrice * 3);   // တုတ်တုတ်/သုံးဘီး (၃ ဆ)
+                        break;
+                    case 'car_family':
+                        calculatedFee = Math.round(basePrice * 4.5); // အိမ်စီးကား (၄.၅ ဆ)
+                        break;
+                    case 'truck_12ft':
+                        calculatedFee = Math.round(basePrice * 6);   // ၁၂ ပေ ကုန်တင်ကား (၆ ဆ)
+                        break;
+                    default:
+                        calculatedFee = basePrice;
+                }
+            } 
+            else if (rentalScope === 'outstation') {
+                // မြို့ပြင် / နယ်ဝေး ခရီးစဉ်
+                const durationInput = document.getElementById('rentalDuration')?.value || '';
+                const numMatch = durationInput.match(/\d+/);
+                const days = numMatch ? parseFloat(numMatch[0]) : 1;
+
+                switch (vehicleType) {
+                    case 'car_family':
+                        calculatedFee = 60000 * days;
+                        break;
+                    case 'truck_12ft':
+                        calculatedFee = 120000 * days;
+                        break;
+                    case 'backhoe':
+                        calculatedFee = 200000 * days;
+                        break;
+                    case 'heavy_machinery':
+                        calculatedFee = 250000 * days;
+                        break;
+                    default:
+                        calculatedFee = 50000 * days;
+                }
+            }
+
+            const summaryPriceDisplay = document.getElementById('rentalSummaryTotalPrice');
+            if (summaryPriceDisplay) {
+                summaryPriceDisplay.innerText = calculatedFee > 0 ? calculatedFee.toLocaleString() + ' ကျပ်' : 'စုံစမ်းဆွေးနွေးရန်';
+            }
+
+            const summaryVehicleDisplay = document.getElementById('rentalSummaryVehicle');
+            if (summaryVehicleDisplay && vehicleTypeElem) {
+                summaryVehicleDisplay.innerText = vehicleTypeElem.options[vehicleTypeElem.selectedIndex]?.text || '';
+            }
+
+            const summaryScopeDisplay = document.getElementById('rentalSummaryScope');
+            if (summaryScopeDisplay) {
+                summaryScopeDisplay.innerText = rentalScope === 'local' ? 'မြို့တွင်း ခရီးစဉ်' : 'မြို့ပြင် / နယ်ဝေး ခရီးစဉ်';
+            }
+
+            const summaryDurationDisplay = document.getElementById('rentalSummaryDuration');
+            if (summaryDurationDisplay) {
+                const durationVal = document.getElementById('rentalDuration')?.value.trim();
+                summaryDurationDisplay.innerText = durationVal || '-';
+            }
+
+            return calculatedFee;
+        }
+
+        function extractZone(addressText) {
+            if (!addressText) return 'A';
+            const match = addressText.match(/Zone\s*([A-G])/i);
+            return match ? match[1].toUpperCase() : 'A';
+        }
+
         function calculatePrice() {
             if (currentMode === 'partner') return;
 
@@ -1799,22 +2137,20 @@ let previousPartnerStore = 'partner1';
                 }
             }
 
-            // နယ်ဝေး စစ်ဆေး၍ ပို့ဆောင်ခ တွက်ချက်ခြင်း
-const parcelDestType = document.getElementById('parcelDestinationType')?.value;
+            const parcelDestType = document.getElementById('parcelDestinationType')?.value;
 
-if (currentMode === 'parcel' && parcelDestType === 'outstation') {
-    // နယ်ဝေး ရွေးထားပါက ရွေးချယ်ထားသော မြို့နယ်၏ ပို့ဆောင်ခအတိုင်း ယူမည်
-    baseDeliveryFee = parseFloat(document.getElementById('outstationCitySelect')?.value) || 3000;
-} else {
-    if (dVal && pWard) {
-        const [dWard, dZone] = dVal.split('|');
-        const sameWard = (pWard === dWard);
-        const priceTable = getPriceByZone(pZone, dZone, sameWard, pWard, dWard);
-        baseDeliveryFee = priceTable[speed === 'scheduled' ? 'normal' : speed] || 2500;
-    } else {
-        baseDeliveryFee = 1500; // Default Fee
-    }
-}
+            if (currentMode === 'parcel' && parcelDestType === 'outstation') {
+                baseDeliveryFee = parseFloat(document.getElementById('outstationCitySelect')?.value) || 3000;
+            } else {
+                if (dVal && pWard) {
+                    const [dWard, dZone] = dVal.split('|');
+                    const sameWard = (pWard === dWard);
+                    const priceTable = getPriceByZone(pZone, dZone, sameWard, pWard, dWard);
+                    baseDeliveryFee = priceTable[speed === 'scheduled' ? 'normal' : speed] || 2500;
+                } else {
+                    baseDeliveryFee = 1500;
+                }
+            }
 
             let deliveryFeeFinal = baseDeliveryFee;
             const discountRow = document.getElementById('discountRow');
@@ -1840,10 +2176,6 @@ if (currentMode === 'parcel' && parcelDestType === 'outstation') {
 
             let grandTotal = 0;
             const waitingFeeRow = document.getElementById('waitingFeeRow');
-            const shoppingCostRow = document.getElementById('shoppingCostRow');
-            const shoppingServiceFeeRow = document.getElementById('shoppingServiceFeeRow');
-            const speedFeeRow = document.getElementById('speedFeeRow');
-            const weightSurchargeRow = document.getElementById('weightSurchargeRow');
 
             if (currentMode === 'food') {
                 let foodSubtotal = 0;
@@ -1868,8 +2200,6 @@ if (currentMode === 'parcel' && parcelDestType === 'outstation') {
                 if (waitingFeeRow) waitingFeeRow.classList.add('hidden');
 
                 const estCostInput = parseFloat(document.getElementById('shoppingEstimatedValue').value) || 0;
-                
-                // Shopping Type & Service Fee Logic
                 const shoppingTypeEl = document.querySelector('input[name="shoppingType"]:checked');
                 const shoppingType = shoppingTypeEl ? shoppingTypeEl.value : 'ready_food';
                 
@@ -1884,7 +2214,6 @@ if (currentMode === 'parcel' && parcelDestType === 'outstation') {
                     if (feeDisplayEl) feeDisplayEl.innerText = `${shoppingServiceFee.toLocaleString()} ကျပ်`;
                 }
 
-                // Weight Surcharge Logic
                 const shoppingWeightOpt = document.getElementById('shoppingWeight') ? document.getElementById('shoppingWeight').value : 'under3';
                 let shoppingWeightSurcharge = 0;
                 if (shoppingWeightOpt === '3to8') shoppingWeightSurcharge = 500;
@@ -1954,7 +2283,6 @@ if (currentMode === 'parcel' && parcelDestType === 'outstation') {
         }
 
         function submitOrder() {
-            // PARTNER MODE SUBMISSION
             if (currentMode === 'partner') {
                 const partnerKey = document.getElementById('partnerStoreSelect').value;
                 const partnerName = partnerStoresData[partnerKey] ? partnerStoresData[partnerKey].name : partnerKey;
@@ -2004,7 +2332,7 @@ if (currentMode === 'parcel' && parcelDestType === 'outstation') {
                         if (speedVal === 'normal_food') {
                             calcSpeed = 'normal';
                             const schedSelect = document.getElementById(`pScheduleSelect_${i}`);
-                            const selectedOpt = schedSelect.options[schedSelect.selectedIndex];
+                            const selectedOpt = schedSelect ? schedSelect.options[schedSelect.selectedIndex] : null;
                             if (selectedOpt && selectedOpt.disabled) {
                                 alert(`#အော်ဒါနံပါတ် (${i}) ၏ ရွေးချယ်ထားသော ပုံမှန်ပို့ အချိန်ဇယားသည် အော်ဒါပိတ်သွားပါပြီ။ ကျေးဇူးပြု၍ အခြားအချိန်ဇယား ရွေးပေးပါ။`);
                                 return;
@@ -2087,7 +2415,6 @@ if (currentMode === 'parcel' && parcelDestType === 'outstation') {
                 return;
             }
 
-            // SHOPPING SERVICE SUBMISSION
             if (currentMode === 'shopping') {
                 const shopStoreName = document.getElementById('shoppingStoreName').value.trim();
                 const shopStoreWardVal = document.getElementById('shoppingStoreWard').value;
@@ -2107,22 +2434,9 @@ if (currentMode === 'parcel' && parcelDestType === 'outstation') {
                 const shoppingPaymentMethod = shoppingPaymentEl ? shoppingPaymentEl.value : 'cash';
 
                 const rName = document.getElementById('receiverName').value.trim();
-const rPhone = document.getElementById('receiverPhone').value.trim();
-const dropWardVal = document.getElementById('dropWard').value;
-const rAddress = document.getElementById('receiverAddress').value.trim();
-const parcelDestType = document.getElementById('parcelDestinationType').value;
-
-if (parcelDestType === 'local') {
-    if (!rName || !rPhone || !dropWardVal) {
-        alert('ကျေးဇူးပြု၍ လက်ခံသူ အချက်အလက်များ နှင့် လက်ခံမည့် ရပ်ကွက် ရွေးချယ်ပေးပါ။');
-        return;
-    }
-} else if (parcelDestType === 'outstation') {
-    if (!rName || !rPhone) {
-        alert('ကျေးဇူးပြု၍ လက်ခံသူ အမည်နှင့် ဖုန်းနံပါတ် ဖြည့်ပေးပါ။');
-        return;
-    }
-}
+                const rPhone = document.getElementById('receiverPhone').value.trim();
+                const dropWardVal = document.getElementById('dropWard').value;
+                const rAddress = document.getElementById('receiverAddress').value.trim();
 
                 if (!rName || !rPhone || !dropWardVal) {
                     alert('ကျေးဇူးပြု၍ လက်ခံသူ အချက်အလက်များ နှင့် လက်ခံမည့် ရပ်ကွက် ရွေးချယ်ပေးပါ။');
@@ -2212,18 +2526,78 @@ if (parcelDestType === 'local') {
                 return;
             }
 
-            // FOOD / PARCEL SUBMISSION LOGIC
+            if (currentMode === 'rental') {
+                const vehicleTypeSelect = document.getElementById('vehicleType');
+                const vehicleTypeName = vehicleTypeSelect ? vehicleTypeSelect.options[vehicleTypeSelect.selectedIndex].text : '';
+                const rentalScope = document.getElementById('rentalScope') ? document.getElementById('rentalScope').value : 'local';
+                const pickupAddr = document.getElementById('rentalPickupAddress') ? document.getElementById('rentalPickupAddress').value.trim() : '-';
+                const destAddr = document.getElementById('rentalDestinationAddress') ? document.getElementById('rentalDestinationAddress').value.trim() : '-';
+                const startTime = document.getElementById('rentalStartTime') ? document.getElementById('rentalStartTime').value : '-';
+                const duration = document.getElementById('rentalDuration') ? document.getElementById('rentalDuration').value.trim() : '၁ ရက်';
+                const note = document.getElementById('rentalNote') ? document.getElementById('rentalNote').value.trim() : 'မရှိပါ';
+                const customerName = document.getElementById('rentalCustomerName') ? document.getElementById('rentalCustomerName').value.trim() : '';
+                const customerPhone = document.getElementById('rentalCustomerPhone') ? document.getElementById('rentalCustomerPhone').value.trim() : '';
+
+                const totalFee = typeof calculateRentalPrice === 'function' ? calculateRentalPrice() : 0;
+                const formattedFee = totalFee > 0 ? totalFee.toLocaleString() + ' ကျပ်' : 'စုံစမ်းဆွေးနွေးရန်';
+
+                let orderMsg = '';
+
+                if (rentalScope === 'local') {
+                    orderMsg = `🚗 [ ယာဉ်ငှားရမ်းမှု အော်ဒါ (မြို့တွင်း) ]\n` +
+                        `----------------------------------\n` +
+                        `👤 ငှားရမ်းသူ: ${customerName} (${customerPhone})\n` +
+                        `🚘 ယာဉ်အမျိုးအစား: ${vehicleTypeName}\n` +
+                        `📍 ကြိုရမည့်လိပ်စာ: ${pickupAddr}\n` + 
+                        `🏁 သွားရမည့်လိပ်စာ: ${destAddr}\n` +
+                        `⏰ စတင်မည့်အချိန်: ${startTime}\n\n` +
+                        `💰 ကျသင့်ငွေ တွက်ချက်မှု:\n` +
+                        `• မြို့တွင်း စီးနင်းခ = ${formattedFee}\n` +
+                        `----------------------------------\n` +
+                        `💰 စုစုပေါင်း ကျသင့်ငွေ = ${formattedFee}\n` +
+                        `📝 မှတ်ချက်: ${note}`;
+                } else {
+                    orderMsg = `🚜 [ ယာဉ်/ယန္တရား ငှားရမ်းမှု အော်ဒါ (နယ်ဝေး/လုပ်ငန်းသုံး) ]\n` +
+                        `----------------------------------\n` +
+                        `👤 ငှားရမ်းသူ: ${customerName} (${customerPhone})\n` +
+                        `🚘 ယာဉ်အမျိုးအစား: ${vehicleTypeName}\n` +
+                        `📍 ကြိုရ/လုပ်ငန်းခွင် လိပ်စာ: ${pickupAddr}\n` + 
+                        `⏱️ ငှားရမ်းမည့်ကြာချိန်: ${duration}\n` +
+                        `👨‍✈️ ယာဉ်မောင်း ဝန်ဆောင်ခ: ပါဝင်သည်\n\n` +
+                        `💰 ကျသင့်ငွေ တွက်ချက်မှု:\n` +
+                        `• ယန္တရား/ယာဉ် ငှားရမ်းခ (${duration}) = ${formattedFee}\n` +
+                        `----------------------------------\n` +
+                        `💰 ခန့်မှန်း ကျသင့်ငွေ စုစုပေါင်း = ${formattedFee}\n` +
+                        `📝 မှတ်ချက်: ${note}`;
+                }
+
+                const officeViberNumber = "959978730790";
+                const viberUrl = `viber://chat?number=%2B${officeViberNumber}&draft=${encodeURIComponent(orderMsg)}`;
+
+                alert(`✅ ယာဉ်ငှားရမ်းမှု အော်ဒါ တင်ပြီးပါပြီ။\nViber သို့ စာပို့ပေးပါမည်။`);
+                window.location.href = viberUrl;
+                return;
+            }
+
             const rName = document.getElementById('receiverName').value.trim();
             const rPhone = document.getElementById('receiverPhone').value.trim();
             const dropWardVal = document.getElementById('dropWard').value;
             const rAddress = document.getElementById('receiverAddress').value.trim();
+            const parcelDestType = document.getElementById('parcelDestinationType') ? document.getElementById('parcelDestinationType').value : 'local';
 
-            if (!rName || !rPhone || !dropWardVal) {
-                alert('ကျေးဇူးပြု၍ လက်ခံသူ အချက်အလက်များ နှင့် လက်ခံမည့် ရပ်ကွက် ရွေးချယ်ပေးပါ။');
-                return;
+            if (parcelDestType === 'local') {
+                if (!rName || !rPhone || !dropWardVal) {
+                    alert('ကျေးဇူးပြု၍ လက်ခံသူ အချက်အလက်များ နှင့် လက်ခံမည့် ရပ်ကွက် ရွေးချယ်ပေးပါ။');
+                    return;
+                }
+            } else if (parcelDestType === 'outstation') {
+                if (!rName || !rPhone) {
+                    alert('ကျေးဇူးပြု၍ လက်ခံသူ အမည်နှင့် ဖုန်းနံပါတ် ဖြည့်ပေးပါ။');
+                    return;
+                }
             }
 
-            const [dWard] = dropWardVal.split('|');
+            const [dWard] = dropWardVal ? dropWardVal.split('|') : ['-'];
             const officeViberNumber = "959978730790";
             let viberMsg = "";
 
@@ -2303,21 +2677,20 @@ if (parcelDestType === 'local') {
                 const delFeeStr = document.getElementById('deliveryFee').innerText;
                 const grandTotalStr = document.getElementById('grandTotal').innerText;
 
-               const outstationSelect = document.getElementById('outstationCitySelect');
-const selectedCityText = outstationSelect ? outstationSelect.options[outstationSelect.selectedIndex].text : '';
-const outstationAddressDetail = document.getElementById('outstationAddressDetail').value.trim();
+                const outstationSelect = document.getElementById('outstationCitySelect');
+                const selectedCityText = outstationSelect ? outstationSelect.options[outstationSelect.selectedIndex].text : '';
 
-viberMsg = `📦 [ ပစ္စည်းပို့ဆောင်ခိုင်းသည့် အော်ဒါ ]\n`;
-viberMsg += `📌 နယ်မြေ: ${parcelDestType === 'outstation' ? 'နယ်ဝေးပို့ဆောင်မည်' : 'မြို့တွင်းပို့ဆောင်မည်'}\n`;
-viberMsg += `👤 ပေးပို့သူ: ${sName} (${sPhone})\n`;
-viberMsg += `📍 သွားယူရမည့်လိပ်စာ: ${pWard} ${sAddress ? '(' + sAddress + ')' : ''}\n\n`;
-viberMsg += `🏠 လက်ခံသူ: ${rName} (${rPhone})\n`;
-if (parcelDestType === 'outstation') {
-    viberMsg += `🏙️ ပို့ဆောင်မည့်မြို့: ${selectedCityText}\n`;
-    viberMsg += `📍 အသေးစိတ်လိပ်စာ: ${outstationAddressDetail || '-'}\n\n`;
-} else {
-    viberMsg += `📍 ပို့ဆောင်ရမည့်လိပ်စာ: ${dWard} ${rAddress ? '(' + rAddress + ')' : ''}\n\n`;
-}
+                viberMsg = `📦 [ ပစ္စည်းပို့ဆောင်ခိုင်းသည့် အော်ဒါ ]\n`;
+                viberMsg += `📌 နယ်မြေ: ${parcelDestType === 'outstation' ? 'နယ်ဝေးပို့ဆောင်မည်' : 'မြို့တွင်းပို့ဆောင်မည်'}\n`;
+                viberMsg += `👤 ပေးပို့သူ: ${sName} (${sPhone})\n`;
+                viberMsg += `📍 သွားယူရမည့်လိပ်စာ: ${pWard} ${sAddress ? '(' + sAddress + ')' : ''}\n\n`;
+                viberMsg += `🏠 လက်ခံသူ: ${rName} (${rPhone})\n`;
+                if (parcelDestType === 'outstation') {
+                    viberMsg += `🏙️ ပို့ဆောင်မည့်မြို့: ${selectedCityText}\n`;
+                    viberMsg += `📍 အသေးစိတ်လိပ်စာ: ${rAddress || '-'}\n\n`;
+                } else {
+                    viberMsg += `📍 ပို့ဆောင်ရမည့်လိပ်စာ: ${dWard} ${rAddress ? '(' + rAddress + ')' : ''}\n\n`;
+                }
                 viberMsg += `⚖️ အလေးချိန်: ${weightText}\n`;
                 viberMsg += `📐 အရွယ်အစား: ${sizeText}\n`;
                 viberMsg += `🚀 အမြန်နှုန်း: ${speedText}\n`;
@@ -2335,13 +2708,16 @@ if (parcelDestType === 'outstation') {
         }
 
         window.onload = function() {
-    initWards();
-    renderPartnerOrdersForm();
-    handleStoreChange();
-    toggleParcelDestination(); // နယ်ဝေး/မြို့တွင်း UI အခြေအနေကို စတင်ချိန်မှာ စစ်ဆေးပေးမည်
-    updateNormalScheduleOptions();
-    setInterval(updateNormalScheduleOptions, 60000);
-};
+            initWards();
+            renderPartnerOrdersForm();
+            handleStoreChange();
+            toggleParcelDestination();
+            updateNormalScheduleOptions();
+            setInterval(updateNormalScheduleOptions, 60000);
+        };
     </script>
+
+</pre><br><br><br></pre><br><br><br></pre>
 </body>
+
 </html>
