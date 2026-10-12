@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="my">
+<html lang="my" translate="no">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" content="notranslate">
     <title>ဖြိုး လျင်မြန်စွာပို့ဆောင်ရေး</title>
     
     <!-- Tailwind CSS & FontAwesome -->
@@ -22,11 +23,11 @@
     </style>
 </head>
 
-<!-- pt-[70px] ပေးထား၍ Fixed Navbar အောက်သို့ စာများ ငုပ်မဝင်တော့ပါ -->
-<body class="bg-gray-50 pt-[68px]">
+<!-- Navbar နဲ့ Marquee နှစ်ခုစာအတွက် pt-[110px] သို့မဟုတ် လိုအပ်သလောက် တိုးမြှင့်ပေးပါ -->
+<body class="bg-gray-50 pt-[115px]">
 
-    <!-- Fixed Navbar -->
-    <nav class="fixed top-0 left-0 right-0 w-full bg-amber-500 text-gray-900 px-4 py-2 shadow-md z-50">
+    <!-- Fixed Navbar (ထိပ်ဆုံးမှာ အမြဲကပ်နေမည့် Navbar) -->
+    <nav class="fixed top-0 left-0 right-0 w-full bg-amber-500 text-gray-950 px-4 py-2 shadow-md z-50">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="flex items-center gap-3">
                 <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white p-0.5 shadow flex items-center justify-center overflow-hidden shrink-0">
@@ -44,8 +45,8 @@
         </div>
     </nav>
 
-    <!-- Moving Marquee Text (ဆောင်ပုဒ်) -->
-    <div class="bg-amber-600 text-white font-bold py-1.5 overflow-hidden shadow-inner">
+    <!-- Moving Marquee Text (Navbar အောက်မှာ ကပ်နေစေရန် fixed top-[56px] သို့မဟုတ် သင့်တော်သောနေရာပေးနိုင်သည်) -->
+    <div class="fixed top-[56px] sm:top-[60px] left-0 right-0 bg-amber-600 text-white font-bold py-1.5 overflow-hidden shadow-inner z-40">
         <marquee behavior="scroll" direction="left" scrollamount="6" class="text-sm sm:text-base tracking-wide">
             ✨ မြန်ဆန် တိကျ စိတ်ချ ရတာ မော်ရွှေမြိုင် က ဖြိုးဒလီ က နံပါတ် ၁ ပါ ✨
         </marquee>
