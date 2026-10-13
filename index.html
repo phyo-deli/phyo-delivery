@@ -2,35 +2,6 @@
 <html>
 
 <head>
-    <title>Downloaded HTML</title>
-</head>
-
-<body>
-    <pre style="white-space: pre-wrap; word-wrap: break-word;">
-
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ဖြိုး လျင်မြန်စွာပို့ဆောင်ရေး</title>
-    
-    <!-- Tailwind CSS & FontAwesome -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&display=swap" rel="stylesheet">
-    
-    <style>
-        body { 
-            font-family: 'Padauk', sans-serif; 
-        }
-        select option {
-            background-color: #ffffff !important;
-            color: #1f2937 !important;
-            padding: 8px;
-        }
-    </style></pre>
-    <pre style="white-space: pre-wrap; word-wrap: break-word;">
-
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ဖြိုး လျင်မြန်စွာပို့ဆောင်ရေး</title>
@@ -50,26 +21,25 @@
             padding: 8px;
         }
     </style>
+</head>
 
-
-<!-- pt-[70px] ပေးထား၍ Fixed Navbar အောက်သို့ စာများ ငုပ်မဝင်တော့ပါ -->
-
+<body class="pt-[95px] sm:pt-[70px] bg-gray-50">
 
     <!-- Fixed Navbar -->
-    <nav class="fixed top-0 left-0 right-0 w-full bg-amber-500 text-gray-900 px-4 py-2 shadow-md z-50">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="flex items-center gap-3">
+    <nav class="fixed top-0 left-0 right-0 w-full bg-amber-500 text-gray-900 px-3 sm:px-4 py-2 shadow-md z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center gap-2">
+            <div class="flex items-center gap-2 sm:gap-3 overflow-hidden">
                 <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white p-0.5 shadow flex items-center justify-center overflow-hidden shrink-0">
                     <img src="IMG_20260722_064009_075-removebg-preview.png" alt="Phyo Delivery Logo" class="w-full h-full object-contain" onerror="this.onerror=null; this.parentElement.innerHTML='&lt;i class=\'fa-solid fa-truck-fast text-base text-amber-600\'&gt;&lt;/i&gt;';">
                 </div>
-                <h1 class="text-lg sm:text-xl md:text-2xl font-bold flex items-center text-gray-900 leading-tight">
+                <h1 class="text-sm sm:text-xl md:text-2xl font-bold flex items-center text-gray-900 leading-tight truncate">
                     ဖြိုး လျင်မြန်စွာပို့ဆောင်ရေး
                 </h1>
             </div>
 
-            <button id="cartBtn" onclick="toggleCart()" class="relative bg-amber-900 hover:bg-amber-950 text-white text-xs sm:text-sm px-4 py-2 rounded-full font-bold flex items-center gap-2 transition shadow">
+            <button id="cartBtn" onclick="toggleCart()" class="relative bg-amber-900 hover:bg-amber-950 text-white text-xs sm:text-sm px-3 sm:px-4 py-2 rounded-full font-bold flex items-center gap-2 transition shadow shrink-0">
                 <span>ခြင်းတောင်း</span>
-                <span id="cartCount" class="bg-white text-amber-800 px-2.5 py-0.5 rounded-full text-xs font-bold">0</span>
+                <span id="cartCount" class="bg-white text-amber-800 px-2 py-0.5 rounded-full text-xs font-bold">0</span>
             </button>
         </div>
     </nav>
@@ -119,27 +89,25 @@
         </div>
 
         <!-- Main Menu Tabs (ပင်မမီနူး) -->
-        <div class="max-w-2xl mx-auto bg-amber-100/60 p-2 rounded-2xl border border-amber-200 shadow-sm">
-            <div class="grid grid-cols-2 sm:grid-cols-5 gap-1.5">
-                <button id="tabFood" onclick="switchServiceMode('food')" class="flex items-center justify-center gap-1.5 py-2.5 px-2 rounded-xl font-bold text-xs bg-amber-500 text-white shadow transition-all">
-                     <span>စားသောက်ဆိုင်</span>
-                </button>
-                <button id="tabShopping" onclick="switchServiceMode('shopping')" class="flex items-center justify-center gap-1.5 py-2.5 px-2 rounded-xl font-bold text-xs bg-white text-gray-800 hover:bg-amber-50 transition-all border border-amber-200">
-                     <span>ဈေး/ကုန်စုံ</span>
-                </button>
-                <button id="tabParcel" onclick="switchServiceMode('parcel')" class="flex items-center justify-center gap-1.5 py-2.5 px-2 rounded-xl font-bold text-xs bg-white text-gray-800 hover:bg-amber-50 transition-all border border-amber-200">
-                     <span>ပစ္စည်းပို့</span>
-                </button>
-                <button id="tabRental" onclick="switchServiceMode('rental')" class="flex items-center justify-center gap-1.5 py-2.5 px-2 rounded-xl font-bold text-xs bg-white text-gray-800 hover:bg-amber-50 transition-all border border-amber-200">
-                     <span>ယာဉ်ငှားမည်</span>
-                </button>
-                <button id="tabPartner" onclick="switchServiceMode('partner')" class="flex items-center justify-center gap-1.5 py-2.5 px-2 rounded-xl font-bold text-xs bg-white text-gray-800 hover:bg-amber-50 transition-all border border-amber-200">
-                     <span>မိတ်ဖက်ဆိုင်</span>
-                </button>
-            </div>
-        </div>
-
+<div class="max-w-2xl mx-auto bg-amber-100/60 p-2 rounded-2xl border border-amber-200 shadow-sm">
+    <div class="flex sm:grid sm:grid-cols-5 gap-1.5 overflow-x-auto pb-1 scrollbar-none">
+        <button id="tabFood" onclick="switchServiceMode('food')" class="whitespace-nowrap flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl font-bold text-xs bg-amber-500 text-white shadow transition-all shrink-0">
+             <span>စားသောက်ဆိုင်</span>
+        </button>
+        <button id="tabShopping" onclick="switchServiceMode('shopping')" class="whitespace-nowrap flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl font-bold text-xs bg-white text-gray-800 hover:bg-amber-50 transition-all border border-amber-200 shrink-0">
+             <span>ဈေး/ကုန်စုံ</span>
+        </button>
+        <button id="tabParcel" onclick="switchServiceMode('parcel')" class="whitespace-nowrap flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl font-bold text-xs bg-white text-gray-800 hover:bg-amber-50 transition-all border border-amber-200 shrink-0">
+             <span>ပစ္စည်းပို့</span>
+        </button>
+        <button id="tabRental" onclick="switchServiceMode('rental')" class="whitespace-nowrap flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl font-bold text-xs bg-white text-gray-800 hover:bg-amber-50 transition-all border border-amber-200 shrink-0">
+             <span>ယာဉ်ငှားမည်</span>
+        </button>
+        <button id="tabPartner" onclick="switchServiceMode('partner')" class="whitespace-nowrap flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl font-bold text-xs bg-white text-gray-800 hover:bg-amber-50 transition-all border border-amber-200 shrink-0">
+             <span>မိတ်ဖက်ဆိုင်</span>
+        </button>
     </div>
+</div>
 
 
         <!-- 1. FOOD SECTION -->
