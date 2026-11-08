@@ -2472,21 +2472,21 @@ let previousPartnerStore = 'partner1';
                 shoppingViberMsg += `-------------------------------\n`;
                 shoppingViberMsg += `💰 စုစုပေါင်း ကျသင့်ငွေ: ${grandTotalNum.toLocaleString()} ကျပ်`;
 
-                // Telegram Mini App ဟုတ်မဟုတ် စစ်ဆေးခြင်း
-    const isTelegramMiniApp = window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.initDataUnsafe && Object.keys(window.Telegram.WebApp.initDataUnsafe).length > 0;
+                // Telegram Mini App ဟုတ်မဟုတ် တိကျစွာ စစ်ဆေးခြင်း
+                const isTelegramMiniApp = window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.initDataUnsafe && window.Telegram.WebApp.initDataUnsafe.user;
 
-    if (isTelegramMiniApp) {
-        // Telegram Mini App ဖြစ်ပါက openLink ကိုသုံး၍ Bot ဆီသို့ တိုက်ရိုက် လမ်းကြောင်းပြောင်းရန်
-        const telegramBotUrl = `https://t.me/phyodelivery_bot?start=order_${encodeURIComponent(shoppingViberMsg)}`;
-        window.Telegram.WebApp.openLink(telegramBotUrl);
-    } else {
-        // ပုံမှန် Browser သို့မဟုတ် Viber မှ ဖွင့်ပါက Viber ဖြင့်သာ ပို့ရန်
-        const officeViberNumber = "959978730790";
-        const viberUrl = `viber://chat?number=%2B${officeViberNumber}&draft=${encodeURIComponent(shoppingViberMsg)}`;
-        alert(`✅ ဈေး/ကုန်စုံ ဝယ်ခိုင်းသည့် အော်ဒါ အောင်မြင်စွာ တင်ပြီးပါပြီ။\n\nViber သို့ စာပို့ပေးပါမည်။`);
-        window.location.href = viberUrl;
-    }
-    return;
+                if (window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.openTelegramLink) {
+                    // Telegram Mini App ထဲတွင် ရှိနေပါက openTelegramLink ဖြင့် Bot သို့ ပို့မည်
+                    const telegramBotUrl = `https://t.me/phyodelivery_bot?start=order_${encodeURIComponent(shoppingViberMsg)}`;
+                    window.Telegram.WebApp.openTelegramLink(telegramBotUrl);
+                } else {
+                    // ပုံမှန် Browser သို့မဟုတ် Viber မှ ဖွင့်ပါက Viber ဖြင့်သာ ပို့ရန်
+                    const officeViberNumber = "959978730790";
+                    const viberUrl = `viber://chat?number=%2B${officeViberNumber}&draft=${encodeURIComponent(shoppingViberMsg)}`;
+                    alert(`✅ ဈေး/ကုန်စုံ ဝယ်ခိုင်းသည့် အော်ဒါ အောင်မြင်စွာ တင်ပြီးပါပြီ။\n\nViber သို့ စာပို့ပေးပါမည်။`);
+                    window.location.href = viberUrl;
+                }
+                return;
             }
 
             if (currentMode === 'rental') {
