@@ -2472,12 +2472,21 @@ let previousPartnerStore = 'partner1';
                 shoppingViberMsg += `-------------------------------\n`;
                 shoppingViberMsg += `💰 စုစုပေါင်း ကျသင့်ငွေ: ${grandTotalNum.toLocaleString()} ကျပ်`;
 
-                const officeViberNumber = "959978730790";
-                const viberUrl = `viber://chat?number=%2B${officeViberNumber}&draft=${encodeURIComponent(shoppingViberMsg)}`;
+                // Telegram Mini App ဟုတ်မဟုတ် စစ်ဆေးခြင်း
+    const isTelegramMiniApp = window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.initDataUnsafe && Object.keys(window.Telegram.WebApp.initDataUnsafe).length > 0;
 
-                alert(`✅ ဈေး/ကုန်စုံ ဝယ်ခိုင်းသည့် အော်ဒါ အောင်မြင်စွာ တင်ပြီးပါပြီ။\n\nViber သို့ စာပို့ပေးပါမည်။`);
-                window.location.href = viberUrl;
-                return;
+    if (isTelegramMiniApp) {
+        // Telegram Mini App ဖြစ်ပါက Bot ဆီသို့ ဈေး/ကုန်စုံ အော်ဒါအချက်အလက် ပို့ပေးရန်
+        const telegramBotUrl = `https://t.me/phyodelivery_bot?start=order_${encodeURIComponent(shoppingViberMsg)}`;
+        window.Telegram.WebApp.openTelegramLink(telegramBotUrl);
+    } else {
+        // ပုံမှန် Browser သို့မဟုတ် Viber မှ ဖွင့်ပါက Viber ဖြင့်သာ ပို့ရန်
+        const officeViberNumber = "959978730790";
+        const viberUrl = `viber://chat?number=%2B${officeViberNumber}&draft=${encodeURIComponent(shoppingViberMsg)}`;
+        alert(`✅ ဈေး/ကုန်စုံ ဝယ်ခိုင်းသည့် အော်ဒါ အောင်မြင်စွာ တင်ပြီးပါပြီ။\n\nViber သို့ စာပို့ပေးပါမည်။`);
+        window.location.href = viberUrl;
+    }
+    return;
             }
 
             if (currentMode === 'rental') {
