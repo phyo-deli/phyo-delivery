@@ -2671,7 +2671,7 @@ let previousPartnerStore = 'partner1';
 
     if (isTelegramMiniApp) {
         // Telegram Mini App ဖြစ်ပါက Bot ဆီသို့ အော်ဒါအချက်အလက် ပို့ပေးရန်
-        const telegramBotUrl = `https://t.me/@phyodelivery_bot?start=order_${encodeURIComponent(viberMsg)}`;
+        const telegramBotUrl = `https://t.me/phyodelivery_bot?start=order_${encodeURIComponent(viberMsg)}`;
         window.Telegram.WebApp.openTelegramLink(telegramBotUrl);
     } else {
         // ပုံမှန် Browser သို့မဟုတ် Viber မှ ဖွင့်ပါက Viber ဖြင့်သာ ပို့ရန်
