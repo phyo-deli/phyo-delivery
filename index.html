@@ -1788,6 +1788,7 @@ let previousPartnerStore = 'partner1';
                 const currentQty = cart[item.id] ? cart[item.id].qty : 0;
                 return `
                     <div class="border rounded-xl p-3.5 flex justify-between items-center bg-amber-50/50 hover:bg-white transition">
+                    <img src="${item.image}" alt="${item.name}" class="w-full h-24 object-cover rounded-md mb-2">
                         <div>
                             <div class="font-bold text-base text-gray-900">${item.name}</div>
                             <div class="text-sm text-amber-800 font-bold">${item.price.toLocaleString()} ကျပ်</div>
