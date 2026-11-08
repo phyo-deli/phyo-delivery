@@ -2666,10 +2666,19 @@ let previousPartnerStore = 'partner1';
                 viberMsg += `💰 စုစုပေါင်း ကျသင့်ငွေ: ${grandTotalStr}`;
             }
 
-            const viberUrl = `viber://chat?number=%2B${officeViberNumber}&draft=${encodeURIComponent(viberMsg)}`;
-            alert(`✅ အော်ဒါ အောင်မြင်စွာ တင်ပြီးပါပြီ။\n\nViber သို့ စာပို့ပေးပါမည်။`);
-            window.location.href = viberUrl;
-        }
+            // Telegram Mini App ဟုတ်မဟုတ် စစ်ဆေးခြင်း
+    const isTelegramMiniApp = window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.initDataUnsafe && Object.keys(window.Telegram.WebApp.initDataUnsafe).length > 0;
+
+    if (isTelegramMiniApp) {
+        // Telegram Mini App ဖြစ်ပါက Bot ဆီသို့ အော်ဒါအချက်အလက် ပို့ပေးရန်
+        const telegramBotUrl = `https://t.me/@phyodelivery_bot?start=order_${encodeURIComponent(viberMsg)}`;
+        window.Telegram.WebApp.openTelegramLink(telegramBotUrl);
+    } else {
+        // ပုံမှန် Browser သို့မဟုတ် Viber မှ ဖွင့်ပါက Viber ဖြင့်သာ ပို့ရန်
+        const viberUrl = `viber://chat?number=%2B${officeViberNumber}&draft=${encodeURIComponent(viberMsg)}`;
+        alert(`✅ အောင်မြင်စွာ တင်ပြီးပါပြီ။\n Viber သို့ စာပို့ပေးပါမည်။`);
+        window.location.href = viberUrl;
+    }
 
         window.onload = function() {
             initWards();
