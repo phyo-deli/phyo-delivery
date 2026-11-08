@@ -200,7 +200,7 @@
 
                 <div>
                     <label class="block text-sm font-bold text-gray-700 mb-1">ဆိုင်/ဈေး ရှိရာ ရပ်ကွက်(မထည့်ထားပါကဒလီခအတိအကျတွက်ပေးမည်မဟုပါ)</label>
-                    <select id="shoppingStoreWard" onchange="calculatePrice()" class="w-full p-2.5 border rounded-xl bg-white font-bold text-gray-800 focus:ring-2 focus:ring-amber-400 outline-none">
+                    <select id="shoppingStoreWard" onchange="calculatePrice()" class="w-full p-2.5 border rounded-xl bg-white font-bold text-gray-800 focus:ring-2 focus:ring-amber-400 outline-none"required>
                         <option value="">-- ရပ်ကွက် ရွေးချယ်ပါ --</option>
                     </select>
                 </div>
@@ -355,7 +355,7 @@
 
         <div id="pickupWardParcelBox">
             <label class="block text-sm font-bold text-gray-700 mb-1">ပစ္စည်းကောက်ယူမည့် ရပ်ကွက်</label>
-            <select id="pickupWardParcel" onchange="calculatePrice()" class="w-full p-2.5 border rounded-xl bg-white font-bold text-gray-800 focus:ring-2 focus:ring-amber-400 outline-none">
+            <select id="pickupWardParcel" onchange="calculatePrice()" class="w-full p-2.5 border rounded-xl bg-white font-bold text-gray-800 focus:ring-2 focus:ring-amber-400 outline-none"required>
                 <option value="">-- ရပ်ကွက် ရွေးချယ်ပါ --</option>
             </select>
         </div>
@@ -563,7 +563,7 @@
         <!-- ကြိုရမည့် ရပ်ကွက် -->
         <div>
             <label class="block text-sm font-bold text-gray-700 mb-1">ကြိုရမည့် ရပ်ကွက် (Zone)</label>
-            <select id="rentalPickupWard" onchange="calculateRentalPrice()" class="w-full p-2.5 border rounded-xl text-sm focus:ring-2 focus:ring-amber-400 outline-none bg-white text-gray-800 mb-2">
+            <select id="rentalPickupWard" onchange="calculateRentalPrice()" class="w-full p-2.5 border rounded-xl text-sm focus:ring-2 focus:ring-amber-400 outline-none bg-white text-gray-800 mb-2"required>
                 <option value="">-- ရပ်ကွက် ရွေးချယ်ပါ(မြို့တွင်းဆိုပါက) --</option>
             </select>
             
@@ -583,7 +583,7 @@
         <!-- သွားရောက်မည့် ရပ်ကွက် -->
         <div>
             <label class="block text-sm font-bold text-gray-700 mb-1">သွားရောက်မည့် ရပ်ကွက် / လိပ်စာ / မြို့နယ်</label>
-            <select id="rentalDestinationWard" onchange="calculateRentalPrice()" class="w-full p-2.5 border rounded-xl text-sm focus:ring-2 focus:ring-amber-400 outline-none bg-white text-gray-800 mb-2">
+            <select id="rentalDestinationWard" onchange="calculateRentalPrice()" class="w-full p-2.5 border rounded-xl text-sm focus:ring-2 focus:ring-amber-400 outline-none bg-white text-gray-800 mb-2"required>
                 <option value="">-- ရပ်ကွက် ရွေးချယ်ပါ (မြို့တွင်းဆိုပါက) --</option>
             </select>
             <textarea id="rentalDestinationAddress" oninput="calculateRentalPrice()" placeholder="သွားရောက်မည့် တည်နေရာ(လမ်း,ရပ်ကွက်,မြို့နယ်) သို့မဟုတ် လုပ်ငန်းခွင် တည်နေရာ" class="w-full p-2.5 border rounded-xl text-sm focus:ring-2 focus:ring-amber-400 outline-none bg-white text-gray-800" rows="2"></textarea>
@@ -712,7 +712,7 @@
 
             <div>
                 <label class="block text-sm font-bold text-gray-700 mb-1">လက်ခံမည့် ရပ်ကွက်</label>
-                <select id="dropWard" onchange="calculatePrice()" class="w-full p-2.5 border rounded-xl bg-white font-bold text-gray-800 focus:ring-2 focus:ring-amber-400 outline-none">
+                <select id="dropWard" onchange="calculatePrice()" class="w-full p-2.5 border rounded-xl bg-white font-bold text-gray-800 focus:ring-2 focus:ring-amber-400 outline-none"required>
                     <option value="">-- ရပ်ကွက် ရွေးချယ်ပါ --</option>
                 </select>
             </div>
