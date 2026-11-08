@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ဖြိုး လျင်မြန်စွာပို့ဆောင်ရေး</title> 
+    <title>ဖြိုး လျင်မြန်စွာပို့ဆောင်ရေး</title>
     
     <!-- Tailwind CSS & FontAwesome -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -2361,20 +2361,13 @@ let previousPartnerStore = 'partner1';
                 orderMsg += `💵 ကုန်ဖိုး စုစုပေါင်း: ${totalValueSum.toLocaleString()} ကျပ်\n\n`;
                 orderMsg += `ကျေးဇူးပြု၍ အော်ဒါများအား စစ်ဆေး၍ လက်ခံပေးပါရန်။`;
 
-                // Telegram Mini App ဟုတ်မဟုတ် စစ်ဆေးခြင်း
-const isTelegramMiniApp = window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.initDataUnsafe && Object.keys(window.Telegram.WebApp.initDataUnsafe).length > 0;
+                const officeViberNumber = "959978730790";
+                const viberUrl = `viber://chat?number=%2B${officeViberNumber}&draft=${encodeURIComponent(orderMsg)}`;
 
-if (isTelegramMiniApp) {
-    // Telegram Mini App ဖြစ်ပါက Bot ဆီသို့ အော်ဒါအချက်အလက် ပို့ပေးရန်
-    const telegramBotUrl = `https://t.me/phyodelivery_bot?start=order_${encodeURIComponent(orderMsg)}`;
-    window.Telegram.WebApp.openTelegramLink(telegramBotUrl);
-} else {
-    // ပုံမှန် Browser သို့မဟုတ် Viber မှ ဖွင့်ပါက Viber ဖြင့်သာ ပို့ရန်
-    const viberUrl = `viber://chat?number=%2B${officeViberNumber}&draft=${encodeURIComponent(orderMsg)}`;
-    alert(`✅ မိတ်ဖက်အော်ဒါ (${validOrders.length}) ခု အောင်မြင်စွာ တင်ပြီးပါပြီ။\n Viber သို့ စာပို့ပေးပါမည်။`);
-    window.location.href = viberUrl;
-}
-return;
+                alert(`✅ မိတ်ဖက်အော်ဒါ (${validOrders.length}) ခု အောင်မြင်စွာ တင်ပြီးပါပြီ။\n\nViber သို့ စာပို့ပေးပါမည်။`);
+                window.location.href = viberUrl;
+                return;
+            }
 
             if (currentMode === 'shopping') {
                 const shopStoreName = document.getElementById('shoppingStoreName').value.trim();
@@ -2479,20 +2472,13 @@ return;
                 shoppingViberMsg += `-------------------------------\n`;
                 shoppingViberMsg += `💰 စုစုပေါင်း ကျသင့်ငွေ: ${grandTotalNum.toLocaleString()} ကျပ်`;
 
-                // Telegram Mini App ဟုတ်မဟုတ် စစ်ဆေးခြင်း
-const isTelegramMiniApp = window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.initDataUnsafe && Object.keys(window.Telegram.WebApp.initDataUnsafe).length > 0;
+                const officeViberNumber = "959978730790";
+                const viberUrl = `viber://chat?number=%2B${officeViberNumber}&draft=${encodeURIComponent(shoppingViberMsg)}`;
 
-if (isTelegramMiniApp) {
-    // Telegram Mini App ဖြစ်ပါက Bot ဆီသို့ အော်ဒါအချက်အလက် ပို့ပေးရန်
-    const telegramBotUrl = `https://t.me/phyodelivery_bot?start=order_${encodeURIComponent(orderMsg)}`;
-    window.Telegram.WebApp.openTelegramLink(telegramBotUrl);
-} else {
-    // ပုံမှန် Browser သို့မဟုတ် Viber မှ ဖွင့်ပါက Viber ဖြင့်သာ ပို့ရန်
-    const viberUrl = `viber://chat?number=%2B${officeViberNumber}&draft=${encodeURIComponent(orderMsg)}`;
-    alert(`✅ မိတ်ဖက်အော်ဒါ (${validOrders.length}) ခု အောင်မြင်စွာ တင်ပြီးပါပြီ။\n Viber သို့ စာပို့ပေးပါမည်။`);
-    window.location.href = viberUrl;
-}
-return;
+                alert(`✅ ဈေး/ကုန်စုံ ဝယ်ခိုင်းသည့် အော်ဒါ အောင်မြင်စွာ တင်ပြီးပါပြီ။\n\nViber သို့ စာပို့ပေးပါမည်။`);
+                window.location.href = viberUrl;
+                return;
+            }
 
             if (currentMode === 'rental') {
     const vehicleTypeSelect = document.getElementById('vehicleType');
@@ -2549,20 +2535,13 @@ return;
             `📝 မှတ်ချက်: ${note}`;
     }
 
-    // Telegram Mini App ဟုတ်မဟုတ် စစ်ဆေးခြင်း
-const isTelegramMiniApp = window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.initDataUnsafe && Object.keys(window.Telegram.WebApp.initDataUnsafe).length > 0;
-
-if (isTelegramMiniApp) {
-    // Telegram Mini App ဖြစ်ပါက Bot ဆီသို့ အော်ဒါအချက်အလက် ပို့ပေးရန်
-    const telegramBotUrl = `https://t.me/phyodelivery_bot?start=order_${encodeURIComponent(orderMsg)}`;
-    window.Telegram.WebApp.openTelegramLink(telegramBotUrl);
-} else {
-    // ပုံမှန် Browser သို့မဟုတ် Viber မှ ဖွင့်ပါက Viber ဖြင့်သာ ပို့ရန်
+    const officeViberNumber = "959978730790";
     const viberUrl = `viber://chat?number=%2B${officeViberNumber}&draft=${encodeURIComponent(orderMsg)}`;
-    alert(`✅ မိတ်ဖက်အော်ဒါ (${validOrders.length}) ခု အောင်မြင်စွာ တင်ပြီးပါပြီ။\n Viber သို့ စာပို့ပေးပါမည်။`);
+
+    alert(`✅ ယာဉ်ငှားရမ်းမှု အော်ဒါ တင်ပြီးပါပြီ။\nViber သို့ စာပို့ပေးပါမည်။`);
     window.location.href = viberUrl;
+    return;
 }
-return;
 
             const rName = document.getElementById('receiverName').value.trim();
             const rPhone = document.getElementById('receiverPhone').value.trim();
@@ -2687,19 +2666,10 @@ return;
                 viberMsg += `💰 စုစုပေါင်း ကျသင့်ငွေ: ${grandTotalStr}`;
             }
 
-            // Telegram Mini App ဟုတ်မဟုတ် စစ်ဆေးခြင်း
-    const isTelegramMiniApp = window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.initDataUnsafe && Object.keys(window.Telegram.WebApp.initDataUnsafe).length > 0;
-
-    if (isTelegramMiniApp) {
-        // Telegram Mini App ဖြစ်ပါက Bot ဆီသို့ အော်ဒါအချက်အလက် ပို့ပေးရန်
-        const telegramBotUrl = `https://t.me/phyodelivery_bot?start=order_${encodeURIComponent(viberMsg)}`;
-        window.Telegram.WebApp.openTelegramLink(telegramBotUrl);
-    } else {
-        // ပုံမှန် Browser သို့မဟုတ် Viber မှ ဖွင့်ပါက Viber ဖြင့်သာ ပို့ရန်
-        const viberUrl = `viber://chat?number=%2B${officeViberNumber}&draft=${encodeURIComponent(viberMsg)}`;
-        alert(`✅ အောင်မြင်စွာ တင်ပြီးပါပြီ။\n Viber သို့ စာပို့ပေးပါမည်။`);
-        window.location.href = viberUrl;
-    }
+            const viberUrl = `viber://chat?number=%2B${officeViberNumber}&draft=${encodeURIComponent(viberMsg)}`;
+            alert(`✅ အော်ဒါ အောင်မြင်စွာ တင်ပြီးပါပြီ။\n\nViber သို့ စာပို့ပေးပါမည်။`);
+            window.location.href = viberUrl;
+        }
 
         window.onload = function() {
             initWards();
